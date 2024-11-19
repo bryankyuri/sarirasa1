@@ -8,11 +8,12 @@ export default function Home() {
         background: "url('/bg-underconstruction.jpg')",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        backgroundPosition:"center center"
       }}
     >
       <div className="flex flex-col justify-center items-center text-white text">
-        <div className="font-bold lg:text-[72px] text-[32px]">Coming Soon</div>
-        <div className="font-semibold lg:text-[24px] text-[16px] font-nunito">
+        <div className="font-bold lg:text-[72px] text-[42px]">Coming Soon</div>
+        <div className="font-semibold lg:text-[24px] lg:[mt-2] text-[18px] font-nunito">
           Our website is under construction
         </div>
       </div>
