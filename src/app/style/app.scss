@@ -1,0 +1,19 @@
+.bg-main{
+  position: relative;
+  overflow: hidden;
+  &::after{
+    position: absolute;
+    top: -25%;
+    left: 0;
+    content: "";
+    width: 150%;
+    height: 130%;
+    background: #00000014;
+    background: radial-gradient(at center, #fefefe00, #000000b3);;
+    z-index: 0;
+  }
+  .text{
+    position: relative;
+    z-index: 1;
+  }
+}
