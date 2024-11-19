@@ -31,7 +31,7 @@ const nunito = localFont({
       weight: "500"
     },
     {
-      path : "./fonts/nunito/Nunito-Semibold.woff",
+      path : "./fonts/nunito/Nunito-SemiBold.woff",
       weight: "600"
     },
     {
@@ -65,7 +65,7 @@ const merienda = localFont({
       weight: "500"
     },
     {
-      path : "./fonts/merienda/Merienda-Semibold.woff",
+      path : "./fonts/merienda/Merienda-SemiBold.woff",
       weight: "600"
     },
     {
