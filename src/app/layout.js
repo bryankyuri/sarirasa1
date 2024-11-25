@@ -83,7 +83,7 @@ const merienda = localFont({
   variable: "--font-merienda",
 });
 export const metadata = {
-  title: "Sari Rasa",
+  title: "Sate House Senayan",
   description: "Under Construction",
 };
 
