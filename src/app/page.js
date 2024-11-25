@@ -17,27 +17,32 @@ export default function Home() {
       }}
     >
       <div className="flex flex-col justify-center items-center text-[#c39245]">
-        <div className="font-bold lg:text-[72px] text-[42px] flex">
+        {/* <div className="font-bold lg:text-[68px] text-[42px] flex">
           <AnimatePresence>
-            {"Coming Soon".split("").map((char, i) => (
+            {"Discover a Culinary Masterpiece, Soon".split("").map((char, i) => (
               <motion.p
                 ref={ref}
                 key={i}
                 initial={{ opacity: 0, x: -18 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 exit="hidden"
-                transition={{ duration: 0.2, delay: i * 0.1 }}
+                transition={{ duration: 0.05, delay: i * 0.05 }}
                 className=""
               >
                 {char === " " ? <span>&nbsp;</span> : char}
               </motion.p>
             ))}
           </AnimatePresence>
+        </div> */}
+
+        <div >
+          <TextFade direction="down" className="font-bold lg:text-[48px] text-[24px] w-100 text-center lg:mb-6 mb-2">
+            Discover a Culinary Masterpiece, Soon
+          </TextFade>
         </div>
-        {/* <div className="font-bold lg:text-[72px] text-[42px]"></div> */}
         <TextFade
           direction="up"
-          className="font-semibold lg:text-[24px] lg:[mt-2] text-[18px] font-nunito"
+          className="font-semibold lg:text-[24px] lg:[mt-2] text-[16px] font-nunito"
         >
           Our website is under construction
         </TextFade>
