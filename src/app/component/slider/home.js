@@ -33,10 +33,10 @@ export const HomeSlider = () => {
         pagination={{
           clickable: true,
         }}
-        autoplay={{
-          delay: 4500,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 4500,
+        //   disableOnInteraction: false,
+        // }}
         modules={[EffectFade, Pagination, Autoplay]}
         className="mySwiper"
       >

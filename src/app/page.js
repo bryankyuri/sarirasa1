@@ -29,7 +29,6 @@ const varFadeInOutFullMobile = {
 };
 
 export default function Home() {
-  
   const [isTransformHeader, setIsTransformHeader] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { screenWidth } = useContext(AppContext);
@@ -287,7 +286,7 @@ export default function Home() {
                   </Link>
                 </div>
                 <Link
-                  href="https://connect.sarirasa.co.id/login"
+                  href="https://connect.sarirasa.co.id/clogin"
                   target="_blank"
                   className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px] button-primary-glow"
                 >
@@ -364,14 +363,19 @@ export default function Home() {
               </div>
             </div>
             <div
-              className="w-full h-[189px]"
+              className="w-full "
               style={{
+                width: "100%",
+                height: screenWidth - 32 + "px",
                 backgroundImage: "url('bgContent1_new.jpg')",
-                backgroundSize: "100% auto",
+                backgroundSize: "auto 100%",
                 backgroundPosition: "center center",
                 backgroundRepeat: "no-repeat",
               }}
-            ></div>
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* <img src="/bgContent1_new.jpg" alt="Content_Story" /> */}
+            </div>
           </div>
           <div
             className="w-full flex flex-col justify-center align-start mx-auto mt-[70px]"
@@ -389,13 +393,14 @@ export default function Home() {
               <div className="w-[100%] h-[543px] absolute bg-[#0000004D] left-0 top-0"></div>
               <TextFade
                 direction="down"
-                className="flex flex-col justify-center items-center w-100 h-100 z-[2]"
+                //kiri
+                className="flex flex-col justify-start items-start w-100 h-100 z-[2]"
               >
                 <div className="text-white text-[32px] mb-[130px]">
                   Discover the Flavors
                   <br /> of the Archipelago
                 </div>
-                <div className="flex gap-[100px]">
+                <div className="flex gap-[54px] justify-start">
                   <div className="flex flex-col items-center">
                     <FoodIcon />
                     <button
@@ -455,7 +460,7 @@ export default function Home() {
                   <div className="text-[32px] my-[20px] text-[#F15A22]">
                     Visit Us
                   </div>
-                  <div className="text-[20px] font-bulldog mb-8">
+                  <div className="text-[18px] font-bulldog mb-8">
                     Jl. Pantai Batu Bolong No.39, Canggu,
                     <br />
                     Kec. Kuta Utara, Kabupaten Badung, <br />
@@ -488,7 +493,7 @@ export default function Home() {
                   </Link>
                 </div>
                 <Link
-                  href="https://connect.sarirasa.co.id/login"
+                  href="https://connect.sarirasa.co.id/clogin"
                   target="_blank"
                   className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px]"
                 >
