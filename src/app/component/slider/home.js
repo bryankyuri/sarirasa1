@@ -15,9 +15,10 @@ import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import { DiamondIcon } from "../icon/diamond";
 import { AppContext } from "@/app/context/appContext";
 import { WineIcon } from "../icon/wineGlass";
+import Link from "next/link";
 const FADE_DOWN = {
-  show: { opacity: 1, y: 0, transition: { type: "spring", delay: 0.1 } },
-  hidden: { opacity: 0, y: -18 },
+  show: { opacity: 1, y: 0, transition: { ease: "anticipate", delay: 0.1 } },
+  hidden: { opacity: 0, y: -2 },
 };
 export const HomeSlider = () => {
   const { screenWidth } = useContext(AppContext);
@@ -65,10 +66,13 @@ export const HomeSlider = () => {
                         Explore a new world of flavors, with us <br />
                         as your trusted guide
                       </div>
-                      <a className="px-4 py-[10px] bg-[#F15922] rounded-[50px] flex items-center">
-                        <WineIcon />
-                        <span className="ml-2">BOOK A TABLE</span>
-                      </a>
+                      <Link
+                        href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
+                        target="_blank"
+                        className="px-4 py-[10px] bg-[#F15922] rounded-[50px] flex items-center button-primary-glow"
+                      >
+                        <span className="">BOOK A TABLE</span>
+                      </Link>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -103,10 +107,13 @@ export const HomeSlider = () => {
                         Explore a new world of flavors, with us <br />
                         as your trusted guide
                       </div>
-                      <a className="px-4 py-[10px] bg-[#F15922] rounded-[50px] flex items-center">
-                        <WineIcon />
+                      <Link
+                        href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
+                        target="_blank"
+                        className="px-4 py-[10px] bg-[#F15922] rounded-[50px] flex items-center button-primary-glow"
+                      >
                         <span className="ml-2">BOOK A TABLE</span>
-                      </a>
+                      </Link>
                     </div>
                   </motion.div>
                 </motion.div>

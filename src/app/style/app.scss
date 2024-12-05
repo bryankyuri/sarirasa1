@@ -1,4 +1,4 @@
-.bg-main{
+.bg-main {
   position: relative;
   overflow: hidden;
   // &::after{
@@ -12,8 +12,105 @@
   //   background: radial-gradient(at center, #fefefe00, #000000b3);;
   //   z-index: 0;
   // }
-  .text{
+  .text {
     position: relative;
     z-index: 1;
+  }
+}
+
+.svg-fill-white {
+  * {
+    fill: #fff;
+  }
+}
+
+.svg-fill-primary:hover {
+  * {
+    fill: #f15922;
+    transition: all 0.5;
+  }
+}
+
+.svg-transition {
+  transition: all;
+}
+
+.menuIcon {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+  transition: all 2;
+  position: relative;
+  .m1,
+  .m2,
+  .m3 {
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 3px;
+    transition: all 2;
+    transition: width 200ms, height 200ms, transform 200ms;
+  }
+  .m1 {
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    transition: width 200ms, height 200ms, transform 200ms;
+  }
+  .m2 {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+  .m3 {
+    position: absolute;
+    right: 4px;
+    top: 12px;
+    transition: width 200ms, height 200ms, transform 200ms;
+  }
+}
+
+.menuActive {
+  transition: all 2;
+
+  .m1 {
+    width: 12px;
+    height: 2px;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 8px;
+    top: 13px;
+    transition: width 200ms, height 200ms, transform 200ms;
+  }
+  .m2 {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  .m3 {
+    width: 12px;
+    height: 2px;
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 8px;
+    top: 13px;
+    transition: width 200ms, height 200ms, transform 200ms;
+  }
+}
+
+.subMenu {
+  height: 0;
+  transition: height 300ms;
+  overflow: hidden;
+}
+
+.subMenu.menuShow {
+  height: 200px;
+  transition: height 300ms;
+}
+
+.button-primary-glow {
+  transition: box-shadow 200ms;
+  &:hover {
+    box-shadow: 0 4px 15px 2px rgba(255, 89, 29, 0.565);
   }
 }

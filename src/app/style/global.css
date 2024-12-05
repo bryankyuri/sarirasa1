@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #ebe6da;
-  --foreground: #171717;
+  --background: #ffffff;
+  --foreground: #ffffff;
 }
 
 .font-nunito {
@@ -15,8 +15,17 @@
   font-family: "Merienda" !important;
 }
 
+.font-bulldog {
+  font-family: "bulldog" !important;
+}
+
+.font-herme {
+  font-family: "herme" !important;
+}
+
 html {
   padding: 0px !important;
+  scroll-behavior:smooth
 }
 
 

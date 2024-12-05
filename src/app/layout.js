@@ -82,6 +82,28 @@ const merienda = localFont({
   ],
   variable: "--font-merienda",
 });
+
+const bulldog = localFont({
+  src: [
+    {
+      path: "./fonts/bulld.woff",
+      weight: "500",
+    },
+
+  ],
+  variable: "--font-bulldog",
+});
+
+const herme = localFont({
+  src: [
+    {
+      path: "./fonts/herme.woff",
+      weight: "500",
+    },
+
+  ],
+  variable: "--font-herme",
+});
 export const metadata = {
   title: "Sate House Senayan",
   description: "Under Construction",
@@ -92,7 +114,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${merienda.className} ${nunito.className} `}
+      className={`${herme.className} ${bulldog.className} `}
     >
       <body>
         <AppProvider>

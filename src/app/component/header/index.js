@@ -39,9 +39,13 @@ export const Header = ({ isTransformHeader }) => {
             <Link href="#our-story">OUR STORY</Link>
             <Link href="#menu">MENU</Link>
             <Link href="#contact-us">CONTACT US</Link>
-            <a className="bg-[#F15922] rounded-[50px] py-2 px-4 text-white">
+            <Link
+              href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
+              target="_blank"
+              className="bg-[#F15922] rounded-[50px] py-2 px-4 text-white button-primary-glow"
+            >
               BOOK A TABLE
-            </a>
+            </Link>
           </div>
         </div>
       ) : (
@@ -69,10 +73,13 @@ export const Header = ({ isTransformHeader }) => {
               <Link href="#our-story">OUR STORY</Link>
               <Link href="#menu">MENU</Link>
               <Link href="#contact-us">CONTACT US</Link>
-              <a className="bg-[#F15922] rounded-[30px] py-2 px-4 text-white flex items-center justify-center">
-                <WineIcon />
-                <span className="ml-2">BOOK A TABLE</span>
-              </a>
+              <Link
+                href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
+                target="_blank"
+                className="bg-[#F15922] rounded-[30px] py-2 px-4 text-white flex items-center justify-center button-primary-glow"
+              >
+                <span className="">BOOK A TABLE</span>
+              </Link>
             </div>
             {/* <button onClick={}
               className={`w-[100vw] h-[100vh] absolute top-0 left-0 z-[999]`}

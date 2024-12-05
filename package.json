@@ -9,11 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^15.0.3",
     "framer-motion": "^11.11.17",
+    "google-map-react": "^2.2.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "sass": "^1.81.0"
+    "react-icon": "^1.0.0",
+    "react-pageflip": "^2.0.3",
+    "react-tooltip": "^5.28.0",
+    "sass": "^1.81.0",
+    "swiper": "^11.1.15"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
