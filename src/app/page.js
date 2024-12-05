@@ -1016,14 +1016,14 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-      {isDesktop && (
+      {/* {isDesktop && (
         <>
           <Tooltip anchorSelect="#instagram" content="Instagram" />
           <Tooltip anchorSelect="#gmaps" content="Google Maps" />
           <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
           <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
         </>
-      )}
+      )} */}
     </main>
   );
 }

@@ -6,7 +6,9 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [isLoading, setIsloading] = useState(false);
   const [screenWidth, setScreenWidth] = useState(-1);
+  const [windowWidth, setWindowWidth] = useState(-1);
   const [screenHeight, setScreenHeight] = useState(-1);
+  const [windowHeight, setWindowHeight] = useState(-1);
 
   const handleLoading = (value) => {
     setIsloading(value);
@@ -15,6 +17,9 @@ export const AppProvider = ({ children }) => {
   const screenResize = useCallback(() => {
     setScreenWidth(screen.width);
     setScreenHeight(screen.height);
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
+    console.log(window.innerWidth, window.innerHeight);
   }, []);
 
   useEffect(() => {
@@ -33,7 +38,9 @@ export const AppProvider = ({ children }) => {
       value={{
         handleLoading,
         screenWidth,
-        screenHeight
+        screenHeight,
+        windowWidth,
+        windowHeight,
       }}
     >
       {/* <Loading isLoading={isLoading} /> */}
