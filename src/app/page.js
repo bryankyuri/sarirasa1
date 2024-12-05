@@ -227,7 +227,7 @@ export default function Home() {
               style={{
                 backgroundImage: "url('bgContent2Right.jpg')",
                 backgroundSize: "50% auto",
-                backgroundPosition: "top right",
+                backgroundPosition: "bottom right",
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "fixed",
               }}

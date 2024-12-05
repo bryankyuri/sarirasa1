@@ -17,7 +17,7 @@ import { AppContext } from "@/app/context/appContext";
 import { WineIcon } from "../icon/wineGlass";
 import Link from "next/link";
 const FADE_DOWN = {
-  show: { opacity: 1, y: 0, transition: { ease: "anticipate", duration:0.5 ,delay: 1.5 } },
+  show: { opacity: 1, y: 0, transition: { ease: "anticipate", duration:1 ,delay: 2 } },
   hidden: { opacity: 0, y: -12 },
 };
 export const HomeSlider = () => {
@@ -61,8 +61,8 @@ export const HomeSlider = () => {
                     {isDesktop ? (
                       <div className="flex text-[32px] lg:w-100 lg:text-[40px] mt-[20px]">
                         <AnimatePresence>
-                          {"Food that Speaks a Thousand Stories"
-                            .split("")
+                          {"Food |that |Speaks |a Thousand |Stories"
+                            .split("|")
                             .map((char, i) => (
                               <motion.p
                                 ref={ref}
@@ -70,10 +70,10 @@ export const HomeSlider = () => {
                                 initial={{ opacity: 0, x: -18 }}
                                 animate={isActive ? { opacity: 1, x: 0 } : {}}
                                 exit="hidden"
-                                transition={{ duration: 0.05, delay: i * 0.05 }}
+                                transition={{ duration: 0.4, delay: i * 0.5 }}
                                 className=""
                               >
-                                {char === " " ? <span>&nbsp;</span> : char}
+                                {char === " " ? <span>&nbsp;</span> : char}&nbsp;
                               </motion.p>
                             ))}
                         </AnimatePresence>
