@@ -110,40 +110,42 @@ export const HomeSlider = () => {
                       <div className="flex flex-col w-100 justify-center">
                         <div className="flex text-[32px] w-100 lg:text-[40px] mt-[20px] text-center mx-auto">
                           <AnimatePresence>
-                            {"Food that Speaks".split("").map((char, i) => (
+                            {"Food |that |Speaks".split("|").map((char, i) => (
                               <motion.p
                                 ref={ref}
                                 key={i}
-                                initial={{ opacity: 0, x: -18 }}
-                                animate={isActive ? { opacity: 1, x: 0 } : {}}
+                                initial={{ opacity: 0, y: 9 }}
+                                animate={isActive ? { opacity: 1, y: 0 } : {}}
                                 exit="hidden"
                                 transition={{
-                                  duration: 0.05,
-                                  delay: i * 0.05,
+                                  duration: 0.23,
+                                  delay: i === 0 ? 1 : i * 0.2 + 1,
+                                  type: "tween",
                                 }}
                                 className=""
                               >
-                                {char === " " ? <span>&nbsp;</span> : char}
+                                {char === " " ? <span>&nbsp;</span> : char}&nbsp;
                               </motion.p>
                             ))}
                           </AnimatePresence>
                         </div>
                         <div className="flex text-[32px] w-100 lg:text-[40px]] text-center mx-auto">
                           <AnimatePresence>
-                            {"a Thousand Stories".split("").map((char, i) => (
+                            {"a Thousand |Stories".split("|").map((char, i) => (
                               <motion.p
                                 ref={ref}
                                 key={i}
-                                initial={{ opacity: 0, x: -18 }}
-                                animate={isActive ? { opacity: 1, x: 0 } : {}}
+                                initial={{ opacity: 0, y: 9 }}
+                                animate={isActive ? { opacity: 1, y: 0 } : {}}
                                 exit="hidden"
                                 transition={{
-                                  duration: 0.05,
-                                  delay: i * 0.05 + 0.8,
+                                  duration: 0.23,
+                                  delay: i === 0 ? 1.6 : i * 0.2 + 1.6,
+                                  type: "tween",
                                 }}
                                 className=""
                               >
-                                {char === " " ? <span>&nbsp;</span> : char}
+                                {char === " " ? <span>&nbsp;</span> : char}&nbsp;
                               </motion.p>
                             ))}
                           </AnimatePresence>
