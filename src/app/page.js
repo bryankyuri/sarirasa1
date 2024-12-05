@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Header } from "./component/header";
 import { HomeSlider } from "./component/slider/home";
 import { FoodIcon } from "./component/icon/food";
@@ -29,7 +29,7 @@ const varFadeInOutFullMobile = {
 };
 
 export default function Home() {
-  const ref = useRef(null);
+  
   const [isTransformHeader, setIsTransformHeader] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { screenWidth } = useContext(AppContext);
@@ -137,7 +137,7 @@ export default function Home() {
             <div
               className="w-1/2"
               style={{
-                backgroundImage: "url('bgContent1.jpg')",
+                backgroundImage: "url('bgContent1_new.jpg')",
                 backgroundSize: "auto 100%",
                 backgroundPosition: "center center",
                 backgroundRepeat: "no-repeat",
@@ -304,12 +304,14 @@ export default function Home() {
               </div>
               <div className="flex items-center">
                 <div className="text-[14px] ">Member of</div>
-                <Image
-                  width={142}
-                  height={66}
-                  src="/sarirasa_logo.png"
-                  alt="Sarirasa"
-                />
+                <Link href="https://sarirasa.co.id/">
+                  <Image
+                    width={142}
+                    height={66}
+                    src="/sarirasa_logo_new.png"
+                    alt="Sarirasa"
+                  />
+                </Link>
               </div>
             </div>
           </div>
@@ -364,7 +366,7 @@ export default function Home() {
             <div
               className="w-full h-[189px]"
               style={{
-                backgroundImage: "url('bgContent1.jpg')",
+                backgroundImage: "url('bgContent1_new.jpg')",
                 backgroundSize: "100% auto",
                 backgroundPosition: "center center",
                 backgroundRepeat: "no-repeat",
@@ -500,12 +502,14 @@ export default function Home() {
             <div className="flex w-[100%] justify-between items-center h-[86px] mx-auto px-4 [text-12px]">
               <div className="flex flex-col items-center">
                 {/* <div className="text-[14px] ">Member of</div> */}
-                <Image
-                  width={142}
-                  height={66}
-                  src="/sarirasa_logo.png"
-                  alt="Sarirasa"
-                />
+                <Link href="https://sarirasa.co.id/">
+                  <Image
+                    width={142}
+                    height={66}
+                    src="/sarirasa_logo_new.png"
+                    alt="Sarirasa"
+                  />
+                </Link>
               </div>
               <div className="text-[14px] text-right font-bulldog w-100">
                 Copyright <br />© 2024 - Sate House Senayan
@@ -527,7 +531,7 @@ export default function Home() {
           <IgIcon />
         </Link>
         <Link
-          href="https://maps.google.com/maps?ll=-8.642109,115.142429&z=16&t=m&hl=id-ID&gl=US&mapclient=embed&cid=10888663091824719585"
+          href="https://maps.app.goo.gl/P9yqdetkB84ob9Ye6"
           target="_blank"
           className={`${isDesktop ? "svg-fill-primary" : ""}`}
           id="gmaps"
@@ -535,7 +539,7 @@ export default function Home() {
           <GmapsIcon />
         </Link>
         <Link
-          href="#"
+          href="https://www.tripadvisor.in/Restaurant_Review-g311298-d25574926-Reviews-Sate_Khas_Senayan_Canggu-Canggu_North_Kuta_Bali.html"
           className={`${isDesktop ? "svg-fill-primary" : ""}`}
           id="tripadvisor"
         >
