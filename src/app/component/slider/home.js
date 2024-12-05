@@ -16,9 +16,29 @@ import { DiamondIcon } from "../icon/diamond";
 import { AppContext } from "@/app/context/appContext";
 import { WineIcon } from "../icon/wineGlass";
 import Link from "next/link";
+const FADE_DOWN0 = {
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "tween", duration: 0.8, delay: 0.5 },
+  },
+  hidden: { opacity: 0, y: 2 },
+};
 const FADE_DOWN = {
-  show: { opacity: 1, y: 0, transition: { ease: "anticipate", duration:1 ,delay: 2 } },
-  hidden: { opacity: 0, y: -12 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "tween", duration: 0.8, delay: 1.8 },
+  },
+  hidden: { opacity: 0, y: 0 },
+};
+const FADE_DOWN2 = {
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "tween", duration: 0.5, delay: 2.6 },
+  },
+  hidden: { opacity: 0, y: 0 },
 };
 export const HomeSlider = () => {
   const { screenWidth } = useContext(AppContext);
@@ -57,7 +77,10 @@ export const HomeSlider = () => {
                   }}
                 >
                   <div className="w-full h-[100vh] flex flex-col lg:justify-center items-center text-white text-center lg:mt-0 mt-[194px]">
-                    <DiamondIcon />
+                    <motion.div variants={FADE_DOWN0}>
+                      <DiamondIcon />
+                    </motion.div>
+
                     {isDesktop ? (
                       <div className="flex text-[32px] lg:w-100 lg:text-[40px] mt-[20px]">
                         <AnimatePresence>
@@ -67,13 +90,18 @@ export const HomeSlider = () => {
                               <motion.p
                                 ref={ref}
                                 key={i}
-                                initial={{ opacity: 0, x: -18 }}
-                                animate={isActive ? { opacity: 1, x: 0 } : {}}
+                                initial={{ opacity: 0, y: 18 }}
+                                animate={isActive ? { opacity: 1, y: 0 } : {}}
                                 exit="hidden"
-                                transition={{ duration: 0.4, delay: i * 0.5 }}
+                                transition={{
+                                  duration: 0.23,
+                                  delay: i === 0 ? 1 : i * 0.2 + 1,
+                                  type: "tween",
+                                }}
                                 className=""
                               >
-                                {char === " " ? <span>&nbsp;</span> : char}&nbsp;
+                                {char === " " ? <span>&nbsp;</span> : char}
+                                &nbsp;
                               </motion.p>
                             ))}
                         </AnimatePresence>
@@ -136,7 +164,10 @@ export const HomeSlider = () => {
                       as your trusted guide
                     </motion.div>
 
-                    <motion.div className="px-4 py-[10px] bg-[#F15922] rounded-[50px] flex items-center button-primary-glow">
+                    <motion.div
+                      variants={FADE_DOWN2}
+                      className="px-4 py-[10px] bg-[#F15922] rounded-[50px] flex items-center button-primary-glow"
+                    >
                       <Link
                         href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
                         target="_blank"
