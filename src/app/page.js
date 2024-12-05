@@ -394,17 +394,19 @@ export default function Home() {
               <TextFade
                 direction="down"
                 //kiri
-                className="flex flex-col justify-start items-start w-100 h-100 z-[2]"
+                className="flex flex-col justify-start items-start w-[100%] h-100 z-[2] pl-4"
               >
-                <div className="text-white text-[32px] mb-[130px]">
+                <div className="text-white text-[32px] mb-[40px]">
                   Discover the Flavors
                   <br /> of the Archipelago
                 </div>
-                <div className="flex gap-[54px] justify-start">
+                <div className="flex gap-[24px] justify-start">
                   <div className="flex flex-col items-center">
-                    <FoodIcon />
+                    <div className="scale-[70%]">
+                      <FoodIcon />
+                    </div>
                     <button
-                      className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
+                      className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
                       onClick={() => setShowModal("food")}
                     >
                       Food
@@ -413,9 +415,12 @@ export default function Home() {
                     </button>
                   </div>
                   <div className="flex flex-col items-center">
-                    <DrinkIcon />
+                    <div className="scale-[70%]">
+                      <DrinkIcon />
+                    </div>
+
                     <button
-                      className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
+                      className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
                       onClick={() => setShowModal("drink")}
                     >
                       Drink
@@ -427,12 +432,13 @@ export default function Home() {
               </TextFade>
             </div>
             <div
-              className="w-100 h-[359px]"
+              className="w-100"
               style={{
                 backgroundImage: "url('bgContent2Right.jpg')",
                 backgroundSize: "100% auto",
-                backgroundPosition: "center center",
+                backgroundPosition: "bottom center",
                 backgroundRepeat: "no-repeat",
+                height: screenWidth,
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -545,6 +551,7 @@ export default function Home() {
         </Link>
         <Link
           href="https://www.tripadvisor.in/Restaurant_Review-g311298-d25574926-Reviews-Sate_Khas_Senayan_Canggu-Canggu_North_Kuta_Bali.html"
+          target="_blank"
           className={`${isDesktop ? "svg-fill-primary" : ""}`}
           id="tripadvisor"
         >
