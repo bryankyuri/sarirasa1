@@ -6,6 +6,7 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [isLoading, setIsloading] = useState(false);
   const [screenWidth, setScreenWidth] = useState(-1);
+  const [screenHeight, setScreenHeight] = useState(-1);
 
   const handleLoading = (value) => {
     setIsloading(value);
@@ -13,6 +14,7 @@ export const AppProvider = ({ children }) => {
 
   const screenResize = useCallback(() => {
     setScreenWidth(screen.width);
+    setScreenHeight(screen.height);
   }, []);
 
   useEffect(() => {
@@ -31,6 +33,7 @@ export const AppProvider = ({ children }) => {
       value={{
         handleLoading,
         screenWidth,
+        screenHeight
       }}
     >
       {/* <Loading isLoading={isLoading} /> */}
