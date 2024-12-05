@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoSHS } from "../icon/shs-icon";
+import { LogoSHS, LogoSHSMobile } from "../icon/shs-icon";
 import { useContext, useState } from "react";
 import { AppContext } from "@/app/context/appContext";
 import Image from "next/image";
@@ -51,17 +51,26 @@ export const Header = ({ isTransformHeader }) => {
       ) : (
         <div className="w-[100%]  top-0 fixed  z-[999] transition">
           <div className="flex flex-col relative">
-            <div className="w-100 h-[52px] p-[20px] bg-white flex justify-between items-center z-[1001] shadow-[0px_4px_8px_0px_#0000000D]">
-              <Link href="#home">
-                <Image
-                  width={150}
-                  height={128}
-                  alt="logo"
-                  src="/logoMobile.png"
-                />
+            <div
+              className={`w-100  ${
+                isTransformHeader
+                  ? "bg-white shadow-[0px_4px_8px_0px_#0000000D] h-[74px]"
+                  : "h-[84px]"
+              } p-[20px] flex justify-between items-center z-[1001] `}
+            >
+              <Link
+                href="#home"
+                className={`${
+                  isTransformHeader ? "scale-[90%]" : "svg-fill-white"
+                } transition-all`}
+              >
+                <LogoSHSMobile />
               </Link>
               <button onClick={() => setIsActive(!isActive)}>
-                <MenuIcon isActive={isActive} />
+                <MenuIcon
+                  isActive={isActive}
+                  isTransformHeader={isTransformHeader}
+                />
               </button>
             </div>
 
