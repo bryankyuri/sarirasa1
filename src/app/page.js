@@ -303,7 +303,7 @@ export default function Home() {
               </div>
               <div className="flex items-center">
                 <div className="text-[14px] ">Member of</div>
-                <Link href="https://sarirasa.co.id/">
+                <Link href="https://sarirasa.co.id/" target="_blank">
                   <Image
                     width={142}
                     height={66}
@@ -513,7 +513,7 @@ export default function Home() {
             <div className="flex w-[100%] justify-between items-center h-[86px] mx-auto px-4 [text-12px]">
               <div className="flex flex-col items-center">
                 {/* <div className="text-[14px] ">Member of</div> */}
-                <Link href="https://sarirasa.co.id/">
+                <Link href="https://sarirasa.co.id/" target="_blank">
                   <Image
                     width={142}
                     height={66}
