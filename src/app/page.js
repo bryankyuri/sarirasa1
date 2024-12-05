@@ -31,7 +31,7 @@ const varFadeInOutFullMobile = {
 export default function Home() {
   const ref = useRef(null);
   const [isTransformHeader, setIsTransformHeader] = useState(false);
-  const [showModal, setShowModal] = useState("food");
+  const [showModal, setShowModal] = useState(false);
   const { screenWidth } = useContext(AppContext);
   const isDesktop = screenWidth > 1080 ? true : false;
   const MenuPageFoodWidth = isDesktop ? screenWidth * 0.32 : screenWidth - 40;
