@@ -225,7 +225,7 @@ export default function Home() {
             <div
               className="w-1/2 "
               style={{
-                backgroundImage: "url('bgContent2Right.jpg')",
+                backgroundImage: "url('image_sate.jpg')",
                 backgroundSize: "50% auto",
                 backgroundPosition: "bottom right",
                 backgroundRepeat: "no-repeat",
@@ -434,7 +434,7 @@ export default function Home() {
             <div
               className="w-100"
               style={{
-                backgroundImage: "url('bgContent2Right.jpg')",
+                backgroundImage: "url('image_sate.jpg')",
                 backgroundSize: "100% auto",
                 backgroundPosition: "bottom center",
                 backgroundRepeat: "no-repeat",
