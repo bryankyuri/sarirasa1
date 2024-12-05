@@ -727,24 +727,242 @@ export default function Home() {
 
         {showModal === "drink" && (
           <motion.div
-            variants={varFadeInOutFullMobile}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[999]"
-          >
-            <div className="w-full flex shadow-lg px-6 py-8 bg-[#fff] h-[100vh] pt-[136px]">
-              <button
-                className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
-                onClick={() => {
-                  setShowModal("");
-                }}
+          variants={varFadeInOutFullMobile}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[999]"
+        >
+          <div className="w-full flex shadow-lg px-6 py-8 bg-[#fff] h-[100vh] pt-[136px] justify-between">
+            <button
+              className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4"
+              onClick={() => {
+                setShowModal("");
+              }}
+            >
+              <BackIcon />
+              <div className="text-[14px] ml-2">Back</div>
+            </button>
+            <div
+              style={{
+                width: MenuPageWidth*2 + "px",
+              }}
+            >
+              <HTMLFlipBook
+                width={Math.round(MenuPageWidth)}
+                height={Math.round(MenuPageHeight)}
+                size="fixed"
+                drawShadow={true}
+                maxShadowOpacity={0.3}
+                showCover={false}
+                mobileScrollSupport={true}
+                // onFlip={this.onPage}
+                // onChangeOrientation={this.onChangeOrientation}
+                // onChangeState={this.onChangeState}
+                className="demo-book text-black w-max rounded-lg"
               >
-                <BackIcon />
-                <div className="text-[14px] ml-2">Back</div>
-              </button>
+                {/* <RenderMenuFood /> */}
+
+                {/* <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page1.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div> */}
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page2.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page3.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page4.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page5.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page6.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page7.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page8.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page9.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page10.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page11.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page12.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page13.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page14.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div><div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page15.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div><div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page16.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div><div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page17.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div><div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page18.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div><div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page19.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div>
+                {/* <div className="demoPage shadow-xl">
+                  <div
+                    style={{
+                      width: MenuPageWidth + "px",
+                      height: MenuPageHeight + "px",
+                      backgroundImage: "url(/foodmenu/Page20.jpg)",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                </div> */}
+              </HTMLFlipBook>
             </div>
-          </motion.div>
+            <div></div>
+          </div>
+        </motion.div>
         )}
       </AnimatePresence>
       <Tooltip anchorSelect="#instagram" content="Instagram" />
