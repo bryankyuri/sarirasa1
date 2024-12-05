@@ -49,7 +49,7 @@ export const Header = ({ isTransformHeader }) => {
           </div>
         </div>
       ) : (
-        <div className="w-[100%]  top-0 fixed  z-[999] transition">
+        <div className="w-[100%]  top-0 fixed  z-[1000] transition">
           <div className="flex flex-col relative">
             <div
               className={`w-100  ${
@@ -63,6 +63,7 @@ export const Header = ({ isTransformHeader }) => {
                 className={`${
                   isTransformHeader ? "scale-[90%]" : "svg-fill-white"
                 } transition-all`}
+                onClick={() => setIsActive(false)}
               >
                 <LogoSHSMobile />
               </Link>
@@ -75,13 +76,19 @@ export const Header = ({ isTransformHeader }) => {
             </div>
 
             <div
-              className={`z-[1000] relative flex flex-col items-end gap-[18px] justify-center px-7 text-black w-100 bg-white shadow-[0px_4px_8px_0px_#0000000D] subMenu ${
+              className={`z-[1001] relative flex flex-col items-end gap-[18px] justify-center px-7 text-black w-100 bg-white shadow-[0px_4px_8px_0px_#0000000D] subMenu ${
                 isActive ? " menuShow" : ""
               } overflow-hidden`}
             >
-              <Link href="#our-story">OUR STORY</Link>
-              <Link href="#menu">MENU</Link>
-              <Link href="#contact-us">CONTACT US</Link>
+              <Link href="#our-story" onClick={() => setIsActive(false)}>
+                OUR STORY
+              </Link>
+              <Link href="#menu" onClick={() => setIsActive(false)}>
+                MENU
+              </Link>
+              <Link href="#contact-us" onClick={() => setIsActive(false)}>
+                CONTACT US
+              </Link>
               <Link
                 href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
                 target="_blank"

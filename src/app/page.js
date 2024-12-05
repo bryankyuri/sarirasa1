@@ -31,19 +31,20 @@ const varFadeInOutFullMobile = {
 export default function Home() {
   const ref = useRef(null);
   const [isTransformHeader, setIsTransformHeader] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState("food");
   const { screenWidth } = useContext(AppContext);
   const isDesktop = screenWidth > 1080 ? true : false;
-  const MenuPageFoodWidth = isDesktop ? screenWidth * 0.32 : screenWidth;
+  const MenuPageFoodWidth = isDesktop ? screenWidth * 0.32 : screenWidth - 40;
   const MenuPageFoodRatio = MenuPageFoodWidth / 1270;
   const MenuPageFoodHeight = 1536 * MenuPageFoodRatio;
-  const MenuPageDrinkWidth = isDesktop ? screenWidth * 0.35 : screenWidth;
+  const MenuPageDrinkWidth = isDesktop ? screenWidth * 0.35 : screenWidth - 40;
   const MenuPageDrinkRatio = MenuPageDrinkWidth / 1175;
   const MenuPageDrinkHeight = 1600 * MenuPageDrinkRatio;
   console.log(MenuPageFoodRatio);
   console.log(MenuPageFoodWidth);
   console.log(MenuPageFoodHeight);
   const [menuFood, setMenuFood] = useState("");
+
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
@@ -371,6 +372,66 @@ export default function Home() {
             ></div>
           </div>
           <div
+            className="w-full flex flex-col justify-center align-start mx-auto mt-[70px]"
+            id="menu"
+          >
+            <div
+              className="w-100 flex flex-col justify-center items-center relative h-[543px]"
+              style={{
+                backgroundImage: "url('bgContent2Left.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <div className="w-[100%] h-[543px] absolute bg-[#0000004D] left-0 top-0"></div>
+              <TextFade
+                direction="down"
+                className="flex flex-col justify-center items-center w-100 h-100 z-[2]"
+              >
+                <div className="text-white text-[32px] mb-[130px]">
+                  Discover the Flavors
+                  <br /> of the Archipelago
+                </div>
+                <div className="flex gap-[100px]">
+                  <div className="flex flex-col items-center">
+                    <FoodIcon />
+                    <button
+                      className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
+                      onClick={() => setShowModal("food")}
+                    >
+                      Food
+                      <br />
+                      Menu
+                    </button>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <DrinkIcon />
+                    <button
+                      className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
+                      onClick={() => setShowModal("drink")}
+                    >
+                      Drink
+                      <br />
+                      Menu
+                    </button>
+                  </div>
+                </div>
+              </TextFade>
+            </div>
+            <div
+              className="w-100 h-[359px]"
+              style={{
+                backgroundImage: "url('bgContent2Right.jpg')",
+                backgroundSize: "100% auto",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+            </div>
+          </div>
+          <div
             className="w-full flex flex-col justify-center align-center relative mx-auto w-100 my-[70px]"
             id="contact-us"
           >
@@ -460,7 +521,7 @@ export default function Home() {
         <Link
           href="https://www.instagram.com/satehousesenayan"
           target="_blank"
-          className="svg-fill-primary"
+          className={`${isDesktop ? "svg-fill-primary" : ""}`}
           id="instagram"
         >
           <IgIcon />
@@ -468,18 +529,22 @@ export default function Home() {
         <Link
           href="https://maps.google.com/maps?ll=-8.642109,115.142429&z=16&t=m&hl=id-ID&gl=US&mapclient=embed&cid=10888663091824719585"
           target="_blank"
-          className="svg-fill-primary"
+          className={`${isDesktop ? "svg-fill-primary" : ""}`}
           id="gmaps"
         >
           <GmapsIcon />
         </Link>
-        <Link href="#" className="svg-fill-primary" id="tripadvisor">
+        <Link
+          href="#"
+          className={`${isDesktop ? "svg-fill-primary" : ""}`}
+          id="tripadvisor"
+        >
           <TripAdvisorIcon />
         </Link>
         <Link
           target="_blank"
           href="https://api.whatsapp.com/send/?phone=6281514163510 &text=custom%20text%20message&type=phone_number&app_absent=0"
-          className="svg-fill-primary"
+          className={`${isDesktop ? "svg-fill-primary" : ""}`}
           id="whatsapp"
         >
           <WaBlackIcon />
@@ -503,9 +568,9 @@ export default function Home() {
             exit="exit"
             className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[999]"
           >
-            <div className="w-full flex shadow-lg px-6 py-8 bg-[#fff] h-[100vh] pt-[136px] justify-between">
+            <div className="w-full flex lg:flex-row flex-col shadow-lg px-6 py-8 bg-[#fff] h-[100vh] lg:pt-[136px] pt-[96px] lg:justify-between">
               <button
-                className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4"
+                className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4"
                 onClick={() => {
                   setShowModal("");
                 }}
@@ -515,20 +580,45 @@ export default function Home() {
               </button>
               <div
                 style={{
-                  width: MenuPageFoodWidth * 2 + "px",
+                  width: isDesktop
+                    ? MenuPageFoodWidth * 2 + "px"
+                    : MenuPageFoodWidth + "px",
                 }}
               >
                 <HTMLFlipBook
-                  width={Math.round(MenuPageFoodWidth)}
-                  height={Math.round(MenuPageFoodHeight)}
-                  size="fixed"
+                  width={
+                    isDesktop
+                      ? Math.round(MenuPageFoodWidth)
+                      : Math.round(MenuPageFoodWidth)
+                  }
+                  height={
+                    isDesktop
+                      ? Math.round(MenuPageFoodHeight)
+                      : Math.round(MenuPageFoodHeight)
+                  }
+                  minWidth={
+                    isDesktop
+                      ? Math.round(MenuPageFoodWidth)
+                      : Math.round(MenuPageFoodWidth)
+                  }
+                  maxWidth={
+                    isDesktop
+                      ? Math.round(MenuPageFoodWidth) * 2
+                      : Math.round(MenuPageFoodWidth)
+                  }
+                  minHeight={
+                    isDesktop
+                      ? Math.round(MenuPageFoodHeight)
+                      : Math.round(MenuPageFoodHeight)
+                  }
+                  maxHeight={
+                    isDesktop
+                      ? Math.round(MenuPageFoodHeight) * 2
+                      : Math.round(MenuPageFoodHeight)
+                  }
                   drawShadow={true}
                   maxShadowOpacity={0.3}
                   showCover={false}
-                  mobileScrollSupport={true}
-                  // onFlip={this.onPage}
-                  // onChangeOrientation={this.onChangeOrientation}
-                  // onChangeState={this.onChangeState}
                   className="demo-book text-black w-max rounded-lg"
                 >
                   {/* <RenderMenuFood /> */}
@@ -748,9 +838,9 @@ export default function Home() {
             exit="exit"
             className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[999]"
           >
-            <div className="w-full flex shadow-lg px-6 py-8 bg-[#fff] h-[100vh] pt-[136px] justify-between">
+            <div className="w-full flex lg:flex-row flex-col shadow-lg px-6 py-8 bg-[#fff] h-[100vh] lg:pt-[136px] pt-[96px] lg:justify-between">
               <button
-                className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4"
+                className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4"
                 onClick={() => {
                   setShowModal("");
                 }}
@@ -760,20 +850,45 @@ export default function Home() {
               </button>
               <div
                 style={{
-                  width: MenuPageDrinkWidth * 2 + "px",
+                  width: isDesktop
+                    ? MenuPageDrinkWidth * 2 + "px"
+                    : MenuPageDrinkWidth,
                 }}
               >
                 <HTMLFlipBook
-                  width={Math.round(MenuPageDrinkWidth)}
-                  height={Math.round(MenuPageDrinkHeight)}
-                  size="fixed"
+                  width={
+                    isDesktop
+                      ? Math.round(MenuPageDrinkWidth)
+                      : Math.round(MenuPageDrinkWidth)
+                  }
+                  height={
+                    isDesktop
+                      ? Math.round(MenuPageDrinkHeight)
+                      : Math.round(MenuPageDrinkHeight)
+                  }
+                  minWidth={
+                    isDesktop
+                      ? Math.round(MenuPageDrinkWidth)
+                      : Math.round(MenuPageDrinkWidth)
+                  }
+                  maxWidth={
+                    isDesktop
+                      ? Math.round(MenuPageDrinkWidth) * 2
+                      : Math.round(MenuPageDrinkWidth)
+                  }
+                  minHeight={
+                    isDesktop
+                      ? Math.round(MenuPageDrinkHeight)
+                      : Math.round(MenuPageDrinkHeight)
+                  }
+                  maxHeight={
+                    isDesktop
+                      ? Math.round(MenuPageDrinkHeight) * 2
+                      : Math.round(MenuPageDrinkHeight)
+                  }
                   drawShadow={true}
                   maxShadowOpacity={0.3}
                   showCover={false}
-                  mobileScrollSupport={true}
-                  // onFlip={this.onPage}
-                  // onChangeOrientation={this.onChangeOrientation}
-                  // onChangeState={this.onChangeState}
                   className="demo-book text-black w-max rounded-lg"
                 >
                   {/* <RenderMenuFood /> */}
@@ -885,10 +1000,14 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-      <Tooltip anchorSelect="#instagram" content="Instagram" />
-      <Tooltip anchorSelect="#gmaps" content="Google Maps" />
-      <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
-      <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
+      {isDesktop && (
+        <>
+          <Tooltip anchorSelect="#instagram" content="Instagram" />
+          <Tooltip anchorSelect="#gmaps" content="Google Maps" />
+          <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
+          <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
+        </>
+      )}
     </main>
   );
 }
