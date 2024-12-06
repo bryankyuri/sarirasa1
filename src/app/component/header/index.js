@@ -49,7 +49,7 @@ export const Header = ({ isTransformHeader }) => {
           </div>
         </div>
       ) : (
-        <div className="w-[100%]  top-0 fixed  z-[1000] transition">
+        <div className="w-[100%]  top-0 fixed  z-[1004] transition">
           <div className="flex flex-col relative">
             <div
               className={`w-100  ${
@@ -76,7 +76,7 @@ export const Header = ({ isTransformHeader }) => {
             </div>
 
             <div
-              className={`z-[1001] relative flex flex-col items-end gap-[18px] justify-center px-7 text-black w-100 bg-white shadow-[0px_4px_8px_0px_#0000000D] subMenu ${
+              className={`z-[1005] relative flex flex-col items-end gap-[18px] justify-center px-7 text-black w-100 bg-white shadow-[0px_4px_8px_0px_#0000000D] subMenu ${
                 isActive ? " menuShow" : ""
               } overflow-hidden`}
             >

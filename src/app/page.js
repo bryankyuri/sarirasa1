@@ -32,12 +32,12 @@ const varFadeInOutFullMobile = {
 export default function Home() {
   const [isTransformHeader, setIsTransformHeader] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { windowWidth } = useContext(AppContext);
-  const isDesktop = windowWidth > 1080 ? true : false;
-  const MenuPageFoodWidth = isDesktop ? windowWidth * 0.32 : windowWidth - 40;
+  const { screenWidth, windowWidth } = useContext(AppContext);
+  const isDesktop = screenWidth > 1080 ? true : false;
+  const MenuPageFoodWidth = isDesktop ? screenWidth * 0.32 : screenWidth - 40;
   const MenuPageFoodRatio = MenuPageFoodWidth / 1270;
   const MenuPageFoodHeight = 1536 * MenuPageFoodRatio;
-  const MenuPageDrinkWidth = isDesktop ? windowWidth * 0.3 : windowWidth - 40;
+  const MenuPageDrinkWidth = isDesktop ? screenWidth * 0.3 : screenWidth - 40;
   const MenuPageDrinkRatio = MenuPageDrinkWidth / 1175;
   const MenuPageDrinkHeight = 1600 * MenuPageDrinkRatio;
   console.log(MenuPageFoodRatio);
@@ -91,9 +91,11 @@ export default function Home() {
         <div className="demoPage shadow-xl" key={`foodmenu/Page${index + 1}`}>
           <div
             className={`flex ${
-              isEven
-                ? "justify-start items-end pb-[24px] pr-[50px]"
-                : "justify-end items-end pb-[24px] pl-[50px]"
+              isDesktop
+                ? isEven
+                  ? "justify-start items-end pb-[24px] pr-[50px]"
+                  : "justify-end items-end pb-[24px] pl-[50px]"
+                : "justify-center items-end pb-[12px]"
             } menuPage`}
             style={{
               width: MenuPageFoodWidth + "px",
@@ -108,7 +110,7 @@ export default function Home() {
                 setZoomMenu(`/foodmenu/Page${index + 1}.jpg`);
               }}
               className={`bg-[#000] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center ${
-                isEven ? "ml-12" : "mr-12"
+                isDesktop ? (isEven ? "ml-12" : "mr-12") : ""
               } lg:mb-0 mb-4 text-white`}
             >
               <HiMagnifyingGlassPlus className="text-[18px]" />
@@ -124,9 +126,11 @@ export default function Home() {
         <div className="demoPage shadow-xl" key={"item" + index}>
           <div
             className={`flex ${
-              !isEven
-                ? "justify-start items-end pb-[24px] pr-[50px]"
-                : "justify-end items-end pb-[24px] pl-[50px]"
+              isDesktop
+                ? !isEven
+                  ? "justify-start items-end pb-[24px] pr-[50px]"
+                  : "justify-end items-end pb-[24px] pl-[50px]"
+                : "justify-center items-end pb-[12px]"
             } menuPage`}
             style={{
               width: MenuPageDrinkWidth + "px",
@@ -141,7 +145,7 @@ export default function Home() {
                 setZoomMenu(`/drinkmenu/Page${index + 1}.jpg`);
               }}
               className={`bg-[#000] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center ${
-                isEven ? "mr-9" : "ml-9"
+                isDesktop ? (isEven ? "mr-9" : "ml-9") : ""
               } lg:mb-0 mb-4 text-white`}
             >
               <HiMagnifyingGlassPlus className="text-[18px]" />
@@ -767,8 +771,8 @@ export default function Home() {
             exit="exit"
             className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1003]"
           >
-            <div className="w-full flex flex-col shadow-lg px-6 py-8 bg-[#00000078] h-[100vh] pt-[120px] overflow-y-auto items-center">
-              <div className="fixed top-[136px] left-[24px]">
+            <div className="w-full flex flex-col shadow-lg px-6 py-8 bg-[rgba(0,0,0,0.47)] h-[100vh] pt-[146px] overflow-y-auto overflow-x-auto items-center">
+              <div className="fixed lg:top-[136px] top-[96px] left-[24px]">
                 <button
                   className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4"
                   onClick={() => {
@@ -781,11 +785,12 @@ export default function Home() {
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                width="80%"
+                width={isDesktop ? "80%" : "200%"}
                 height="auto"
                 src={showZoomMenu}
                 alt="menu"
                 className="mx-auto"
+                style={{ maxWidth: isDesktop ? "100%" : "200%" }}
               />
             </div>
           </motion.div>
