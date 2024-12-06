@@ -55,36 +55,46 @@ export default function Home() {
       document.body.style.overflow = "";
     };
   }, [showModal]);
-  useEffect(() => {
-    const listenToScroll = () => {
-      let winScroll = document.documentElement.scrollTop;
-      let tempIsTransformHeader = isTransformHeader;
-      const shrinkPoint = 100;
-      console.log(shrinkPoint);
-      if (winScroll > shrinkPoint) {
-        if (!tempIsTransformHeader) {
-          tempIsTransformHeader = true;
-        }
-      } else if (winScroll <= shrinkPoint) {
-        if (tempIsTransformHeader) {
-          tempIsTransformHeader = false;
-        }
+  const listenToScroll = () => {
+    let winScroll = document.documentElement.scrollTop;
+    let tempIsTransformHeader = isTransformHeader;
+    const shrinkPoint = 100;
+    console.log(shrinkPoint);
+    if (winScroll > shrinkPoint) {
+      if (!tempIsTransformHeader) {
+        tempIsTransformHeader = true;
       }
-      setIsTransformHeader(tempIsTransformHeader);
-    };
-
+    } else if (winScroll <= shrinkPoint) {
+      if (tempIsTransformHeader) {
+        tempIsTransformHeader = false;
+      }
+    }
+    setIsTransformHeader(tempIsTransformHeader);
+  };
+  useEffect(() => {
     document.addEventListener("scroll", listenToScroll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
+    document.removeEventListener("scroll", listenToScroll);
+    return document.addEventListener("scroll", listenToScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showZoomMenu]);
+
+  useEffect(() => {
     const renderMenuFood = [];
     const renderMenuDrink = [];
     for (let index = 1; index < 19; index++) {
+      const isEven = index % 2 === 0 ? true : false;
       renderMenuFood.push(
         <div className="demoPage shadow-xl" key={`foodmenu/Page${index + 1}`}>
           <div
-            className="flex justify-center items-center menuPage"
+            className={`flex ${
+              isEven
+                ? "justify-start items-end pb-[24px] pr-[50px]"
+                : "justify-end items-end pb-[24px] pl-[50px]"
+            } menuPage`}
             style={{
               width: MenuPageFoodWidth + "px",
               height: MenuPageFoodHeight + "px",
@@ -97,21 +107,27 @@ export default function Home() {
                 e.stopPropagation();
                 setZoomMenu(`/foodmenu/Page${index + 1}.jpg`);
               }}
-              className="text-2xl w-[100px] h-[100px] flex flex-col justify-center items-center"
+              className={`bg-[#000] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center ${
+                isEven ? "ml-12" : "mr-12"
+              } lg:mb-0 mb-4 text-white`}
             >
-              <HiMagnifyingGlassPlus />
-              <br />
-              <div>zoom</div>
+              <HiMagnifyingGlassPlus className="text-[18px]" />
+              <div className="text-[14px] ml-2">Zoom</div>
             </button>
           </div>
         </div>
       );
     }
     for (let index = 0; index < 10; index++) {
+      const isEven = index % 2 === 0 ? true : false;
       renderMenuDrink.push(
         <div className="demoPage shadow-xl" key={"item" + index}>
           <div
-            className="flex justify-center items-center menuPage"
+            className={`flex ${
+              !isEven
+                ? "justify-start items-end pb-[24px] pr-[50px]"
+                : "justify-end items-end pb-[24px] pl-[50px]"
+            } menuPage`}
             style={{
               width: MenuPageDrinkWidth + "px",
               height: MenuPageDrinkHeight + "px",
@@ -120,10 +136,16 @@ export default function Home() {
             }}
           >
             <button
-              onClick={() => setZoomMenu(`/drinkmenu/Page${index + 1}.jpg`)}
-              className="text-2xl"
+              onClick={(e) => {
+                e.stopPropagation();
+                setZoomMenu(`/drinkmenu/Page${index + 1}.jpg`);
+              }}
+              className={`bg-[#000] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center ${
+                isEven ? "mr-9" : "ml-9"
+              } lg:mb-0 mb-4 text-white`}
             >
-              <HiMagnifyingGlassPlus />
+              <HiMagnifyingGlassPlus className="text-[18px]" />
+              <div className="text-[14px] ml-2">Zoom</div>
             </button>
           </div>
         </div>
@@ -693,6 +715,7 @@ export default function Home() {
                 }}
               >
                 <HTMLFlipBook
+                  disableFlipByClick={true}
                   width={
                     isDesktop
                       ? Math.round(MenuPageDrinkWidth)
