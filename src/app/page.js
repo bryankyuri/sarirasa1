@@ -412,7 +412,7 @@ export default function Home() {
                 backgroundRepeat: "no-repeat",
               }}
             ></div>
-            <div className="w-[100vw] h-[700px] absolute bg-[#000000A6] left-0 top-0 z-1 backgroundMobile2"></div>
+            <div className="w-[100vw] h-[812px] absolute bg-[#000000A6] left-0 top-0 z-1 backgroundMobile2"></div>
           </div>
           <div className="bg-white relative z-1">
             <div className="w-full flex flex-col justify-center align-center relative mx-auto py-[70px] px-4 bg-white">
