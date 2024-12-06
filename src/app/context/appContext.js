@@ -19,7 +19,6 @@ export const AppProvider = ({ children }) => {
     setScreenHeight(screen.height);
     setWindowWidth(window.innerWidth);
     setWindowHeight(window.innerHeight);
-    console.log(window.innerWidth, window.innerHeight);
   }, []);
 
   useEffect(() => {

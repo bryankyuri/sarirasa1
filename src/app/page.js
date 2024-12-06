@@ -40,9 +40,6 @@ export default function Home() {
   const MenuPageDrinkWidth = isDesktop ? screenWidth * 0.3 : screenWidth - 40;
   const MenuPageDrinkRatio = MenuPageDrinkWidth / 1175;
   const MenuPageDrinkHeight = 1600 * MenuPageDrinkRatio;
-  console.log(MenuPageFoodRatio);
-  console.log(MenuPageFoodWidth);
-  console.log(MenuPageFoodHeight);
   const [menuFood, setMenuFood] = useState("");
   const [menuDrink, setMenuDrink] = useState("");
   const [showZoomMenu, setZoomMenu] = useState("");
@@ -70,23 +67,53 @@ export default function Home() {
         tempIsTransformHeader = false;
       }
     }
-    const background = document.querySelector(".backgroundMobile");
-    const background2 = document.querySelector(".backgroundMobile2");
-    const content = document.querySelector(".mySwiper");
-    if (background && content) {
-      const scrollPosition = window.scrollY;
-      const contentTop = content.offsetTop;
+    const scrollPosition = window.scrollY;
+    if (!isDesktop) {
+      const background = document.querySelector(".backgroundMobile");
+      const background2 = document.querySelector(".backgroundMobile2");
+      const containerBg3 = document.querySelector(
+        ".containerBackgroundMobile3"
+      );
+      const positionBg3 = containerBg3.getBoundingClientRect();
+      const background3 = document.querySelector(".backgroundMobile3");
+      const content = document.querySelector(".mySwiper");
+      if (background && content) {
+        const contentTop = content.offsetTop;
 
-      if (scrollPosition >= contentTop) {
-        background.style.position = "fixed";
-        background.style.top = "0";
-        background2.style.position = "fixed";
-        background2.style.top = "0";
+        if (scrollPosition >= contentTop) {
+          background.style.position = "fixed";
+          background.style.top = "0";
+          background2.style.position = "fixed";
+          background2.style.top = "0";
+        } else {
+          background.style.position = "absolute";
+          background.style.top = "0";
+          background2.style.position = "absolute";
+          background2.style.top = "0";
+        }
+      }
+      if (background3 && positionBg3) {
+        if (positionBg3.top < 0) {
+          background3.style.position = "fixed";
+          background3.style.top = positionBg3 + "px";
+        } else {
+          background3.style.position = "absolute";
+          background3.style.top = "0px";
+        }
+      }
+    } else {
+      const backgroundFood = document.querySelector(
+        ".backgroundDesktopParalax"
+      );
+      const positionBgFood = document
+        .querySelector("#menu")
+        .getBoundingClientRect();
+      if (positionBgFood.top < 0) {
+        backgroundFood.style.backgroundSize = "50% auto";
+        backgroundFood.style.backgroundAttachment = "fixed";
       } else {
-        background.style.position = "absolute";
-        background.style.top = "0";
-        background2.style.position = "absolute";
-        background2.style.top = "0";
+        backgroundFood.style.backgroundSize = "100% auto";
+        backgroundFood.style.backgroundAttachment = "";
       }
     }
     setIsTransformHeader(tempIsTransformHeader);
@@ -304,7 +331,7 @@ export default function Home() {
               </TextFade>
             </div>
             <div
-              className="w-1/2 "
+              className="w-1/2 backgroundDesktopParalax "
               style={{
                 backgroundImage: "url('image_sate.jpg')",
                 backgroundSize: "50% auto",
@@ -358,7 +385,7 @@ export default function Home() {
                     <div className="ml-2">Feedback</div>
                   </Link>
                   <Link
-                    href="https://api.whatsapp.com/send/?phone=6281514163510 &text=custom%20text%20message&type=phone_number&app_absent=0"
+                    href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
                     target="_blank"
                     className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
                   >
@@ -517,20 +544,28 @@ export default function Home() {
                 </TextFade>
               </div>
               <div
-                className="w-100 relative z-[3]"
+                className="containerBackgroundMobile3 w-100 relative z-1"
                 style={{
-                  backgroundImage: "url('image_sate.jpg')",
-                  backgroundSize: "100% auto",
-                  backgroundPosition: "bottom center",
-                  backgroundRepeat: "no-repeat",
                   height: windowWidth,
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <div
+                  className="w-100 relative z-[1] backgroundMobile3"
+                  style={{
+                    backgroundImage: "url('image_sate.jpg')",
+                    backgroundSize: "100% auto",
+                    backgroundPosition: "bottom center",
+                    backgroundRepeat: "no-repeat",
+                    height: windowWidth,
+                    width: "100%",
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                </div>
               </div>
             </div>
             <div
-              className="w-full flex flex-col justify-center align-center relative mx-auto w-100 py-[70px] bg-white"
+              className="w-full flex flex-col justify-center align-center relative mx-auto w-100 py-[70px] bg-white z-[2]"
               id="contact-us"
             >
               <div
@@ -575,7 +610,7 @@ export default function Home() {
                       <div className="ml-2">Feedback</div>
                     </Link>
                     <Link
-                      href="https://api.whatsapp.com/send/?phone=6281514163510 &text=custom%20text%20message&type=phone_number&app_absent=0"
+                      href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
                       target="_blank"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
                     >
@@ -645,7 +680,7 @@ export default function Home() {
         </Link>
         <Link
           target="_blank"
-          href="https://api.whatsapp.com/send/?phone=6281514163510 &text=custom%20text%20message&type=phone_number&app_absent=0"
+          href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
           className={`${isDesktop ? "svg-fill-primary" : ""}`}
           id="whatsapp"
         >

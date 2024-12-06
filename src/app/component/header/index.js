@@ -7,7 +7,6 @@ import { MenuIcon } from "../icon/menu";
 import { WineIcon } from "../icon/wineGlass";
 
 export const Header = ({ isTransformHeader }) => {
-  console.log(isTransformHeader);
   const { screenWidth } = useContext(AppContext);
   const isDesktop = screenWidth > 1080 ? true : false;
   const [isActive, setIsActive] = useState(false);
