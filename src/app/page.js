@@ -46,11 +46,13 @@ export default function Home() {
   const [menuFood, setMenuFood] = useState("");
   const [menuDrink, setMenuDrink] = useState("");
   const [showZoomMenu, setZoomMenu] = useState("");
+  const [currentPage, setCurrentPage] = useState("");
 
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
     }
+    setCurrentPage("0");
     return () => {
       document.body.style.overflow = "";
     };
@@ -90,32 +92,41 @@ export default function Home() {
       renderMenuFood.push(
         <div className="demoPage shadow-xl" key={`foodmenu/Page${index + 1}`}>
           <div
-            className={`flex ${
-              isDesktop
-                ? isEven
-                  ? "justify-start items-end pb-[24px] pr-[50px]"
-                  : "justify-end items-end pb-[24px] pl-[50px]"
-                : "justify-center items-end pb-[12px]"
-            } menuPage`}
+            className={`flex justify-betweenmenuPage`}
             style={{
               width: MenuPageFoodWidth + "px",
               height: MenuPageFoodHeight + "px",
               backgroundImage: `url(/foodmenu/Page${index + 1}.jpg)`,
               backgroundSize: "cover",
             }}
+            id={`Pages${index + 1}`}
           >
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setZoomMenu(`/foodmenu/Page${index + 1}.jpg`);
-              }}
-              className={`bg-[#000] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center ${
-                isDesktop ? (isEven ? "ml-12" : "mr-12") : ""
-              } lg:mb-0 mb-4 text-white`}
-            >
-              <HiMagnifyingGlassPlus className="text-[18px]" />
-              <div className="text-[14px] ml-2">Zoom</div>
-            </button>
+            {isDesktop ? (
+              <button
+                id={`Page` + (index + 1)}
+                style={{
+                  width: MenuPageFoodWidth + "px",
+                  height: MenuPageFoodHeight + "px",
+                }}
+              ></button>
+            ) : (
+              <>
+                <button
+                  id={`Page` + (index + 1) + "Prev"}
+                  style={{
+                    width: "100px",
+                    height: MenuPageFoodHeight + "px",
+                  }}
+                ></button>
+                <button
+                  id={`Page` + (index + 1) + "Next"}
+                  style={{
+                    width: "100px",
+                    height: MenuPageFoodHeight + "px",
+                  }}
+                ></button>
+              </>
+            )}
           </div>
         </div>
       );
@@ -159,6 +170,10 @@ export default function Home() {
     setMenuDrink([...renderMenuDrink]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowWidth]);
+
+  // const nextPage = () => {
+  //   if (desktop) currentPage;
+  // };
 
   return (
     <main className="w-100 flex flex-col relative">
@@ -292,7 +307,7 @@ export default function Home() {
             >
               <GoogleMapsEmbed
                 apiKey="AIzaSyBL1dmkCrTcHvrJhpeWCOoDzIByQu5480o"
-                height={440}
+                height={400}
                 width="100%"
                 mode="place"
                 q="Sate House Senayan, Canggu"
@@ -354,7 +369,7 @@ export default function Home() {
                   <Image
                     width={142}
                     height={66}
-                    src="/sarirasa_logo_new.png"
+                    src="/sarirasa_logo_new2.png"
                     alt="Sarirasa"
                   />
                 </Link>
@@ -501,7 +516,7 @@ export default function Home() {
             >
               <GoogleMapsEmbed
                 apiKey="AIzaSyBL1dmkCrTcHvrJhpeWCOoDzIByQu5480o"
-                height={440}
+                height={400}
                 width="100%"
                 mode="place"
                 q="Sate House Senayan, Canggu"
@@ -564,7 +579,7 @@ export default function Home() {
                   <Image
                     width={142}
                     height={66}
-                    src="/sarirasa_logo_new.png"
+                    src="/sarirasa_logo_new2.png"
                     alt="Sarirasa"
                   />
                 </Link>
@@ -629,18 +644,22 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[999]"
+            className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
           >
-            <div className="w-full flex lg:flex-row flex-col shadow-lg px-6 py-8 bg-[#fff] h-[100vh] lg:pt-[136px] pt-[96px] lg:justify-between">
-              <button
-                className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4"
-                onClick={() => {
-                  setShowModal("");
-                }}
-              >
-                <BackIcon />
-                <div className="text-[14px] ml-2">Back</div>
-              </button>
+            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-y-auto">
+              <div className="flex justify-between w-[100%] mb-3 pt-6 pb-3 shadow-md px-6 ">
+                <button
+                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mb-4"
+                  onClick={() => {
+                    setShowModal("");
+                  }}
+                >
+                  <BackIcon />
+                  <div className="text-[14px] ml-2">Back</div>
+                </button>
+                <div></div>
+                <div></div>
+              </div>
               <div
                 style={{
                   width: isDesktop
@@ -648,8 +667,10 @@ export default function Home() {
                     : MenuPageFoodWidth + "px",
                 }}
               >
-                <HTMLFlipBook
+                {/* <HTMLFlipBook
                   disableFlipByClick={true}
+                  onFlip={(e) => console.log(e)}
+                  onChangeState={(e) => console.log(e)}
                   width={
                     isDesktop
                       ? Math.round(MenuPageFoodWidth)
@@ -686,7 +707,29 @@ export default function Home() {
                   className="demo-book text-black w-max rounded-lg"
                 >
                   {menuFood}
-                </HTMLFlipBook>
+                </HTMLFlipBook> */}
+                <div
+                  style={{
+                    left: "0px",
+                    width: "100%",
+                    height: "0px",
+                    position: "relative",
+                    paddingBottom: "75%",
+                  }}
+                >
+                  <iframe
+                    src="https://e.issuu.com/embed.html?u=wander-mag&d=wander_fall_winter_2021"
+                    style={{
+                      top: "0px",
+                      left: "0px",
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
+                    }}
+                    allow="clipboard-write,allow-top-navigation,allow-top-navigation-by-user-activation,allow-downloads,allow-scripts,allow-same-origin,allow-popups,allow-modals,allow-popups-to-escape-sandbox,allow-forms"
+                    allowFullScreen={true}
+                  ></iframe>
+                </div>
               </div>
               <div></div>
             </div>
@@ -699,9 +742,9 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[999]"
+            className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005]"
           >
-            <div className="w-full flex lg:flex-row flex-col shadow-lg px-6 py-8 bg-[#fff] h-[100vh] lg:pt-[136px] pt-[96px] lg:justify-between">
+            <div className="w-100 flex justify-between">
               <button
                 className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4"
                 onClick={() => {
@@ -711,6 +754,8 @@ export default function Home() {
                 <BackIcon />
                 <div className="text-[14px] ml-2">Back</div>
               </button>
+            </div>
+            <div className="w-full flex lg:flex-row flex-col shadow-lg px-6 py-8 bg-[#fff] h-[100vh] lg:pt-[136px] pt-[96px] lg:justify-between">
               <div
                 style={{
                   width: isDesktop
