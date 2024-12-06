@@ -45,9 +45,9 @@
   .m1,
   .m2,
   .m3 {
-    width: 4px;
-    height: 4px;
-    background: white;
+    width: 20px;
+    height: 2px;
+    background: black;
     border-radius: 3px;
     transition: all 2;
     transition: width 200ms, height 200ms, transform 200ms;
@@ -55,17 +55,18 @@
   .m1 {
     position: absolute;
     left: 4px;
-    top: 12px;
+    top: 7px;
     transition: width 200ms, height 200ms, transform 200ms;
   }
   .m2 {
     opacity: 1;
+    left: 4px;
     transition: opacity 200ms;
   }
   .m3 {
     position: absolute;
-    right: 4px;
-    top: 12px;
+    left: 4px;
+    top: 19px;
     transition: width 200ms, height 200ms, transform 200ms;
   }
 }
@@ -74,12 +75,12 @@
   transition: all 2;
 
   .m1 {
-    width: 12px;
+    width: 18px;
     height: 2px;
     transform: rotate(45deg);
     position: absolute;
-    left: 8px;
-    top: 13px;
+    left: 5px;
+    top: 10px;
     transition: width 200ms, height 200ms, transform 200ms;
   }
   .m2 {
@@ -87,12 +88,12 @@
     transition: opacity 200ms;
   }
   .m3 {
-    width: 12px;
+    width: 18px;
     height: 2px;
     transform: rotate(-45deg);
     position: absolute;
-    right: 8px;
-    top: 13px;
+    left: 5px;
+    top: 10px;
     transition: width 200ms, height 200ms, transform 200ms;
   }
 }

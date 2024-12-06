@@ -195,7 +195,7 @@ export default function Home() {
   };
 
   return (
-    <main className="w-100 flex flex-col relative">
+    <main className="w-100 flex flex-col relative bg-white">
       <Header isTransformHeader={isTransformHeader} />
       {isDesktop ? (
         <>
@@ -407,7 +407,7 @@ export default function Home() {
               className="w-[100vw] h-[700px] absolute bg-[#000000A6] left-0 top-0 backgroundMobile"
               style={{
                 backgroundImage: "url('bgHero.jpg')",
-                backgroundSize: "cover",
+                backgroundSize: "auto 100%",
                 backgroundPosition: "center center",
                 backgroundRepeat: "no-repeat",
               }}
@@ -479,13 +479,13 @@ export default function Home() {
                 <TextFade
                   direction="down"
                   //kiri
-                  className="flex flex-col justify-start items-start w-[100%] h-100 z-[2] pl-4"
+                  className="flex flex-col justify-center items-center w-[100%] h-100 z-[2] pl-4"
                 >
-                  <div className="text-white text-[32px] mb-[40px]">
+                  <div className="text-white text-[32px] mb-[40px] text-center">
                     Discover the Flavors
                     <br /> of the Archipelago
                   </div>
-                  <div className="flex gap-[24px] justify-start">
+                  <div className="flex gap-[16px] justify-start">
                     <div className="flex flex-col items-center">
                       <div className="scale-[70%]">
                         <FoodIcon />

@@ -1,7 +1,7 @@
 export const MenuIcon = ({ isActive, isTransformHeader }) => {
   return (
     <div
-      className={`bg-black w-[28px] h-[28px] rounded-md menuIcon ${
+      className={`w-[28px] h-[28px] rounded-md menuIcon ${
         isActive ? "menuActive" : ""
       } ${isTransformHeader ? "invert-0" : "invert"}`}
     >
