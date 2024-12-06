@@ -41,8 +41,8 @@ const FADE_DOWN2 = {
   hidden: { opacity: 0, y: 0 },
 };
 export const HomeSlider = () => {
-  const { screenWidth } = useContext(AppContext);
-  const isDesktop = screenWidth > 1080 ? true : false;
+  const { windowWidth } = useContext(AppContext);
+  const isDesktop = windowWidth > 1080 ? true : false;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
