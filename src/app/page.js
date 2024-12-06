@@ -399,12 +399,12 @@ export default function Home() {
       ) : (
         <>
           <div
-            className="w-full h-[700px] flex justify-center align-center relative overflow-hidden"
+            className="w-full h-[812px] flex justify-center align-center relative overflow-hidden"
             id="home"
           >
             <HomeSlider />
             <div
-              className="w-[100vw] h-[700px] absolute bg-[#000000A6] left-0 top-0 backgroundMobile"
+              className="w-[100vw] h-[812px] absolute bg-[#000000A6] left-0 top-0 backgroundMobile"
               style={{
                 backgroundImage: "url('bgHero.jpg')",
                 backgroundSize: "auto 100%",
