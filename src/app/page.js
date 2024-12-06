@@ -120,7 +120,7 @@ export default function Home() {
             }}
           >
             <button
-              onClick={() => setZoomMenu(`/drinkmenu/Page${index + 1}.jpg)`)}
+              onClick={() => setZoomMenu(`/drinkmenu/Page${index + 1}.jpg`)}
               className="text-2xl"
             >
               <HiMagnifyingGlassPlus />
