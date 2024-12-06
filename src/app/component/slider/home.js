@@ -183,7 +183,7 @@ export const HomeSlider = () => {
             </>
           )}
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           {({ isActive }) => (
             <>
               {isActive && (
@@ -223,7 +223,7 @@ export const HomeSlider = () => {
               )}
             </>
           )}
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </>
   );
