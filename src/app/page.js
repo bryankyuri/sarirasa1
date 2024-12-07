@@ -24,6 +24,11 @@ import HTMLFlipBook from "react-pageflip";
 import { Tooltip } from "react-tooltip";
 import { ZoomIcon } from "./component/icon/zoom";
 import { NextIcon, PrevIcon } from "./component/icon/nextprev";
+import {
+  TransformWrapper,
+  TransformComponent,
+  useControls,
+} from "react-zoom-pan-pinch";
 
 const varFadeInOutFullMobile = {
   hidden: { opacity: 0, transition: { duration: 0.2 } },
@@ -232,6 +237,33 @@ export default function Home() {
       srcImageZoom = `drinkmenu/Page${pageIndex + 1}.jpg`;
     }
     setZoomMenu(srcImageZoom);
+  };
+
+  const Controls = () => {
+    const { zoomIn, zoomOut, resetTransform } = useControls();
+
+    return (
+      <div className="tools flex w-100 justify-center mb-4 text-black">
+        <button
+          className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+          onClick={() => zoomIn()}
+        >
+          <ZoomIcon /> <div className="ml-1">Zoom In</div>
+        </button>
+        <button
+          className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+          onClick={() => zoomOut()}
+        >
+          <ZoomIcon /> <div className="ml-1">Zoom Out</div>
+        </button>
+        <button
+          className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+          onClick={() => resetTransform()}
+        >
+          <div className="ml-1">Reset</div>
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -974,13 +1006,13 @@ export default function Home() {
             exit="exit"
             className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1007]"
           >
-            <div className="w-full flex flex-col shadow-lg px-6 py-8 h-[100vh] lg:pt-[24px] pt-[96px] overflow-y-auto overflow-x-auto items-center relative bg-white">
-              <button
+            <div className="w-full flex flex-col shadow-lg px-6 py-8 h-[100vh] lg:pt-[24px] pt-[96px] lg:overflow-y-auto lg:overflow-x-auto items-center relative bg-white">
+              {/* <button
                 className="w-full  bg-[rgba(0,0,0,0.47)] h-[100vh] fixed z-[1008] top-0 left-0"
                 onClick={() => {
                   setZoomMenu("");
                 }}
-              ></button>
+              ></button> */}
               <div className="fixed lg:top-[24px] top-[24px] left-[24px] z-[1010]">
                 <button
                   className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4 "
@@ -993,14 +1025,29 @@ export default function Home() {
                 </button>
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                width={isDesktop ? "80%" : "200%"}
-                height="auto"
-                src={showZoomMenu}
-                alt="menu"
-                className="mx-auto z-[1009] relative"
-                style={{ maxWidth: isDesktop ? "100%" : "200%" }}
-              />
+              {isDesktop ? (
+                <img
+                  width={"80%"}
+                  height="auto"
+                  src={showZoomMenu}
+                  alt="menu"
+                  className="mx-auto z-[1009] relative shadow-lg"
+                  style={{ maxWidth: "80%" }}
+                />
+              ) : (
+                <div className="flex flex-col w-100 bg-black p-4 shadow-lg rounded-lg">
+                  <TransformWrapper initialScale={1} className="w-100 ">
+                    {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                      <>
+                        <Controls />
+                        <TransformComponent>
+                          <img src={showZoomMenu} alt="test" width={"100%"} />
+                        </TransformComponent>
+                      </>
+                    )}
+                  </TransformWrapper>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
