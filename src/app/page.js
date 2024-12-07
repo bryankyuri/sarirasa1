@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { Header } from "./component/header";
 import { HomeSlider } from "./component/slider/home";
 import { FoodIcon } from "./component/icon/food";
@@ -30,6 +30,8 @@ const varFadeInOutFullMobile = {
 };
 
 export default function Home() {
+  const menuFoodBook = useRef();
+  const menuDrinkBook = useRef();
   const [isTransformHeader, setIsTransformHeader] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { screenWidth, windowWidth } = useContext(AppContext);
@@ -43,13 +45,11 @@ export default function Home() {
   const [menuFood, setMenuFood] = useState("");
   const [menuDrink, setMenuDrink] = useState("");
   const [showZoomMenu, setZoomMenu] = useState("");
-  const [currentPage, setCurrentPage] = useState("");
 
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
     }
-    setCurrentPage("0");
     return () => {
       document.body.style.overflow = "";
     };
@@ -136,79 +136,41 @@ export default function Home() {
     for (let index = 1; index < 19; index++) {
       const isEven = index % 2 === 0 ? true : false;
       renderMenuFood.push(
-        <div className="demoPage shadow-xl" key={`foodmenu/Page${index + 1}`}>
+        <div
+          className="demoPage lg:shadow-xl"
+          key={`foodmenu/Page${index + 1}`}
+          id={`foodMenuPage${index + 1}`}
+        >
           <div
-            className={`flex justify-betweenmenuPage`}
+            className={`menuPage`}
             style={{
               width: MenuPageFoodWidth + "px",
               height: MenuPageFoodHeight + "px",
               backgroundImage: `url(/foodmenu/Page${index + 1}.jpg)`,
               backgroundSize: "cover",
             }}
-            id={`Pages${index + 1}`}
-          >
-            {isDesktop ? (
-              <button
-                id={`Page` + (index + 1)}
-                style={{
-                  width: MenuPageFoodWidth + "px",
-                  height: MenuPageFoodHeight + "px",
-                }}
-              ></button>
-            ) : (
-              <>
-                <button
-                  id={`Page` + (index + 1) + "Prev"}
-                  style={{
-                    width: "100px",
-                    height: MenuPageFoodHeight + "px",
-                  }}
-                ></button>
-                <button
-                  id={`Page` + (index + 1) + "Next"}
-                  style={{
-                    width: "100px",
-                    height: MenuPageFoodHeight + "px",
-                  }}
-                ></button>
-              </>
-            )}
-          </div>
+            id={`FoodMenuPage${index + 1}`}
+          />
         </div>
       );
     }
     for (let index = 0; index < 10; index++) {
-      const isEven = index % 2 === 0 ? true : false;
       renderMenuDrink.push(
-        <div className="demoPage shadow-xl" key={"item" + index}>
+        <div
+          className="demoPage shadow-xl"
+          key={`drinkmenu/Page${index + 1}`}
+          id={`drinkMenuPage${index + 1}`}
+        >
           <div
-            className={`flex ${
-              isDesktop
-                ? !isEven
-                  ? "justify-start items-end pb-[24px] pr-[50px]"
-                  : "justify-end items-end pb-[24px] pl-[50px]"
-                : "justify-center items-end pb-[12px]"
-            } menuPage`}
+            className={`menuPage`}
             style={{
               width: MenuPageDrinkWidth + "px",
               height: MenuPageDrinkHeight + "px",
               backgroundImage: `url(/drinkmenu/Page${index + 1}.jpg)`,
               backgroundSize: "cover",
             }}
-          >
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setZoomMenu(`/drinkmenu/Page${index + 1}.jpg`);
-              }}
-              className={`bg-[#000] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center ${
-                isDesktop ? (isEven ? "mr-9" : "ml-9") : ""
-              } lg:mb-0 mb-4 text-white`}
-            >
-              <HiMagnifyingGlassPlus className="text-[18px]" />
-              <div className="text-[14px] ml-2">Zoom</div>
-            </button>
-          </div>
+            id={`DrinkMenuPage${index + 1}`}
+          />
         </div>
       );
     }
@@ -217,8 +179,58 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowWidth]);
 
-  const nextPage = () => {
-    // if (desktop) currentPage;
+  const nextPage = (book) => {
+    if (book === "food") {
+      menuFoodBook.current.pageFlip().flipNext();
+    } else {
+      menuDrinkBook.current.pageFlip().flipNext();
+    }
+  };
+  const prevPage = (book) => {
+    if (book === "food") {
+      menuFoodBook.current.pageFlip().flipPrev();
+    } else {
+      menuDrinkBook.current.pageFlip().flipPrev();
+    }
+  };
+
+  const zoomLeftPage = (book) => {
+    let pageIndex;
+    let srcImageZoom;
+    if (book === "food") {
+      pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
+      srcImageZoom = `foodmenu/Page${pageIndex + 2}.jpg`;
+    } else {
+      pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
+      srcImageZoom = `drinkmenu/Page${pageIndex + 1}.jpg`;
+    }
+    setZoomMenu(srcImageZoom);
+  };
+
+  const zoomRightPage = (book) => {
+    let pageIndex;
+    let srcImageZoom;
+    if (book === "food") {
+      pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
+      srcImageZoom = `foodmenu/Page${pageIndex + 3}.jpg`;
+    } else {
+      pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
+      srcImageZoom = `drinkmenu/Page${pageIndex + 2}.jpg`;
+    }
+    setZoomMenu(srcImageZoom);
+  };
+
+  const zoomMobile = (book) => {
+    let pageIndex;
+    let srcImageZoom;
+    if (book === "food") {
+      pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
+      srcImageZoom = `foodmenu/Page${pageIndex + 2}.jpg`;
+    } else {
+      pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
+      srcImageZoom = `drinkmenu/Page${pageIndex + 1}.jpg`;
+    }
+    setZoomMenu(srcImageZoom);
   };
 
   return (
@@ -705,7 +717,7 @@ export default function Home() {
             exit="exit"
             className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
           >
-            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-y-auto">
+            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-hidden">
               <div className="flex justify-between w-[100%] mb-3 pt-6 pb-3 shadow-md px-6 ">
                 <button
                   className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mb-4"
@@ -716,7 +728,36 @@ export default function Home() {
                   <BackIcon />
                   <div className="text-[14px] ml-2">Back</div>
                 </button>
-                <div></div>
+                <div className="flex text-black">
+                  {isDesktop && (
+                    <button
+                      className="mr-4"
+                      onClick={() => zoomLeftPage("food")}
+                    >
+                      zoom
+                    </button>
+                  )}
+
+                  <button className="mr-4" onClick={() => prevPage("food")}>
+                    prev
+                  </button>
+                  <button className="mr-4" onClick={() => nextPage("food")}>
+                    next
+                  </button>
+                  {isDesktop && (
+                    <button
+                      className="mr-4"
+                      onClick={() => zoomRightPage("food")}
+                    >
+                      zoom
+                    </button>
+                  )}
+                  {!isDesktop && (
+                    <button className="mr-4" onClick={() => zoomMobile("food")}>
+                      zoom
+                    </button>
+                  )}
+                </div>
                 <div></div>
               </div>
               <div
@@ -727,7 +768,7 @@ export default function Home() {
                 }}
               >
                 <HTMLFlipBook
-                  disableFlipByClick={true}
+                  ref={menuFoodBook}
                   onFlip={(e) => console.log(e)}
                   onChangeState={(e) => console.log(e)}
                   width={
@@ -779,29 +820,65 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005]"
+            className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
           >
-            <div className="w-100 flex justify-between">
-              <button
-                className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4"
-                onClick={() => {
-                  setShowModal("");
-                }}
-              >
-                <BackIcon />
-                <div className="text-[14px] ml-2">Back</div>
-              </button>
-            </div>
-            <div className="w-full flex lg:flex-row flex-col shadow-lg px-6 py-8 bg-[#fff] h-[100vh] lg:pt-[136px] pt-[96px] lg:justify-between">
+            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-hidden">
+              <div className="flex justify-between w-[100%] mb-3 pt-6 pb-3 shadow-md px-6 ">
+                <button
+                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mb-4"
+                  onClick={() => {
+                    setShowModal("");
+                  }}
+                >
+                  <BackIcon />
+                  <div className="text-[14px] ml-2">Back</div>
+                </button>
+                <div className="flex text-black">
+                  {isDesktop && (
+                    <button
+                      className="mr-4"
+                      onClick={() => zoomLeftPage("drink")}
+                    >
+                      zoom
+                    </button>
+                  )}
+
+                  <button className="mr-4" onClick={() => prevPage("drink")}>
+                    prev
+                  </button>
+                  <button className="mr-4" onClick={() => nextPage("drink")}>
+                    next
+                  </button>
+                  {isDesktop && (
+                    <button
+                      className="mr-4"
+                      onClick={() => zoomRightPage("drink")}
+                    >
+                      zoom
+                    </button>
+                  )}
+                  {!isDesktop && (
+                    <button
+                      className="mr-4"
+                      onClick={() => zoomMobile("drink")}
+                    >
+                      zoom
+                    </button>
+                  )}
+                </div>
+                <div></div>
+              </div>
               <div
                 style={{
                   width: isDesktop
                     ? MenuPageDrinkWidth * 2 + "px"
-                    : MenuPageDrinkWidth,
+                    : MenuPageDrinkWidth + "px",
                 }}
               >
                 <HTMLFlipBook
-                  disableFlipByClick={true}
+                  ref={menuDrinkBook}
+                  onFlip={(e) => console.log(e)}
+                  onChangeState={(e) => console.log(e)}
                   width={
                     isDesktop
                       ? Math.round(MenuPageDrinkWidth)
@@ -851,10 +928,16 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1003]"
+            className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1007]"
           >
-            <div className="w-full flex flex-col shadow-lg px-6 py-8 bg-[rgba(0,0,0,0.47)] h-[100vh] pt-[146px] overflow-y-auto overflow-x-auto items-center">
-              <div className="fixed lg:top-[136px] top-[96px] left-[24px]">
+            <div className="w-full flex flex-col shadow-lg px-6 py-8 h-[100vh] lg:pt-[24px] pt-[96px] overflow-y-auto overflow-x-auto items-center relative">
+              <button
+                className="w-full  bg-[rgba(0,0,0,0.47)] h-[100vh] fixed z-[1008] top-0 left-0"
+                onClick={() => {
+                  setZoomMenu("");
+                }}
+              ></button>
+              <div className="fixed lg:top-[24px] top-[24px] left-[24px] z-[1009]">
                 <button
                   className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4"
                   onClick={() => {
@@ -871,7 +954,7 @@ export default function Home() {
                 height="auto"
                 src={showZoomMenu}
                 alt="menu"
-                className="mx-auto"
+                className="mx-auto z-[1009] relative"
                 style={{ maxWidth: isDesktop ? "100%" : "200%" }}
               />
             </div>
