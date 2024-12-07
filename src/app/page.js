@@ -235,240 +235,52 @@ export default function Home() {
   };
 
   return (
-    <main className="w-100 flex flex-col relative bg-white">
-      <Header isTransformHeader={isTransformHeader} />
-      {isDesktop ? (
-        <>
-          <div
-            className="w-full h-[100vh] flex justify-center align-center relative overflow-hidden"
-            id="home"
-            style={{
-              backgroundImage: "url('bgHero.jpg')",
-              backgroundSize: "100% auto",
-              backgroundPosition: "center center",
-              backgroundRepeat: "no-repeat",
-              backgroundAttachment: "fixed",
-            }}
-          >
-            <HomeSlider />
-            <div className="w-[100vw] h-[100vh] absolute bg-[#000000A6] left-0 top-0"></div>
-          </div>
-          <div className="w-full max-w-[1300px] flex justify-center align-center relative mx-auto my-[70px]">
+    <>
+      <main
+        className={`w-100 flex flex-col relative bg-white ${
+          (showZoomMenu || showModal) && !isDesktop ? "opacity-0" : ""
+        }`}
+      >
+        <Header isTransformHeader={isTransformHeader} />
+        {isDesktop ? (
+          <>
             <div
-              className="w-1/2"
+              className="w-full h-[100vh] flex justify-center align-center relative overflow-hidden"
+              id="home"
               style={{
-                backgroundImage: "url('bgContent1_new.jpg')",
-                backgroundSize: "auto 100%",
+                backgroundImage: "url('bgHero.jpg')",
+                backgroundSize: "100% auto",
                 backgroundPosition: "center center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-            <div
-              className="w-1/2 flex justify-center items-center text-black border-[#AE8D9380] border border-left-0"
-              id="our-story"
-            >
-              <div className="w-[420px] h-[690px] text-left flex flex-col justify-center items-center">
-                <TextFade
-                  direction="down"
-                  className="flex flex-col justify-center items-center w-100 h-100"
-                >
-                  <div className="text-[32px] text-[#F15A22] mb-[20px]">
-                    A Flavorful Adventure Awaits
-                  </div>
-                  <div className="font-bulldog text-[20px]">
-                    Sate House Senayan brings you on a wondrous flavour-fuelled
-                    odyssey through the largest archipelago in the world. On a
-                    single table, discover the multitude of rich traditions,
-                    memories and regional influences that make Indonesian
-                    cuisine so deliciously complex and diverse.
-                    <br />
-                    <br />
-                    As fiercely protective guardians of the authenticity of our
-                    Indonesian culture, every meal with us is like stepping into
-                    our library of stories, with every dish filled with rich
-                    history. Enjoy a social experience with no one style of
-                    eating, just a liberating dining adventure where the usual
-                    rules no longer apply.
-                  </div>
-                </TextFade>
-              </div>
-            </div>
-          </div>
-          <div
-            className="w-full flex justify-center align-start mx-auto mt-[70px]"
-            id="menu"
-          >
-            <div
-              className="w-1/2 flex flex-col justify-center items-center relative"
-              style={{
-                backgroundImage: "url('bgContent2Left.jpg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center center",
-                backgroundRepeat: "no-repeat",
-                height: "100vh",
-              }}
-            >
-              <div className="w-[100%] h-[100vh] absolute bg-[#0000004D] left-0 top-0"></div>
-              <TextFade
-                direction="down"
-                className="flex flex-col justify-center items-center w-100 h-100 z-[2]"
-              >
-                <div className="text-white text-[32px] mb-[130px]">
-                  Discover the Flavors
-                  <br /> of the Archipelago
-                </div>
-                <div className="flex gap-[100px]">
-                  <div className="flex flex-col items-center">
-                    <FoodIcon />
-                    <button
-                      className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
-                      onClick={() => setShowModal("food")}
-                    >
-                      Food
-                      <br />
-                      Menu
-                    </button>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <DrinkIcon />
-                    <button
-                      className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
-                      onClick={() => setShowModal("drink")}
-                    >
-                      Drink
-                      <br />
-                      Menu
-                    </button>
-                  </div>
-                </div>
-              </TextFade>
-            </div>
-            <div
-              className="w-1/2 backgroundDesktopParalax "
-              style={{
-                backgroundImage: "url('image_sate.jpg')",
-                backgroundSize: "50% auto",
-                backgroundPosition: "bottom right",
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "fixed",
               }}
             >
-              {/* <img src="bgContent2Right.jpg" width="100%" height="100vh" /> */}
+              <HomeSlider />
+              <div className="w-[100vw] h-[100vh] absolute bg-[#000000A6] left-0 top-0"></div>
             </div>
-          </div>
-          <div
-            className="w-full flex justify-center align-center relative mx-auto my-[70px] max-w-[1400px] h-[404px]"
-            id="contact-us"
-          >
-            <div
-              style={{ height: "100%", width: "870px" }}
-              className="rounded-lg overflow-hidden"
-            >
-              <GoogleMapsEmbed
-                apiKey="AIzaSyBL1dmkCrTcHvrJhpeWCOoDzIByQu5480o"
-                height={400}
-                width="100%"
-                mode="place"
-                q="Sate House Senayan, Canggu"
-              />
-            </div>
-            <div className="flex flex-col text-black ml-[20px] w-[410px] justify-between">
-              <TextFade direction="down">
-                <div>
-                  <div className="text-[32px] mb-[20px]">Visit Us</div>
-                  <div className="text-[20px] font-bulldog">
-                    Jl. Pantai Batu Bolong No.39, Canggu,
-                    <br />
-                    Kec. Kuta Utara, Kabupaten Badung,
-                    <br /> Bali 80351
-                    <br />
-                    <br />
-                    Open daily 11am - 11pm
-                  </div>
-                </div>
-              </TextFade>
-              <TextFade direction="down" className="w-[270px]">
-                <div className="text-[32px] mb-[20px]">Get in Touch</div>
-                <div className="flex items-center gap-[12px]">
-                  <Link
-                    href="#"
-                    className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
-                  >
-                    <FeedbackIcon />
-                    <div className="ml-2">Feedback</div>
-                  </Link>
-                  <Link
-                    href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
-                    target="_blank"
-                    className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
-                  >
-                    <WaIcon />
-                    <div className="ml-2">0815-1416-3510</div>
-                  </Link>
-                </div>
-                <Link
-                  href="https://connect.sarirasa.co.id/clogin"
-                  target="_blank"
-                  className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px] button-primary-glow"
-                >
-                  <GiftIcon />
-                  <div className="ml-2">Sign Up for Rewards</div>
-                </Link>
-              </TextFade>
-            </div>
-          </div>
-          <div className="flex w-100  bg-[#F4F4F4] text-black justify-between items-center">
-            <div className="flex w-[75%] justify-between items-center max-w-[1300px] h-[86px] mx-auto">
-              <div className="text-[14px] font-bulldog w-100">
-                Copyright © 2024 - Sate House Senayan
-              </div>
-              <div className="flex items-center">
-                <div className="text-[14px] ">Member of</div>
-                <Link href="https://sarirasa.co.id/" target="_blank">
-                  <Image
-                    width={142}
-                    height={66}
-                    src="/sarirasa_logo_new2.png"
-                    alt="Sarirasa"
-                  />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
-          <div
-            className="w-full h-[812px] flex justify-center align-center relative overflow-hidden"
-            id="home"
-          >
-            <HomeSlider />
-            <div
-              className="w-[100vw] h-[812px] absolute bg-[#000000A6] left-0 top-0 backgroundMobile"
-              style={{
-                backgroundImage: "url('bgHero.jpg')",
-                backgroundSize: "auto 100%",
-                backgroundPosition: "center center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-            <div className="w-[100vw] h-[812px] absolute bg-[#000000A6] left-0 top-0 z-1 backgroundMobile2"></div>
-          </div>
-          <div className="bg-white relative z-1">
-            <div className="w-full flex flex-col justify-center align-center relative mx-auto py-[70px] px-4 bg-white">
+            <div className="w-full max-w-[1300px] flex justify-center align-center relative mx-auto my-[70px]">
               <div
-                className="w-100 flex justify-center items-center text-black border-[#AE8D9380] border border-bottom-0 py-6"
+                className="w-1/2"
+                style={{
+                  backgroundImage: "url('bgContent1_new.jpg')",
+                  backgroundSize: "auto 100%",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+              <div
+                className="w-1/2 flex justify-center items-center text-black border-[#AE8D9380] border border-left-0"
                 id="our-story"
               >
-                <div className="w-100 px-6 text-left flex flex-col justify-center items-center">
+                <div className="w-[420px] h-[690px] text-left flex flex-col justify-center items-center">
                   <TextFade
                     direction="down"
                     className="flex flex-col justify-center items-center w-100 h-100"
                   >
-                    <div className="text-[24px] text-[#F15A22] mb-[20px]">
+                    <div className="text-[32px] text-[#F15A22] mb-[20px]">
                       A Flavorful Adventure Awaits
                     </div>
-                    <div className="font-bulldog text-[16px]">
+                    <div className="font-bulldog text-[20px]">
                       Sate House Senayan brings you on a wondrous
                       flavour-fuelled odyssey through the largest archipelago in
                       the world. On a single table, discover the multitude of
@@ -487,51 +299,35 @@ export default function Home() {
                   </TextFade>
                 </div>
               </div>
-              <div
-                className="w-full "
-                style={{
-                  width: "100%",
-                  height: windowWidth - 32 + "px",
-                  backgroundImage: "url('bgContent1_new.jpg')",
-                  backgroundSize: "auto 100%",
-                  backgroundPosition: "center center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                {/* <img src="/bgContent1_new.jpg" alt="Content_Story" /> */}
-              </div>
             </div>
             <div
-              className="w-full flex flex-col justify-center align-start mx-auto"
+              className="w-full flex justify-center align-start mx-auto mt-[70px]"
               id="menu"
             >
               <div
-                className="w-100 flex flex-col justify-center items-center relative h-[543px]"
+                className="w-1/2 flex flex-col justify-center items-center relative"
                 style={{
                   backgroundImage: "url('bgContent2Left.jpg')",
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                   backgroundRepeat: "no-repeat",
+                  height: "100vh",
                 }}
               >
-                <div className="w-[100%] h-[543px] absolute bg-[#0000004D] left-0 top-0"></div>
+                <div className="w-[100%] h-[100vh] absolute bg-[#0000004D] left-0 top-0"></div>
                 <TextFade
                   direction="down"
-                  //kiri
-                  className="flex flex-col justify-center items-center w-[100%] h-100 z-[2] pl-4"
+                  className="flex flex-col justify-center items-center w-100 h-100 z-[2]"
                 >
-                  <div className="text-white text-[32px] mb-[40px] text-center">
+                  <div className="text-white text-[32px] mb-[130px]">
                     Discover the Flavors
                     <br /> of the Archipelago
                   </div>
-                  <div className="flex gap-[16px] justify-start">
+                  <div className="flex gap-[100px]">
                     <div className="flex flex-col items-center">
-                      <div className="scale-[70%]">
-                        <FoodIcon />
-                      </div>
+                      <FoodIcon />
                       <button
-                        className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
+                        className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
                         onClick={() => setShowModal("food")}
                       >
                         Food
@@ -540,12 +336,9 @@ export default function Home() {
                       </button>
                     </div>
                     <div className="flex flex-col items-center">
-                      <div className="scale-[70%]">
-                        <DrinkIcon />
-                      </div>
-
+                      <DrinkIcon />
                       <button
-                        className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
+                        className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
                         onClick={() => setShowModal("drink")}
                       >
                         Drink
@@ -557,33 +350,25 @@ export default function Home() {
                 </TextFade>
               </div>
               <div
-                className="containerBackgroundMobile3 w-100 relative z-1"
+                className="w-1/2 backgroundDesktopParalax "
                 style={{
-                  height: windowWidth,
+                  backgroundImage: "url('image_sate.jpg')",
+                  backgroundSize: "50% auto",
+                  backgroundPosition: "bottom right",
+                  backgroundRepeat: "no-repeat",
+                  backgroundAttachment: "fixed",
                 }}
               >
-                <div
-                  className="w-100 relative z-[1] backgroundMobile3"
-                  style={{
-                    backgroundImage: "url('image_sate.jpg')",
-                    backgroundSize: "100% auto",
-                    backgroundPosition: "bottom center",
-                    backgroundRepeat: "no-repeat",
-                    height: windowWidth,
-                    width: "100%",
-                  }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                </div>
+                {/* <img src="bgContent2Right.jpg" width="100%" height="100vh" /> */}
               </div>
             </div>
             <div
-              className="w-full flex flex-col justify-center align-center relative mx-auto w-100 py-[70px] bg-white z-[2]"
+              className="w-full flex justify-center align-center relative mx-auto my-[70px] max-w-[1400px] h-[404px]"
               id="contact-us"
             >
               <div
-                style={{ height: "100%", width: "100%" }}
-                className="overflow-hidden"
+                style={{ height: "100%", width: "870px" }}
+                className="rounded-lg overflow-hidden"
               >
                 <GoogleMapsEmbed
                   apiKey="AIzaSyBL1dmkCrTcHvrJhpeWCOoDzIByQu5480o"
@@ -593,17 +378,15 @@ export default function Home() {
                   q="Sate House Senayan, Canggu"
                 />
               </div>
-              <div className="flex flex-col text-black ml-[20px] w-100 justify-between mt-4">
+              <div className="flex flex-col text-black ml-[20px] w-[410px] justify-between">
                 <TextFade direction="down">
                   <div>
-                    <div className="text-[32px] my-[20px] text-[#F15A22]">
-                      Visit Us
-                    </div>
-                    <div className="text-[18px] font-bulldog mb-8">
+                    <div className="text-[32px] mb-[20px]">Visit Us</div>
+                    <div className="text-[20px] font-bulldog">
                       Jl. Pantai Batu Bolong No.39, Canggu,
                       <br />
-                      Kec. Kuta Utara, Kabupaten Badung, <br />
-                      Bali &nbsp;80351
+                      Kec. Kuta Utara, Kabupaten Badung,
+                      <br /> Bali 80351
                       <br />
                       <br />
                       Open daily 11am - 11pm
@@ -611,13 +394,11 @@ export default function Home() {
                   </div>
                 </TextFade>
                 <TextFade direction="down" className="w-[270px]">
-                  <div className="text-[32px] mb-[20px] text-[#F15A22] button-primary-glow">
-                    Get in Touch
-                  </div>
+                  <div className="text-[32px] mb-[20px]">Get in Touch</div>
                   <div className="flex items-center gap-[12px]">
                     <Link
                       href="#"
-                      className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
+                      className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
                     >
                       <FeedbackIcon />
                       <div className="ml-2">Feedback</div>
@@ -625,7 +406,7 @@ export default function Home() {
                     <Link
                       href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
                       target="_blank"
-                      className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
+                      className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
                     >
                       <WaIcon />
                       <div className="ml-2">0815-1416-3510</div>
@@ -634,7 +415,7 @@ export default function Home() {
                   <Link
                     href="https://connect.sarirasa.co.id/clogin"
                     target="_blank"
-                    className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px]"
+                    className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px] button-primary-glow"
                   >
                     <GiftIcon />
                     <div className="ml-2">Sign Up for Rewards</div>
@@ -643,9 +424,12 @@ export default function Home() {
               </div>
             </div>
             <div className="flex w-100  bg-[#F4F4F4] text-black justify-between items-center">
-              <div className="flex w-[100%] justify-between items-center h-[86px] mx-auto px-4 [text-12px]">
-                <div className="flex flex-col items-center">
-                  {/* <div className="text-[14px] ">Member of</div> */}
+              <div className="flex w-[75%] justify-between items-center max-w-[1300px] h-[86px] mx-auto">
+                <div className="text-[14px] font-bulldog w-100">
+                  Copyright © 2024 - Sate House Senayan
+                </div>
+                <div className="flex items-center">
+                  <div className="text-[14px] ">Member of</div>
                   <Link href="https://sarirasa.co.id/" target="_blank">
                     <Image
                       width={142}
@@ -655,52 +439,274 @@ export default function Home() {
                     />
                   </Link>
                 </div>
-                <div className="text-[14px] text-right font-bulldog w-100">
-                  Copyright <br />© 2024 - Sate House Senayan
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              className="w-full h-[812px] flex justify-center align-center relative overflow-hidden"
+              id="home"
+            >
+              <HomeSlider />
+              <div
+                className="w-[100vw] h-[812px] absolute bg-[#000000A6] left-0 top-0 backgroundMobile"
+                style={{
+                  backgroundImage: "url('bgHero.jpg')",
+                  backgroundSize: "auto 100%",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+              <div className="w-[100vw] h-[812px] absolute bg-[#000000A6] left-0 top-0 z-1 backgroundMobile2"></div>
+            </div>
+            <div className="bg-white relative z-1">
+              <div className="w-full flex flex-col justify-center align-center relative mx-auto py-[70px] px-4 bg-white">
+                <div
+                  className="w-100 flex justify-center items-center text-black border-[#AE8D9380] border border-bottom-0 py-6"
+                  id="our-story"
+                >
+                  <div className="w-100 px-6 text-left flex flex-col justify-center items-center">
+                    <TextFade
+                      direction="down"
+                      className="flex flex-col justify-center items-center w-100 h-100"
+                    >
+                      <div className="text-[24px] text-[#F15A22] mb-[20px]">
+                        A Flavorful Adventure Awaits
+                      </div>
+                      <div className="font-bulldog text-[16px]">
+                        Sate House Senayan brings you on a wondrous
+                        flavour-fuelled odyssey through the largest archipelago
+                        in the world. On a single table, discover the multitude
+                        of rich traditions, memories and regional influences
+                        that make Indonesian cuisine so deliciously complex and
+                        diverse.
+                        <br />
+                        <br />
+                        As fiercely protective guardians of the authenticity of
+                        our Indonesian culture, every meal with us is like
+                        stepping into our library of stories, with every dish
+                        filled with rich history. Enjoy a social experience with
+                        no one style of eating, just a liberating dining
+                        adventure where the usual rules no longer apply.
+                      </div>
+                    </TextFade>
+                  </div>
+                </div>
+                <div
+                  className="w-full "
+                  style={{
+                    width: "100%",
+                    height: windowWidth - 32 + "px",
+                    backgroundImage: "url('bgContent1_new.jpg')",
+                    backgroundSize: "auto 100%",
+                    backgroundPosition: "center center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {/* <img src="/bgContent1_new.jpg" alt="Content_Story" /> */}
+                </div>
+              </div>
+              <div
+                className="w-full flex flex-col justify-center align-start mx-auto"
+                id="menu"
+              >
+                <div
+                  className="w-100 flex flex-col justify-center items-center relative h-[543px]"
+                  style={{
+                    backgroundImage: "url('bgContent2Left.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
+                  <div className="w-[100%] h-[543px] absolute bg-[#0000004D] left-0 top-0"></div>
+                  <TextFade
+                    direction="down"
+                    //kiri
+                    className="flex flex-col justify-center items-center w-[100%] h-100 z-[2] pl-4"
+                  >
+                    <div className="text-white text-[32px] mb-[40px] text-center">
+                      Discover the Flavors
+                      <br /> of the Archipelago
+                    </div>
+                    <div className="flex gap-[16px] justify-start">
+                      <div className="flex flex-col items-center">
+                        <div className="scale-[70%]">
+                          <FoodIcon />
+                        </div>
+                        <button
+                          className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
+                          onClick={() => setShowModal("food")}
+                        >
+                          Food
+                          <br />
+                          Menu
+                        </button>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <div className="scale-[70%]">
+                          <DrinkIcon />
+                        </div>
+
+                        <button
+                          className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
+                          onClick={() => setShowModal("drink")}
+                        >
+                          Drink
+                          <br />
+                          Menu
+                        </button>
+                      </div>
+                    </div>
+                  </TextFade>
+                </div>
+                <div
+                  className="containerBackgroundMobile3 w-100 relative z-1"
+                  style={{
+                    height: windowWidth,
+                  }}
+                >
+                  <div
+                    className="w-100 relative z-[1] backgroundMobile3"
+                    style={{
+                      backgroundImage: "url('image_sate.jpg')",
+                      backgroundSize: "100% auto",
+                      backgroundPosition: "bottom center",
+                      backgroundRepeat: "no-repeat",
+                      height: windowWidth,
+                      width: "100%",
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                  </div>
+                </div>
+              </div>
+              <div
+                className="w-full flex flex-col justify-center align-center relative mx-auto w-100 py-[70px] bg-white z-[2]"
+                id="contact-us"
+              >
+                <div
+                  style={{ height: "100%", width: "100%" }}
+                  className="overflow-hidden"
+                >
+                  <GoogleMapsEmbed
+                    apiKey="AIzaSyBL1dmkCrTcHvrJhpeWCOoDzIByQu5480o"
+                    height={400}
+                    width="100%"
+                    mode="place"
+                    q="Sate House Senayan, Canggu"
+                  />
+                </div>
+                <div className="flex flex-col text-black ml-[20px] w-100 justify-between mt-4">
+                  <TextFade direction="down">
+                    <div>
+                      <div className="text-[32px] my-[20px] text-[#F15A22]">
+                        Visit Us
+                      </div>
+                      <div className="text-[18px] font-bulldog mb-8">
+                        Jl. Pantai Batu Bolong No.39, Canggu,
+                        <br />
+                        Kec. Kuta Utara, Kabupaten Badung, <br />
+                        Bali &nbsp;80351
+                        <br />
+                        <br />
+                        Open daily 11am - 11pm
+                      </div>
+                    </div>
+                  </TextFade>
+                  <TextFade direction="down" className="w-[270px]">
+                    <div className="text-[32px] mb-[20px] text-[#F15A22] button-primary-glow">
+                      Get in Touch
+                    </div>
+                    <div className="flex items-center gap-[12px]">
+                      <Link
+                        href="#"
+                        className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
+                      >
+                        <FeedbackIcon />
+                        <div className="ml-2">Feedback</div>
+                      </Link>
+                      <Link
+                        href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
+                        target="_blank"
+                        className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
+                      >
+                        <WaIcon />
+                        <div className="ml-2">0815-1416-3510</div>
+                      </Link>
+                    </div>
+                    <Link
+                      href="https://connect.sarirasa.co.id/clogin"
+                      target="_blank"
+                      className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px]"
+                    >
+                      <GiftIcon />
+                      <div className="ml-2">Sign Up for Rewards</div>
+                    </Link>
+                  </TextFade>
+                </div>
+              </div>
+              <div className="flex w-100  bg-[#F4F4F4] text-black justify-between items-center">
+                <div className="flex w-[100%] justify-between items-center h-[86px] mx-auto px-4 [text-12px]">
+                  <div className="flex flex-col items-center">
+                    {/* <div className="text-[14px] ">Member of</div> */}
+                    <Link href="https://sarirasa.co.id/" target="_blank">
+                      <Image
+                        width={142}
+                        height={66}
+                        src="/sarirasa_logo_new2.png"
+                        alt="Sarirasa"
+                      />
+                    </Link>
+                  </div>
+                  <div className="text-[14px] text-right font-bulldog w-100">
+                    Copyright <br />© 2024 - Sate House Senayan
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </>
-      )}
-      <div
-        className="fixed right-[8px] lg:right-[20px] z-[999] w-[40px] flex flex-col justify-center items-center gap-[16px] py-4 bg-white rounded-lg border-[#AE8D9380] border shadow-md"
-        style={{ top: "calc(50% - 76px)" }}
-      >
-        <Link
-          href="https://www.instagram.com/satehousesenayan"
-          target="_blank"
-          className={`${isDesktop ? "svg-fill-primary" : ""}`}
-          id="instagram"
+          </>
+        )}
+        <div
+          className="fixed right-[8px] lg:right-[20px] z-[999] w-[40px] flex flex-col justify-center items-center gap-[16px] py-4 bg-white rounded-lg border-[#AE8D9380] border shadow-md"
+          style={{ top: "calc(50% - 76px)" }}
         >
-          <IgIcon />
-        </Link>
-        <Link
-          href="https://maps.app.goo.gl/P9yqdetkB84ob9Ye6"
-          target="_blank"
-          className={`${isDesktop ? "svg-fill-primary" : ""}`}
-          id="gmaps"
-        >
-          <GmapsIcon />
-        </Link>
-        <Link
-          href="https://www.tripadvisor.in/Restaurant_Review-g311298-d25574926-Reviews-Sate_Khas_Senayan_Canggu-Canggu_North_Kuta_Bali.html"
-          target="_blank"
-          className={`${isDesktop ? "svg-fill-primary" : ""}`}
-          id="tripadvisor"
-        >
-          <TripAdvisorIcon />
-        </Link>
-        <Link
-          target="_blank"
-          href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
-          className={`${isDesktop ? "svg-fill-primary" : ""}`}
-          id="whatsapp"
-        >
-          <WaBlackIcon />
-        </Link>
-      </div>
-      {/* <div className="fixed bottom-0 right-[20px] z-[999]">
+          <Link
+            href="https://www.instagram.com/satehousesenayan"
+            target="_blank"
+            className={`${isDesktop ? "svg-fill-primary" : ""}`}
+            id="instagram"
+          >
+            <IgIcon />
+          </Link>
+          <Link
+            href="https://maps.app.goo.gl/P9yqdetkB84ob9Ye6"
+            target="_blank"
+            className={`${isDesktop ? "svg-fill-primary" : ""}`}
+            id="gmaps"
+          >
+            <GmapsIcon />
+          </Link>
+          <Link
+            href="https://www.tripadvisor.in/Restaurant_Review-g311298-d25574926-Reviews-Sate_Khas_Senayan_Canggu-Canggu_North_Kuta_Bali.html"
+            target="_blank"
+            className={`${isDesktop ? "svg-fill-primary" : ""}`}
+            id="tripadvisor"
+          >
+            <TripAdvisorIcon />
+          </Link>
+          <Link
+            target="_blank"
+            href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
+            className={`${isDesktop ? "svg-fill-primary" : ""}`}
+            id="whatsapp"
+          >
+            <WaBlackIcon />
+          </Link>
+        </div>
+        {/* <div className="fixed bottom-0 right-[20px] z-[999]">
         <div
           className="py-2 px-4 bg-black  rounded-[8px_8px_0_0] flex"
           style={{ border: "2px solid white", borderBottom: "0px" }}
@@ -709,6 +715,16 @@ export default function Home() {
           <div className="text-[16px] tetx-white ml-2">Contact Us</div>
         </div>
       </div> */}
+
+        {/* {isDesktop && (
+        <>
+          <Tooltip anchorSelect="#instagram" content="Instagram" />
+          <Tooltip anchorSelect="#gmaps" content="Google Maps" />
+          <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
+          <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
+        </>
+      )} */}
+      </main>
       <AnimatePresence>
         {showModal === "food" && !showZoomMenu && (
           <motion.div
@@ -989,14 +1005,6 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* {isDesktop && (
-        <>
-          <Tooltip anchorSelect="#instagram" content="Instagram" />
-          <Tooltip anchorSelect="#gmaps" content="Google Maps" />
-          <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
-          <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
-        </>
-      )} */}
-    </main>
+    </>
   );
 }
