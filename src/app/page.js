@@ -136,10 +136,9 @@ export default function Home() {
     const renderMenuFood = [];
     const renderMenuDrink = [];
     for (let index = 1; index < 19; index++) {
-      const isEven = index % 2 === 0 ? true : false;
       renderMenuFood.push(
         <div
-          className="demoPage lg:shadow-xl"
+          className="demoPage shadow-xl"
           key={`foodmenu/Page${index + 1}`}
           id={`foodMenuPage${index + 1}`}
         >
@@ -159,7 +158,7 @@ export default function Home() {
     for (let index = 0; index < 10; index++) {
       renderMenuDrink.push(
         <div
-          className="demoPage lg:shadow-xl"
+          className="demoPage shadow-xl"
           key={`drinkmenu/Page${index + 1}`}
           id={`drinkMenuPage${index + 1}`}
         >
@@ -711,7 +710,7 @@ export default function Home() {
         </div>
       </div> */}
       <AnimatePresence>
-        {showModal === "food" && (
+        {showModal === "food" && !showZoomMenu && (
           <motion.div
             variants={varFadeInOutFullMobile}
             initial="hidden"
@@ -831,7 +830,7 @@ export default function Home() {
           </motion.div>
         )}
 
-        {showModal === "drink" && (
+        {showModal === "drink" && !showZoomMenu && (
           <motion.div
             variants={varFadeInOutFullMobile}
             initial="hidden"
@@ -959,7 +958,7 @@ export default function Home() {
             exit="exit"
             className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1007]"
           >
-            <div className="w-full flex flex-col shadow-lg px-6 py-8 h-[100vh] lg:pt-[24px] pt-[96px] overflow-y-auto overflow-x-auto items-center relative">
+            <div className="w-full flex flex-col shadow-lg px-6 py-8 h-[100vh] lg:pt-[24px] pt-[96px] overflow-y-auto overflow-x-auto items-center relative bg-white">
               <button
                 className="w-full  bg-[rgba(0,0,0,0.47)] h-[100vh] fixed z-[1008] top-0 left-0"
                 onClick={() => {
