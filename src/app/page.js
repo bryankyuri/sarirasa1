@@ -22,6 +22,8 @@ import { BackIcon } from "./component/icon/back";
 import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import HTMLFlipBook from "react-pageflip";
 import { Tooltip } from "react-tooltip";
+import { ZoomIcon } from "./component/icon/zoom";
+import { NextIcon, PrevIcon } from "./component/icon/nextprev";
 
 const varFadeInOutFullMobile = {
   hidden: { opacity: 0, transition: { duration: 0.2 } },
@@ -157,7 +159,7 @@ export default function Home() {
     for (let index = 0; index < 10; index++) {
       renderMenuDrink.push(
         <div
-          className="demoPage shadow-xl"
+          className="demoPage lg:shadow-xl"
           key={`drinkmenu/Page${index + 1}`}
           id={`drinkMenuPage${index + 1}`}
         >
@@ -717,10 +719,10 @@ export default function Home() {
             exit="exit"
             className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
           >
-            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-hidden">
-              <div className="flex justify-between w-[100%] mb-3 pt-6 pb-3 shadow-md px-6 ">
+            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
+              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4">
                 <button
-                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mb-4"
+                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
                   onClick={() => {
                     setShowModal("");
                   }}
@@ -728,33 +730,48 @@ export default function Home() {
                   <BackIcon />
                   <div className="text-[14px] ml-2">Back</div>
                 </button>
-                <div className="flex text-black">
+                <div className="flex text-black text-[14px] h-[40px]">
                   {isDesktop && (
                     <button
-                      className="mr-4"
+                      className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomLeftPage("food")}
                     >
-                      zoom
+                      <ZoomIcon /> <div className="ml-1">Zoom</div>
                     </button>
                   )}
+                  <div className="bg-[#F4EADA] rounded-[8px] p-2 justify-between items-center flex">
+                    <button
+                      className="mr-2 flex justify-center items-center"
+                      onClick={() => prevPage("food")}
+                    >
+                      <PrevIcon /> <div className="ml-1">Prev</div>
+                    </button>
+                    <div>|</div>
+                    <button
+                      className="ml-2 flex justify-center items-center"
+                      onClick={() => nextPage("food")}
+                    >
+                      <div className="mr-1">Next</div>
+                      <NextIcon />
+                    </button>
+                  </div>
 
-                  <button className="mr-4" onClick={() => prevPage("food")}>
-                    prev
-                  </button>
-                  <button className="mr-4" onClick={() => nextPage("food")}>
-                    next
-                  </button>
                   {isDesktop && (
                     <button
-                      className="mr-4"
+                      className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomRightPage("food")}
                     >
-                      zoom
+                      <div className="mr-1">Zoom</div>
+                      <ZoomIcon />
                     </button>
                   )}
                   {!isDesktop && (
-                    <button className="mr-4" onClick={() => zoomMobile("food")}>
-                      zoom
+                    <button
+                      className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                      onClick={() => zoomMobile("food")}
+                    >
+                      <div className="mr-1">Zoom</div>
+                      <ZoomIcon />
                     </button>
                   )}
                 </div>
@@ -823,9 +840,9 @@ export default function Home() {
             className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
           >
             <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-hidden">
-              <div className="flex justify-between w-[100%] mb-3 pt-6 pb-3 shadow-md px-6 ">
+              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4">
                 <button
-                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mb-4"
+                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
                   onClick={() => {
                     setShowModal("");
                   }}
@@ -833,36 +850,48 @@ export default function Home() {
                   <BackIcon />
                   <div className="text-[14px] ml-2">Back</div>
                 </button>
-                <div className="flex text-black">
+                <div className="flex text-black text-[14px] h-[40px]">
                   {isDesktop && (
                     <button
-                      className="mr-4"
+                      className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomLeftPage("drink")}
                     >
-                      zoom
+                      <ZoomIcon /> <div className="ml-1">Zoom</div>
                     </button>
                   )}
+                  <div className="bg-[#F4EADA] rounded-[8px] p-2 justify-between items-center flex">
+                    <button
+                      className="mr-2 flex justify-center items-center"
+                      onClick={() => prevPage("drink")}
+                    >
+                      <PrevIcon /> <div className="ml-1">Prev</div>
+                    </button>
+                    <div>|</div>
+                    <button
+                      className="ml-2 flex justify-center items-center"
+                      onClick={() => nextPage("drink")}
+                    >
+                      <div className="mr-1">Next</div>
+                      <NextIcon />
+                    </button>
+                  </div>
 
-                  <button className="mr-4" onClick={() => prevPage("drink")}>
-                    prev
-                  </button>
-                  <button className="mr-4" onClick={() => nextPage("drink")}>
-                    next
-                  </button>
                   {isDesktop && (
                     <button
-                      className="mr-4"
+                      className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomRightPage("drink")}
                     >
-                      zoom
+                      <div className="mr-1">Zoom</div>
+                      <ZoomIcon />
                     </button>
                   )}
                   {!isDesktop && (
                     <button
-                      className="mr-4"
+                      className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomMobile("drink")}
                     >
-                      zoom
+                      <div className="mr-1">Zoom</div>
+                      <ZoomIcon />
                     </button>
                   )}
                 </div>
@@ -937,9 +966,9 @@ export default function Home() {
                   setZoomMenu("");
                 }}
               ></button>
-              <div className="fixed lg:top-[24px] top-[24px] left-[24px] z-[1009]">
+              <div className="fixed lg:top-[24px] top-[24px] left-[24px] z-[1010]">
                 <button
-                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4"
+                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4 "
                   onClick={() => {
                     setZoomMenu("");
                   }}
