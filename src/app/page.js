@@ -758,7 +758,7 @@ export default function Home() {
       )} */}
       </main>
       <AnimatePresence>
-        {showModal === "food" && !showZoomMenu && (
+        {showModal === "food" && (
           <motion.div
             variants={varFadeInOutFullMobile}
             initial="hidden"
@@ -878,7 +878,7 @@ export default function Home() {
           </motion.div>
         )}
 
-        {showModal === "drink" && !showZoomMenu && (
+        {showModal === "drink" && (
           <motion.div
             variants={varFadeInOutFullMobile}
             initial="hidden"
