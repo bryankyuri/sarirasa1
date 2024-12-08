@@ -1044,7 +1044,7 @@ export default function Home() {
                     </button>
                   </div>
                   <div className="p-4  ">
-                    <div className="flex flex-col w-100 h-[75vh] border border-[#F1471D] rounded-[8px] p-2 mt-2">
+                    <div className="flex flex-col w-100 h-[73vh] border border-[#F1471D] rounded-[8px] p-2 mt-2">
                       <TransformWrapper
                         initialScale={2.5}
                         wrapperClass
