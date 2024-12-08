@@ -18,11 +18,11 @@ import { TripAdvisorIcon } from "./component/icon/tripadvisor";
 import { WaBlackIcon } from "./component/icon/waBlack";
 import { AppContext } from "./context/appContext";
 import { AnimatePresence, motion } from "framer-motion";
-import { BackIcon } from "./component/icon/back";
+import { BackIcon, CloseIcon } from "./component/icon/back";
 import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import HTMLFlipBook from "react-pageflip";
 import { Tooltip } from "react-tooltip";
-import { ZoomIcon } from "./component/icon/zoom";
+import { ZoomIcon, ZoomInIcon, ZoomOutIcon, ZoomResetIcon } from "./component/icon/zoom";
 import { NextIcon, PrevIcon } from "./component/icon/nextprev";
 import {
   TransformWrapper,
@@ -240,27 +240,18 @@ export default function Home() {
   };
 
   const Controls = () => {
-    const { zoomIn, zoomOut, resetTransform } = useControls();
+    const { zoomIn, zoomOut, setTransform } = useControls();
 
     return (
-      <div className="tools flex w-100 justify-center mb-4 text-black">
-        <button
-          className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-          onClick={() => zoomIn()}
-        >
-          <ZoomIcon /> <div className="ml-1">Zoom In</div>
+      <div className="tools flex w-100 justify-center mb-4 text-black mt-4">
+        <button className="mr-4 " onClick={() => zoomIn()}>
+          <ZoomInIcon />
         </button>
-        <button
-          className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-          onClick={() => zoomOut()}
-        >
-          <ZoomIcon /> <div className="ml-1">Zoom Out</div>
+        <button className="mr-4 " onClick={() => zoomOut()}>
+          <ZoomOutIcon />
         </button>
-        <button
-          className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-          onClick={() => resetTransform()}
-        >
-          <div className="ml-1">Reset</div>
+        <button className="" onClick={() => setTransform(0, 0, 1)}>
+          <ZoomResetIcon />
         </button>
       </div>
     );
@@ -765,6 +756,7 @@ export default function Home() {
             animate="visible"
             exit="exit"
             className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
+            key="food"
           >
             <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
               <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4">
@@ -885,6 +877,7 @@ export default function Home() {
             animate="visible"
             exit="exit"
             className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
+            key="drink"
           >
             <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-hidden">
               <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4">
@@ -1005,48 +998,89 @@ export default function Home() {
             animate="visible"
             exit="exit"
             className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1007]"
+            key="zoom"
           >
-            <div className="w-full flex flex-col shadow-lg px-6 py-8 h-[100vh] lg:pt-[24px] pt-[96px] lg:overflow-y-auto lg:overflow-x-auto items-center relative bg-white">
+            <div className="w-full flex flex-col shadow-lg lg:px-6 lg:py-8 h-[100vh] lg:pt-[24px] lg:overflow-y-auto lg:overflow-x-auto items-center relative bg-white">
               {/* <button
                 className="w-full  bg-[rgba(0,0,0,0.47)] h-[100vh] fixed z-[1008] top-0 left-0"
                 onClick={() => {
                   setZoomMenu("");
                 }}
               ></button> */}
-              <div className="fixed lg:top-[24px] top-[24px] left-[24px] z-[1010]">
-                <button
-                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4 "
-                  onClick={() => {
-                    setZoomMenu("");
-                  }}
-                >
-                  <BackIcon />
-                  <div className="text-[14px] ml-2">Back</div>
-                </button>
-              </div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+
               {isDesktop ? (
-                <img
-                  width={"80%"}
-                  height="auto"
-                  src={showZoomMenu}
-                  alt="menu"
-                  className="mx-auto z-[1009] relative shadow-lg"
-                  style={{ maxWidth: "80%" }}
-                />
+                <>
+                  <div className="fixed lg:top-[24px] top-[24px] left-[24px] z-[1010]">
+                    <button
+                      className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4 "
+                      onClick={() => {
+                        setZoomMenu("");
+                      }}
+                    >
+                      <BackIcon />
+                      <div className="text-[14px] ml-2">Back</div>
+                    </button>
+                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    width={"80%"}
+                    height="auto"
+                    src={showZoomMenu}
+                    alt="menu"
+                    className="mx-auto z-[1009] relative shadow-lg"
+                    style={{ maxWidth: "80%" }}
+                  />
+                </>
               ) : (
-                <div className="flex flex-col w-100 bg-black p-4 shadow-lg rounded-lg">
-                  <TransformWrapper initialScale={1} className="w-100 ">
-                    {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-                      <>
-                        <Controls />
-                        <TransformComponent>
-                          <img src={showZoomMenu} alt="test" width={"100%"} />
-                        </TransformComponent>
-                      </>
-                    )}
-                  </TransformWrapper>
-                </div>
+                <>
+                  <div className="w-full shadow-[0px_4px_8px_0px_#0000000D] flex p-4 items-center justify-end">
+                    <button
+                      className="bg-[#F4EADA] flex rounded-[8px] p-2 "
+                      onClick={() => {
+                        setZoomMenu("");
+                      }}
+                    >
+                      <CloseIcon />
+                    </button>
+                  </div>
+                  <div className="p-4  ">
+                    <div className="flex flex-col w-100 h-[82vh] border border-[#F1471D] rounded-[8px] p-2 mt-2">
+                      <TransformWrapper
+                        initialScale={2.5}
+                        wrapperClass
+                        className="w-100 h-screen"
+                      >
+                        {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+                          <>
+                            <TransformComponent
+                              contentStyle={{
+                                width: MenuPageFoodWidth + "px",
+                                height: "100%",
+                              }}
+                              wrapperStyle={{
+                                width: "auto",
+                                height: "100%",
+                              }}
+                            >
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={showZoomMenu}
+                                alt="test"
+                                height={MenuPageFoodHeight}
+                                width={MenuPageFoodWidth}
+                                style={{
+                                  maxHeight: MenuPageFoodHeight + "px",
+                                  maxWidth: MenuPageFoodWidth + "px",
+                                }}
+                              />
+                            </TransformComponent>
+                            <Controls />
+                          </>
+                        )}
+                      </TransformWrapper>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </motion.div>
