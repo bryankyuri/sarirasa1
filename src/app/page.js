@@ -149,7 +149,7 @@ export default function Home() {
       renderMenuFood.push(
         <div
           className="demoPage shadow-xl"
-          key={`foodmenu/Page${index + 1}`}
+          key={`foodmenuzoom/Page${index + 1}`}
           id={`foodMenuPage${index + 1}`}
         >
           <div
@@ -157,7 +157,7 @@ export default function Home() {
             style={{
               width: MenuPageFoodWidth + "px",
               height: MenuPageFoodHeight + "px",
-              backgroundImage: `url(/foodmenu/Page${index + 1}.jpg)`,
+              backgroundImage: `url(/foodmenuzoom/Page${index + 1}.jpg)`,
               backgroundSize: "cover",
             }}
             id={`FoodMenuPage${index + 1}`}
@@ -808,7 +808,7 @@ export default function Home() {
                 {isDesktop && (
                   <button
                     className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-                    onClick={() => zoomLeftPage("drink")}
+                    onClick={() => zoomLeftPage("food")}
                   >
                     <ZoomIcon /> <div className="ml-1">Zoom</div>
                   </button>
@@ -865,7 +865,7 @@ export default function Home() {
                 {isDesktop && (
                   <button
                     className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-                    onClick={() => zoomRightPage("drink")}
+                    onClick={() => zoomRightPage("food")}
                   >
                     <div className="mr-1">Zoom</div>
                     <ZoomIcon />
