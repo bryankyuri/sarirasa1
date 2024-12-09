@@ -22,7 +22,12 @@ import { BackIcon, CloseIcon } from "./component/icon/back";
 import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import HTMLFlipBook from "react-pageflip";
 import { Tooltip } from "react-tooltip";
-import { ZoomIcon, ZoomInIcon, ZoomOutIcon, ZoomResetIcon } from "./component/icon/zoom";
+import {
+  ZoomIcon,
+  ZoomInIcon,
+  ZoomOutIcon,
+  ZoomResetIcon,
+} from "./component/icon/zoom";
 import { NextIcon, PrevIcon } from "./component/icon/nextprev";
 import {
   TransformWrapper,
@@ -770,14 +775,6 @@ export default function Home() {
                   <div className="text-[14px] ml-2">Back</div>
                 </button>
                 <div className="flex text-black text-[14px] h-[40px]">
-                  {isDesktop && (
-                    <button
-                      className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-                      onClick={() => zoomLeftPage("food")}
-                    >
-                      <ZoomIcon /> <div className="ml-1">Zoom</div>
-                    </button>
-                  )}
                   <div className="bg-[#F4EADA] rounded-[8px] p-2 justify-between items-center flex">
                     <button
                       className="mr-2 flex justify-center items-center"
@@ -794,16 +791,6 @@ export default function Home() {
                       <NextIcon />
                     </button>
                   </div>
-
-                  {isDesktop && (
-                    <button
-                      className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-                      onClick={() => zoomRightPage("food")}
-                    >
-                      <div className="mr-1">Zoom</div>
-                      <ZoomIcon />
-                    </button>
-                  )}
                   {!isDesktop && (
                     <button
                       className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
@@ -816,54 +803,74 @@ export default function Home() {
                 </div>
                 <div></div>
               </div>
-              <div
-                style={{
-                  width: isDesktop
-                    ? MenuPageFoodWidth * 2 + "px"
-                    : MenuPageFoodWidth + "px",
-                }}
-              >
-                <HTMLFlipBook
-                  ref={menuFoodBook}
-                  onFlip={(e) => console.log(e)}
-                  onChangeState={(e) => console.log(e)}
-                  width={
-                    isDesktop
-                      ? Math.round(MenuPageFoodWidth)
-                      : Math.round(MenuPageFoodWidth)
-                  }
-                  height={
-                    isDesktop
-                      ? Math.round(MenuPageFoodHeight)
-                      : Math.round(MenuPageFoodHeight)
-                  }
-                  minWidth={
-                    isDesktop
-                      ? Math.round(MenuPageFoodWidth)
-                      : Math.round(MenuPageFoodWidth)
-                  }
-                  maxWidth={
-                    isDesktop
-                      ? Math.round(MenuPageFoodWidth) * 2
-                      : Math.round(MenuPageFoodWidth)
-                  }
-                  minHeight={
-                    isDesktop
-                      ? Math.round(MenuPageFoodHeight)
-                      : Math.round(MenuPageFoodHeight)
-                  }
-                  maxHeight={
-                    isDesktop
-                      ? Math.round(MenuPageFoodHeight) * 2
-                      : Math.round(MenuPageFoodHeight)
-                  }
-                  drawShadow={true}
-                  maxShadowOpacity={0.3}
-                  showCover={false}
-                  className="demo-book text-black w-max rounded-lg"
+
+              <div className="w-100 justify-between gap-[24px] flex items-center text-black">
+                {isDesktop && (
+                  <button
+                    className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                    onClick={() => zoomLeftPage("drink")}
+                  >
+                    <ZoomIcon /> <div className="ml-1">Zoom</div>
+                  </button>
+                )}
+                <div
+                  style={{
+                    width: isDesktop
+                      ? MenuPageFoodWidth * 2 + "px"
+                      : MenuPageFoodWidth + "px",
+                  }}
                 >
-                  {menuFood}
-                </HTMLFlipBook>
+                  <HTMLFlipBook
+                    ref={menuFoodBook}
+                    onFlip={(e) => console.log(e)}
+                    onChangeState={(e) => console.log(e)}
+                    width={
+                      isDesktop
+                        ? Math.round(MenuPageFoodWidth)
+                        : Math.round(MenuPageFoodWidth)
+                    }
+                    height={
+                      isDesktop
+                        ? Math.round(MenuPageFoodHeight)
+                        : Math.round(MenuPageFoodHeight)
+                    }
+                    minWidth={
+                      isDesktop
+                        ? Math.round(MenuPageFoodWidth)
+                        : Math.round(MenuPageFoodWidth)
+                    }
+                    maxWidth={
+                      isDesktop
+                        ? Math.round(MenuPageFoodWidth) * 2
+                        : Math.round(MenuPageFoodWidth)
+                    }
+                    minHeight={
+                      isDesktop
+                        ? Math.round(MenuPageFoodHeight)
+                        : Math.round(MenuPageFoodHeight)
+                    }
+                    maxHeight={
+                      isDesktop
+                        ? Math.round(MenuPageFoodHeight) * 2
+                        : Math.round(MenuPageFoodHeight)
+                    }
+                    drawShadow={true}
+                    maxShadowOpacity={0.3}
+                    showCover={false}
+                    className="demo-book text-black w-max rounded-lg"
+                  >
+                    {menuFood}
+                  </HTMLFlipBook>
+                </div>
+                {isDesktop && (
+                  <button
+                    className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                    onClick={() => zoomRightPage("drink")}
+                  >
+                    <div className="mr-1">Zoom</div>
+                    <ZoomIcon />
+                  </button>
+                )}
               </div>
               <div></div>
             </div>
@@ -891,14 +898,6 @@ export default function Home() {
                   <div className="text-[14px] ml-2">Back</div>
                 </button>
                 <div className="flex text-black text-[14px] h-[40px]">
-                  {isDesktop && (
-                    <button
-                      className="mr-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-                      onClick={() => zoomLeftPage("drink")}
-                    >
-                      <ZoomIcon /> <div className="ml-1">Zoom</div>
-                    </button>
-                  )}
                   <div className="bg-[#F4EADA] rounded-[8px] p-2 justify-between items-center flex">
                     <button
                       className="mr-2 flex justify-center items-center"
@@ -916,15 +915,6 @@ export default function Home() {
                     </button>
                   </div>
 
-                  {isDesktop && (
-                    <button
-                      className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
-                      onClick={() => zoomRightPage("drink")}
-                    >
-                      <div className="mr-1">Zoom</div>
-                      <ZoomIcon />
-                    </button>
-                  )}
                   {!isDesktop && (
                     <button
                       className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
@@ -937,55 +927,75 @@ export default function Home() {
                 </div>
                 <div></div>
               </div>
-              <div
-                style={{
-                  width: isDesktop
-                    ? MenuPageDrinkWidth * 2 + "px"
-                    : MenuPageDrinkWidth + "px",
-                }}
-              >
-                <HTMLFlipBook
-                  ref={menuDrinkBook}
-                  onFlip={(e) => console.log(e)}
-                  onChangeState={(e) => console.log(e)}
-                  width={
-                    isDesktop
-                      ? Math.round(MenuPageDrinkWidth)
-                      : Math.round(MenuPageDrinkWidth)
-                  }
-                  height={
-                    isDesktop
-                      ? Math.round(MenuPageDrinkHeight)
-                      : Math.round(MenuPageDrinkHeight)
-                  }
-                  minWidth={
-                    isDesktop
-                      ? Math.round(MenuPageDrinkWidth)
-                      : Math.round(MenuPageDrinkWidth)
-                  }
-                  maxWidth={
-                    isDesktop
-                      ? Math.round(MenuPageDrinkWidth) * 2
-                      : Math.round(MenuPageDrinkWidth)
-                  }
-                  minHeight={
-                    isDesktop
-                      ? Math.round(MenuPageDrinkHeight)
-                      : Math.round(MenuPageDrinkHeight)
-                  }
-                  maxHeight={
-                    isDesktop
-                      ? Math.round(MenuPageDrinkHeight) * 2
-                      : Math.round(MenuPageDrinkHeight)
-                  }
-                  drawShadow={true}
-                  maxShadowOpacity={0.3}
-                  showCover={false}
-                  className="demo-book text-black w-max rounded-lg"
+              <div className="w-100 justify-between gap-[24px] flex items-center text-black">
+                {isDesktop && (
+                  <button
+                    className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                    onClick={() => zoomLeftPage("drink")}
+                  >
+                    <ZoomIcon /> <div className="ml-1">Zoom</div>
+                  </button>
+                )}
+                <div
+                  style={{
+                    width: isDesktop
+                      ? MenuPageDrinkWidth * 2 + "px"
+                      : MenuPageDrinkWidth + "px",
+                  }}
                 >
-                  {menuDrink}
-                </HTMLFlipBook>
+                  <HTMLFlipBook
+                    ref={menuDrinkBook}
+                    onFlip={(e) => console.log(e)}
+                    onChangeState={(e) => console.log(e)}
+                    width={
+                      isDesktop
+                        ? Math.round(MenuPageDrinkWidth)
+                        : Math.round(MenuPageDrinkWidth)
+                    }
+                    height={
+                      isDesktop
+                        ? Math.round(MenuPageDrinkHeight)
+                        : Math.round(MenuPageDrinkHeight)
+                    }
+                    minWidth={
+                      isDesktop
+                        ? Math.round(MenuPageDrinkWidth)
+                        : Math.round(MenuPageDrinkWidth)
+                    }
+                    maxWidth={
+                      isDesktop
+                        ? Math.round(MenuPageDrinkWidth) * 2
+                        : Math.round(MenuPageDrinkWidth)
+                    }
+                    minHeight={
+                      isDesktop
+                        ? Math.round(MenuPageDrinkHeight)
+                        : Math.round(MenuPageDrinkHeight)
+                    }
+                    maxHeight={
+                      isDesktop
+                        ? Math.round(MenuPageDrinkHeight) * 2
+                        : Math.round(MenuPageDrinkHeight)
+                    }
+                    drawShadow={true}
+                    maxShadowOpacity={0.3}
+                    showCover={false}
+                    className="demo-book text-black w-max rounded-lg"
+                  >
+                    {menuDrink}
+                  </HTMLFlipBook>
+                </div>
+                {isDesktop && (
+                  <button
+                    className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                    onClick={() => zoomRightPage("drink")}
+                  >
+                    <div className="mr-1">Zoom</div>
+                    <ZoomIcon />
+                  </button>
+                )}
               </div>
+
               <div></div>
             </div>
           </motion.div>
@@ -1063,16 +1073,15 @@ export default function Home() {
                               }}
                             >
                               {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <Image
-                                src={"/"+showZoomMenu}
-                                alt="test"
-                                height={MenuPageFoodHeight*3}
-                                width={MenuPageFoodWidth*3}
+                              <img
+                                src={"/" + showZoomMenu}
+                                alt="image menu"
+                                height={MenuPageFoodHeight * 3}
+                                width={MenuPageFoodWidth * 3}
                                 style={{
                                   maxHeight: MenuPageFoodHeight + "px",
                                   maxWidth: MenuPageFoodWidth + "px",
                                 }}
-                                quality={100}
                               />
                             </TransformComponent>
                             <Controls />
