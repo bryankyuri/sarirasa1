@@ -90,7 +90,6 @@ const bulldog = localFont({
       path: "./fonts/bulld.woff",
       weight: "500",
     },
-
   ],
   variable: "--font-bulldog",
 });
@@ -101,13 +100,15 @@ const herme = localFont({
       path: "./fonts/herme.woff",
       weight: "500",
     },
-
   ],
   variable: "--font-herme",
 });
 export const metadata = {
-  title: "Sate House Senayan",
-  description: "Under Construction",
+  title: "Sate House Senayan - Discover the Flavors of Indonesia",
+  description:
+    "Explore a new world of flavors, with Sate House Senayan as your trusted guide. Reserve Now!",
+  keyword:
+    "Sate House Senayan,Sate Khas Senayan,Sate Senayan Bali,Sate House Senayan Canggu,Sate House Senayan Menu,Sate House Senayan Food,Sate House Senayan Menu,Reservation Sate House Senayan,Best Satay in Bali,Bali Food Recommendation,Restaurant in Canggu,Best Indonesian Restaurant Canggu,Authentic Indonesian Cuisine Canggu,Family-Friendly Restaurant Canggu,Traditional Indonesian Food Canggu,Sarirasa Group Restaurant,Best Restaurant in Bali ,Bali Delicious Indonesian Restaurant",
 };
 
 export default function RootLayout({ children }) {
