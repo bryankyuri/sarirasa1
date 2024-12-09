@@ -107,8 +107,27 @@ export const metadata = {
   title: "Sate House Senayan - Discover the Flavors of Indonesia",
   description:
     "Explore a new world of flavors, with Sate House Senayan as your trusted guide. Reserve Now!",
-  keyword:
-    "Sate House Senayan,Sate Khas Senayan,Sate Senayan Bali,Sate House Senayan Canggu,Sate House Senayan Menu,Sate House Senayan Food,Sate House Senayan Menu,Reservation Sate House Senayan,Best Satay in Bali,Bali Food Recommendation,Restaurant in Canggu,Best Indonesian Restaurant Canggu,Authentic Indonesian Cuisine Canggu,Family-Friendly Restaurant Canggu,Traditional Indonesian Food Canggu,Sarirasa Group Restaurant,Best Restaurant in Bali ,Bali Delicious Indonesian Restaurant",
+  keywords: [
+    "Sate House Senayan",
+    "Sate Khas Senayan",
+    "Sate Senayan Bali",
+    "Sate House Senayan Canggu",
+    "Sate House Senayan Menu",
+    "Sate House Senayan Food",
+    "Sate House Senayan Menu",
+    "Reservation Sate House Senayan",
+    "Best Satay in Bali",
+    "Bali Food Recommendation",
+    "Restaurant in Canggu",
+    "Best Indonesian Restaurant Canggu",
+    "Authentic Indonesian Cuisine Canggu",
+    "Family-Friendly Restaurant Canggu",
+    "Traditional Indonesian Food Canggu",
+    "Sarirasa Group Restaurant",
+    "Best Restaurant in Bali",
+    "Bali Delicious Indonesian Restaurant"
+]
+    
 };
 
 export default function RootLayout({ children }) {
