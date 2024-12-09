@@ -441,7 +441,7 @@ export default function Home() {
                     </Link>
                   </div>
                   <Link
-                    href="https://connect.sarirasa.co.id/clogin"
+                    href="https://connect.sarirasa.co.id/login"
                     target="_blank"
                     className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px] button-primary-glow"
                   >
@@ -666,7 +666,7 @@ export default function Home() {
                       </Link>
                     </div>
                     <Link
-                      href="https://connect.sarirasa.co.id/clogin"
+                      href="https://connect.sarirasa.co.id/login"
                       target="_blank"
                       className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px]"
                     >

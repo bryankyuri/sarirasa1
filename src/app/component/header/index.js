@@ -35,9 +35,9 @@ export const Header = ({ isTransformHeader }) => {
               isTransformHeader ? "text-black" : "text-white"
             } gap-[18px] items-center`}
           >
-            <Link href="#our-story">OUR STORY</Link>
-            <Link href="#menu">MENU</Link>
-            <Link href="#contact-us">CONTACT US</Link>
+            <Link href="#our-story" className="hover:text-[#F15922]">OUR STORY</Link>
+            <Link href="#menu" className="hover:text-[#F15922]">MENU</Link>
+            <Link href="#contact-us" className="hover:text-[#F15922]">CONTACT US</Link>
             <Link
               href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
               target="_blank"
