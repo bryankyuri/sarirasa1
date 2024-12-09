@@ -52,8 +52,8 @@ export default function Home() {
   const MenuPageFoodRatio = MenuPageFoodWidth / 1270;
   const MenuPageFoodHeight = 1536 * MenuPageFoodRatio;
   const MenuPageDrinkWidth = isDesktop ? screenWidth * 0.3 : screenWidth - 40;
-  const MenuPageDrinkRatio = MenuPageDrinkWidth / 1175;
-  const MenuPageDrinkHeight = 1600 * MenuPageDrinkRatio;
+  const MenuPageDrinkRatio = MenuPageDrinkWidth / 945;
+  const MenuPageDrinkHeight = 1772 * MenuPageDrinkRatio;
   const [menuFood, setMenuFood] = useState("");
   const [menuDrink, setMenuDrink] = useState("");
   const [showZoomMenu, setZoomMenu] = useState("");
@@ -165,7 +165,7 @@ export default function Home() {
         </div>
       );
     }
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 8; index++) {
       renderMenuDrink.push(
         <div
           className="demoPage shadow-xl"
@@ -764,7 +764,7 @@ export default function Home() {
             key="food"
           >
             <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
-              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 ">
+              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 bg-white">
                 <button
                   className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
                   onClick={() => {
@@ -886,8 +886,8 @@ export default function Home() {
             className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
             key="drink"
           >
-            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-hidden">
-              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 ">
+            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
+              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 bg-white">
                 <button
                   className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
                   onClick={() => {
