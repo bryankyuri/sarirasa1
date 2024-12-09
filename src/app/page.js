@@ -149,7 +149,7 @@ export default function Home() {
       renderMenuFood.push(
         <div
           className="demoPage shadow-xl"
-          key={`foodmenuzoom/Page${index + 1}`}
+          key={`foodmenu/Page${index + 1}`}
           id={`foodMenuPage${index + 1}`}
         >
           <div
@@ -157,7 +157,7 @@ export default function Home() {
             style={{
               width: MenuPageFoodWidth + "px",
               height: MenuPageFoodHeight + "px",
-              backgroundImage: `url(/foodmenuzoom/Page${index + 1}.jpg)`,
+              backgroundImage: `url(/foodmenu/Page${index + 1}.jpg)`,
               backgroundSize: "cover",
             }}
             id={`FoodMenuPage${index + 1}`}
@@ -169,7 +169,7 @@ export default function Home() {
       renderMenuDrink.push(
         <div
           className="demoPage shadow-xl"
-          key={`drinkmenu/Page${index + 1}`}
+          key={`drinkmenuzoom/Page${index + 1}`}
           id={`drinkMenuPage${index + 1}`}
         >
           <div
@@ -177,7 +177,7 @@ export default function Home() {
             style={{
               width: MenuPageDrinkWidth + "px",
               height: MenuPageDrinkHeight + "px",
-              backgroundImage: `url(/drinkmenu/Page${index + 1}.jpg)`,
+              backgroundImage: `url(/drinkmenuzoom/Page${index + 1}.jpg)`,
               backgroundSize: "cover",
             }}
             id={`DrinkMenuPage${index + 1}`}
@@ -210,10 +210,10 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenuzoom/Page${pageIndex + 2}.jpg`;
+      srcImageZoom = `foodmenu/Page${pageIndex + 2}.jpg`;
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `drinkmenu/Page${pageIndex + 1}.jpg`;
+      srcImageZoom = `drinkmenuzoom/Page${pageIndex + 1}.jpg`;
     }
     setZoomMenu(srcImageZoom);
   };
@@ -223,10 +223,10 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenuzoom/Page${pageIndex + 3}.jpg`;
+      srcImageZoom = `foodmenu/Page${pageIndex + 3}.jpg`;
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `drinkmenu/Page${pageIndex + 2}.jpg`;
+      srcImageZoom = `drinkmenuzoom/Page${pageIndex + 2}.jpg`;
     }
     setZoomMenu(srcImageZoom);
   };
@@ -236,10 +236,10 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenuzoom/Page${pageIndex + 2}.jpg`;
+      srcImageZoom = `foodmenu/Page${pageIndex + 2}.jpg`;
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `drinkmenu/Page${pageIndex + 1}.jpg`;
+      srcImageZoom = `drinkmenuzoom/Page${pageIndex + 1}.jpg`;
     }
     setZoomMenu(srcImageZoom);
   };
