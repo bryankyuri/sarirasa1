@@ -764,7 +764,7 @@ export default function Home() {
             key="food"
           >
             <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
-              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4">
+              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 ">
                 <button
                   className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
                   onClick={() => {
@@ -887,7 +887,7 @@ export default function Home() {
             key="drink"
           >
             <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-hidden">
-              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4">
+              <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 ">
                 <button
                   className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
                   onClick={() => {
