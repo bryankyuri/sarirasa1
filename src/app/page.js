@@ -205,7 +205,7 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenu/Page${pageIndex + 2}.jpg`;
+      srcImageZoom = `foodmenuzoom/Page${pageIndex + 2}.jpg`;
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
       srcImageZoom = `drinkmenu/Page${pageIndex + 1}.jpg`;
@@ -218,7 +218,7 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenu/Page${pageIndex + 3}.jpg`;
+      srcImageZoom = `foodmenuzoom/Page${pageIndex + 3}.jpg`;
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
       srcImageZoom = `drinkmenu/Page${pageIndex + 2}.jpg`;
@@ -231,7 +231,7 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenu/Page${pageIndex + 2}.jpg`;
+      srcImageZoom = `foodmenuzoom/Page${pageIndex + 2}.jpg`;
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
       srcImageZoom = `drinkmenu/Page${pageIndex + 1}.jpg`;
@@ -1046,7 +1046,7 @@ export default function Home() {
                   <div className="p-4  ">
                     <div className="flex flex-col w-100 h-[73vh] border border-[#F1471D] rounded-[8px] p-2 mt-2">
                       <TransformWrapper
-                        initialScale={2.5}
+                        initialScale={2}
                         wrapperClass
                         className="w-100 h-screen"
                       >
@@ -1063,15 +1063,16 @@ export default function Home() {
                               }}
                             >
                               {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={showZoomMenu}
+                              <Image
+                                src={"/"+showZoomMenu}
                                 alt="test"
-                                height={MenuPageFoodHeight}
-                                width={MenuPageFoodWidth}
+                                height={MenuPageFoodHeight*3}
+                                width={MenuPageFoodWidth*3}
                                 style={{
                                   maxHeight: MenuPageFoodHeight + "px",
                                   maxWidth: MenuPageFoodWidth + "px",
                                 }}
+                                quality={100}
                               />
                             </TransformComponent>
                             <Controls />
