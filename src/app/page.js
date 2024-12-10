@@ -80,7 +80,7 @@ export default function Home() {
       }
     }
     const scrollPosition = window.scrollY;
-    if (!isDesktop) {
+    if (screenWidth < 1080) {
       const background = document.querySelector(".backgroundMobile");
       const background2 = document.querySelector(".backgroundMobile2");
       const containerBg3 = document.querySelector(
@@ -335,17 +335,17 @@ export default function Home() {
               <div
                 className="w-1/2 flex flex-col justify-center items-center relative"
                 style={{
-                  backgroundImage: "url('bgContent2Left.jpg')",
+                  backgroundImage: "url('bg-menu.jpg')",
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                   backgroundRepeat: "no-repeat",
                   height: "100vh",
                 }}
               >
-                <div className="w-[100%] h-[100vh] absolute bg-[#0000004D] left-0 top-0"></div>
+                <div className="w-[100%] h-[100vh] absolute bg-[#00000030] left-0 top-0 opacity-[0.2]"></div>
                 <TextFade
                   direction="down"
-                  className="flex flex-col justify-center items-center w-100 h-100 z-[2]"
+                  className="flex flex-col justify-center items-center w-100 h-100 z-[2] relative"
                 >
                   <div className="text-white text-[32px] mb-[130px]">
                     Discover the Flavors
@@ -543,17 +543,17 @@ export default function Home() {
                 <div
                   className="w-100 flex flex-col justify-center items-center relative h-[543px]"
                   style={{
-                    backgroundImage: "url('bgContent2Left.jpg')",
+                    backgroundImage: "url('bg-menu.jpg')",
                     backgroundSize: "cover",
                     backgroundPosition: "center center",
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <div className="w-[100%] h-[543px] absolute bg-[#0000004D] left-0 top-0"></div>
+                  <div className="w-[100%] h-[543px] absolute bg-[#00000030] left-0 top-0 opacity-[0.2]"></div>
                   <TextFade
                     direction="down"
                     //kiri
-                    className="flex flex-col justify-center items-center w-[100%] h-100 z-[2] pl-4"
+                    className="flex flex-col justify-center items-center w-[100%] h-100 z-[2] pl-4 relative"
                   >
                     <div className="text-white text-[32px] mb-[40px] text-center">
                       Discover the Flavors
@@ -765,10 +765,10 @@ export default function Home() {
           >
             <div
               className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto"
-              style={{
-                backgroundImage: "url('/bg-menu.jpg')",
-                backgroundSize: isDesktop ? "100% auto" : "auto 100%",
-              }}
+              // style={{
+              //   backgroundImage: "url('/bg-menu.jpg')",
+              //   backgroundSize: isDesktop ? "100% auto" : "auto 100%",
+              // }}
             >
               <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 bg-white">
                 <button
@@ -893,10 +893,10 @@ export default function Home() {
           >
             <div
               className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto"
-              style={{
-                backgroundImage: "url('/bg-menu.jpg')",
-                backgroundSize: isDesktop ? "100% auto" : "auto 100%",
-              }}
+              // style={{
+              //   backgroundImage: "url('/bg-menu.jpg')",
+              //   backgroundSize: isDesktop ? "100% auto" : "auto 100%",
+              // }}
             >
               <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 bg-white">
                 <button
@@ -1021,10 +1021,10 @@ export default function Home() {
           >
             <div
               className="w-full flex flex-col shadow-lg lg:px-6 lg:py-8 h-[100vh] lg:pt-[24px] lg:overflow-y-auto lg:overflow-x-hidden items-center relative bg-white"
-              style={{
-                backgroundImage: "url('/bg-menu.jpg')",
-                backgroundSize: isDesktop ? "100% auto" : "auto 100%",
-              }}
+              // style={{
+              //   backgroundImage: "url('/bg-menu.jpg')",
+              //   backgroundSize: isDesktop ? "100% auto" : "auto 100%",
+              // }}
             >
               {/* <button
                 className="w-full  bg-[rgba(0,0,0,0.47)] h-[100vh] fixed z-[1008] top-0 left-0"
