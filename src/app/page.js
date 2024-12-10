@@ -645,7 +645,7 @@ export default function Home() {
                     </div>
                   </TextFade>
                   <TextFade direction="down" className="w-[270px]">
-                    <div className="text-[32px] mb-[20px] text-[#F15A22] button-primary-glow">
+                    <div className="text-[32px] mb-[20px] text-[#F15A22]">
                       Get in Touch
                     </div>
                     <div className="flex items-center gap-[12px]">
