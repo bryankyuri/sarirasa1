@@ -215,7 +215,7 @@ export default function Home() {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
       srcImageZoom = `drinkmenuzoom/Page${pageIndex + 1}.jpg`;
     }
-    setZoomMenu(srcImageZoom);
+    setZoomMenu({ img: srcImageZoom, type: book });
   };
 
   const zoomRightPage = (book) => {
@@ -228,7 +228,7 @@ export default function Home() {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
       srcImageZoom = `drinkmenuzoom/Page${pageIndex + 2}.jpg`;
     }
-    setZoomMenu(srcImageZoom);
+    setZoomMenu({ img: srcImageZoom, type: book });
   };
 
   const zoomMobile = (book) => {
@@ -241,7 +241,7 @@ export default function Home() {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
       srcImageZoom = `drinkmenuzoom/Page${pageIndex + 1}.jpg`;
     }
-    setZoomMenu(srcImageZoom);
+    setZoomMenu({ img: srcImageZoom, type: book });
   };
 
   const Controls = () => {
@@ -766,51 +766,49 @@ export default function Home() {
             <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
               <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 bg-white">
                 <button
-                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
+                  className="bg-[#F4F4F4] flex rounded-[8px] p-2 justify-center items-center"
                   onClick={() => {
                     setShowModal("");
                   }}
                 >
                   <BackIcon />
-                  <div className="text-[14px] ml-2">Back</div>
                 </button>
                 <div className="flex text-black text-[14px] h-[40px]">
-                  <div className="bg-[#F4EADA] rounded-[8px] p-2 justify-between items-center flex">
+                  <div className="rounded-[8px] p-2 justify-between items-center flex">
                     <button
-                      className="mr-2 flex justify-center items-center"
+                      className={`mr-4 flex justify-center items-center`}
                       onClick={() => prevPage("food")}
                     >
-                      <PrevIcon /> <div className="ml-1">Prev</div>
+                      <PrevIcon />
                     </button>
-                    <div>|</div>
                     <button
-                      className="ml-2 flex justify-center items-center"
+                      className="ml-4 flex justify-center items-center"
                       onClick={() => nextPage("food")}
                     >
-                      <div className="mr-1">Next</div>
                       <NextIcon />
                     </button>
                   </div>
+                </div>
+                <div>
+                  {" "}
                   {!isDesktop && (
                     <button
-                      className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                      className="ml-4 flex bg-[#F4F4F4] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomMobile("food")}
                     >
-                      <div className="mr-1">Zoom</div>
                       <ZoomIcon />
                     </button>
                   )}
                 </div>
-                <div></div>
               </div>
 
               <div className="w-100 justify-between gap-[24px] flex items-center text-black">
                 {isDesktop && (
                   <button
-                    className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                    className="flex bg-[#F4F4F4] rounded-[8px] p-2 justify-center items-center"
                     onClick={() => zoomLeftPage("food")}
                   >
-                    <ZoomIcon /> <div className="ml-1">Zoom</div>
+                    <ZoomIcon />
                   </button>
                 )}
                 <div
@@ -864,10 +862,9 @@ export default function Home() {
                 </div>
                 {isDesktop && (
                   <button
-                    className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                    className="flex bg-[#F4F4F4] rounded-[8px] p-2 justify-center items-center"
                     onClick={() => zoomRightPage("food")}
                   >
-                    <div className="mr-1">Zoom</div>
                     <ZoomIcon />
                   </button>
                 )}
@@ -889,51 +886,49 @@ export default function Home() {
             <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
               <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 bg-white">
                 <button
-                  className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center"
+                  className="bg-[#F4F4F4] flex rounded-[8px] p-2 justify-center items-center"
                   onClick={() => {
                     setShowModal("");
                   }}
                 >
                   <BackIcon />
-                  <div className="text-[14px] ml-2">Back</div>
                 </button>
                 <div className="flex text-black text-[14px] h-[40px]">
-                  <div className="bg-[#F4EADA] rounded-[8px] p-2 justify-between items-center flex">
+                  <div className="rounded-[8px] p-2 justify-between items-center flex">
                     <button
-                      className="mr-2 flex justify-center items-center"
+                      className="mr-4 flex justify-center items-center"
                       onClick={() => prevPage("drink")}
                     >
-                      <PrevIcon /> <div className="ml-1">Prev</div>
+                      <PrevIcon />
                     </button>
-                    <div>|</div>
                     <button
-                      className="ml-2 flex justify-center items-center"
+                      className="ml-4 flex justify-center items-center"
                       onClick={() => nextPage("drink")}
                     >
-                      <div className="mr-1">Next</div>
                       <NextIcon />
                     </button>
                   </div>
-
+                </div>
+                <div>
+                  {" "}
                   {!isDesktop && (
                     <button
-                      className="ml-4 flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                      className="ml-4 flex bg-[#F4F4F4] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomMobile("drink")}
                     >
-                      <div className="mr-1">Zoom</div>
                       <ZoomIcon />
                     </button>
                   )}
                 </div>
-                <div></div>
               </div>
+
               <div className="w-100 justify-between gap-[24px] flex items-center text-black">
                 {isDesktop && (
                   <button
-                    className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                    className="flex bg-[#F4F4F4] rounded-[8px] p-2 justify-center items-center"
                     onClick={() => zoomLeftPage("drink")}
                   >
-                    <ZoomIcon /> <div className="ml-1">Zoom</div>
+                    <ZoomIcon />
                   </button>
                 )}
                 <div
@@ -987,15 +982,13 @@ export default function Home() {
                 </div>
                 {isDesktop && (
                   <button
-                    className="flex bg-[#F4EADA] rounded-[8px] p-2 justify-center items-center"
+                    className="flex bg-[#F4F4F4] rounded-[8px] p-2 justify-center items-center"
                     onClick={() => zoomRightPage("drink")}
                   >
-                    <div className="mr-1">Zoom</div>
                     <ZoomIcon />
                   </button>
                 )}
               </div>
-
               <div></div>
             </div>
           </motion.div>
@@ -1010,7 +1003,7 @@ export default function Home() {
             className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1007]"
             key="zoom"
           >
-            <div className="w-full flex flex-col shadow-lg lg:px-6 lg:py-8 h-[100vh] lg:pt-[24px] lg:overflow-y-auto lg:overflow-x-auto items-center relative bg-white">
+            <div className="w-full flex flex-col shadow-lg lg:px-6 lg:py-8 h-[100vh] lg:pt-[24px] lg:overflow-y-auto lg:overflow-x-hidden items-center relative bg-white">
               {/* <button
                 className="w-full  bg-[rgba(0,0,0,0.47)] h-[100vh] fixed z-[1008] top-0 left-0"
                 onClick={() => {
@@ -1022,22 +1015,27 @@ export default function Home() {
                 <>
                   <div className="fixed lg:top-[24px] top-[24px] left-[24px] z-[1010]">
                     <button
-                      className="bg-[#F15A22] flex rounded-[8px] w-[80px] h-[40px] justify-center items-center mr-4 lg:mb-0 mb-4 "
+                      className="bg-[#F4F4F4] flex rounded-[8px] p-2 justify-center items-center mr-4 lg:mb-0 mb-4 "
                       onClick={() => {
                         setZoomMenu("");
                       }}
                     >
                       <BackIcon />
-                      <div className="text-[14px] ml-2">Back</div>
                     </button>
                   </div>
+                  {/* <div
+                    className="w-100% h-screen fixed top-0 left-0 z-1000 bg-[#dcdcdc0e]"
+                    onClick={() => {
+                      setZoomMenu("");
+                    }}
+                  /> */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     width={"80%"}
                     height="auto"
-                    src={showZoomMenu}
+                    src={showZoomMenu.img}
                     alt="menu"
-                    className="mx-auto z-[1009] relative shadow-lg"
+                    className="mx-auto z-[1009] relative shadow-xl [z-1011]"
                     style={{ maxWidth: "80%" }}
                   />
                 </>
@@ -1045,7 +1043,7 @@ export default function Home() {
                 <>
                   <div className="w-full shadow-[0px_4px_8px_0px_#0000000D] flex p-4 items-center justify-end">
                     <button
-                      className="bg-[#F4EADA] flex rounded-[8px] p-2 "
+                      className="bg-[#F4F4F4] flex rounded-[8px] p-2 "
                       onClick={() => {
                         setZoomMenu("");
                       }}
@@ -1064,7 +1062,7 @@ export default function Home() {
                           <>
                             <TransformComponent
                               contentStyle={{
-                                width: MenuPageFoodWidth + "px",
+                                width: MenuPageDrinkWidth + "px",
                                 height: "100%",
                               }}
                               wrapperStyle={{
@@ -1074,13 +1072,27 @@ export default function Home() {
                             >
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img
-                                src={"/" + showZoomMenu}
+                                src={"/" + showZoomMenu.img}
                                 alt="image menu"
-                                height={MenuPageFoodHeight * 3}
-                                width={MenuPageFoodWidth * 3}
+                                height={
+                                  showZoomMenu.type === "food"
+                                    ? MenuPageFoodHeight * 3
+                                    : MenuPageDrinkHeight * 3
+                                }
+                                width={
+                                  showZoomMenu.type === "food"
+                                    ? MenuPageFoodWidth * 3
+                                    : MenuPageDrinkWidth * 3
+                                }
                                 style={{
-                                  maxHeight: MenuPageFoodHeight + "px",
-                                  maxWidth: MenuPageFoodWidth + "px",
+                                  maxHeight:
+                                    showZoomMenu.type === "food"
+                                      ? MenuPageFoodHeight
+                                      : MenuPageDrinkHeight * 0.85 + "px",
+                                  maxWidth:
+                                    showZoomMenu.type === "food"
+                                      ? MenuPageFoodWidth
+                                      : MenuPageDrinkWidth * 0.85 + "px",
                                 }}
                               />
                             </TransformComponent>

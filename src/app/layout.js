@@ -4,7 +4,7 @@ import "./style/global.css";
 import "./style/app.scss";
 import { AppProvider } from "./context/appContext";
 import { Providers } from "./providers";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 // const geistMono = localFont({
 //   src: "./fonts/GeistMonoVF.woff",
@@ -143,6 +143,7 @@ export default function RootLayout({ children }) {
         </AppProvider>
       </body>
       <GoogleAnalytics gaId="G-S4T24HRCFS" />
+      <GoogleTagManager gtmId="GTM-T3SPMMWQ" />
     </html>
   );
 }
