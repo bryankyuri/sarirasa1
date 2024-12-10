@@ -125,9 +125,20 @@ export const metadata = {
     "Traditional Indonesian Food Canggu",
     "Sarirasa Group Restaurant",
     "Best Restaurant in Bali",
-    "Bali Delicious Indonesian Restaurant"
-]
-    
+    "Bali Delicious Indonesian Restaurant",
+  ],
+  twitter: {
+    title: "Sate House Senayan - Discover the Flavors of Indonesia",
+    description:
+      "Explore a new world of flavors, with Sate House Senayan as your trusted guide. Reserve Now!",
+    images: ["/shs-logo.png"],
+  },
+  openGraph: {
+    title: "Sate House Senayan - Discover the Flavors of Indonesia",
+    description:
+      "Explore a new world of flavors, with Sate House Senayan as your trusted guide. Reserve Now!",
+    images: ["/shs-logo.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
