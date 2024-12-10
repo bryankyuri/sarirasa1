@@ -791,13 +791,15 @@ export default function Home() {
                 </div>
                 <div>
                   {" "}
-                  {!isDesktop && (
+                  {!isDesktop ? (
                     <button
                       className="ml-4 flex bg-[#F4F4F4] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomMobile("food")}
                     >
                       <ZoomIcon />
                     </button>
+                  ) : (
+                    <div className="w-[40px]"></div>
                   )}
                 </div>
               </div>
@@ -869,7 +871,7 @@ export default function Home() {
                   </button>
                 )}
               </div>
-              <div></div>
+              <div className=""></div>
             </div>
           </motion.div>
         )}
@@ -911,13 +913,15 @@ export default function Home() {
                 </div>
                 <div>
                   {" "}
-                  {!isDesktop && (
+                  {!isDesktop ? (
                     <button
                       className="ml-4 flex bg-[#F4F4F4] rounded-[8px] p-2 justify-center items-center"
                       onClick={() => zoomMobile("drink")}
                     >
                       <ZoomIcon />
                     </button>
+                  ) : (
+                    <div className="w-[40px]"></div>
                   )}
                 </div>
               </div>
