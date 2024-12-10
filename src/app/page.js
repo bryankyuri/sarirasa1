@@ -763,7 +763,13 @@ export default function Home() {
             className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
             key="food"
           >
-            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
+            <div
+              className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto"
+              style={{
+                backgroundImage: "url('/bg-menu.jpg')",
+                backgroundSize: isDesktop ? "100% auto" : "auto 100%",
+              }}
+            >
               <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 bg-white">
                 <button
                   className="bg-[#F4F4F4] flex rounded-[8px] p-2 justify-center items-center"
@@ -885,7 +891,13 @@ export default function Home() {
             className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center  z-[1005] "
             key="drink"
           >
-            <div className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto">
+            <div
+              className="w-screen flex flex-col shadow-lg pb-8 bg-[#fff] h-[100vh] items-center overflow-x-hidden overflow-y-auto"
+              style={{
+                backgroundImage: "url('/bg-menu.jpg')",
+                backgroundSize: isDesktop ? "100% auto" : "auto 100%",
+              }}
+            >
               <div className="flex justify-between w-[100%] mb-3 pt-6 shadow-md px-6 pb-4 sticky z-[1000] top-0 left-0 bg-white">
                 <button
                   className="bg-[#F4F4F4] flex rounded-[8px] p-2 justify-center items-center"
@@ -1007,7 +1019,13 @@ export default function Home() {
             className="w-full h-screen fixed top-0 left-0 flex justify-center items-center  z-[1007]"
             key="zoom"
           >
-            <div className="w-full flex flex-col shadow-lg lg:px-6 lg:py-8 h-[100vh] lg:pt-[24px] lg:overflow-y-auto lg:overflow-x-hidden items-center relative bg-white">
+            <div
+              className="w-full flex flex-col shadow-lg lg:px-6 lg:py-8 h-[100vh] lg:pt-[24px] lg:overflow-y-auto lg:overflow-x-hidden items-center relative bg-white"
+              style={{
+                backgroundImage: "url('/bg-menu.jpg')",
+                backgroundSize: isDesktop ? "100% auto" : "auto 100%",
+              }}
+            >
               {/* <button
                 className="w-full  bg-[rgba(0,0,0,0.47)] h-[100vh] fixed z-[1008] top-0 left-0"
                 onClick={() => {
@@ -1045,7 +1063,7 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                  <div className="w-full shadow-[0px_4px_8px_0px_#0000000D] flex p-4 items-center justify-end">
+                  <div className="w-full shadow-[0px_4px_8px_0px_#0000000D] flex p-4 items-center justify-end bg-white">
                     <button
                       className="bg-[#F4F4F4] flex rounded-[8px] p-2 "
                       onClick={() => {
@@ -1056,7 +1074,7 @@ export default function Home() {
                     </button>
                   </div>
                   <div className="p-4  ">
-                    <div className="flex flex-col w-100 h-[73vh] border border-[#F1471D] rounded-[8px] p-2 mt-2">
+                    <div className="flex flex-col w-100 h-[73vh] border border-[#F1471D] rounded-[8px] p-2 mt-2 bg-white">
                       <TransformWrapper
                         initialScale={2}
                         wrapperClass
