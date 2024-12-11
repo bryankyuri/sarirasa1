@@ -830,8 +830,6 @@ export default function Home() {
                 >
                   <HTMLFlipBook
                     ref={menuFoodBook}
-                    onFlip={(e) => console.log(e)}
-                    onChangeState={(e) => console.log(e)}
                     width={
                       isDesktop
                         ? Math.round(MenuPageFoodWidth)
@@ -958,8 +956,6 @@ export default function Home() {
                 >
                   <HTMLFlipBook
                     ref={menuDrinkBook}
-                    onFlip={(e) => console.log(e)}
-                    onChangeState={(e) => console.log(e)}
                     width={
                       isDesktop
                         ? Math.round(MenuPageDrinkWidth)
