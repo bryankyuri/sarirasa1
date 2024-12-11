@@ -425,8 +425,9 @@ export default function Home() {
                   <div className="text-[32px] mb-[20px]">Get in Touch</div>
                   <div className="flex items-center gap-[12px]">
                     <Link
-                      href="#"
+                      href="https://go.momos.com/SHS-DI"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
+                      target="_blank"                    
                     >
                       <FeedbackIcon />
                       <div className="ml-2">Feedback</div>
@@ -650,8 +651,9 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-[12px]">
                       <Link
-                        href="#"
+                        href="https://go.momos.com/SHS-DI"
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
+                        target="_blank"
                       >
                         <FeedbackIcon />
                         <div className="ml-2">Feedback</div>
