@@ -335,7 +335,7 @@ export default function Home() {
               <div
                 className="w-1/2 flex flex-col justify-center items-center relative"
                 style={{
-                  backgroundImage: "url('bg-menu.jpg')",
+                  backgroundImage: "url('bgContent2Left.jpg')",
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                   backgroundRepeat: "no-repeat",
@@ -544,7 +544,7 @@ export default function Home() {
                 <div
                   className="w-100 flex flex-col justify-center items-center relative h-[543px]"
                   style={{
-                    backgroundImage: "url('bg-menu.jpg')",
+                    backgroundImage: "url('bgContent2Left.jpg')",
                     backgroundSize: "cover",
                     backgroundPosition: "center center",
                     backgroundRepeat: "no-repeat",
