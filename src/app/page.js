@@ -342,7 +342,7 @@ export default function Home() {
                   height: "100vh",
                 }}
               >
-                <div className="w-[100%] h-[100vh] absolute bg-[#00000030] left-0 top-0 opacity-[0.2]"></div>
+                <div className="w-[100%] h-[100vh] absolute bg-[#0000004D] left-0 top-0"></div>
                 <TextFade
                   direction="down"
                   className="flex flex-col justify-center items-center w-100 h-100 z-[2] relative"
@@ -550,7 +550,7 @@ export default function Home() {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <div className="w-[100%] h-[543px] absolute bg-[#00000030] left-0 top-0 opacity-[0.2]"></div>
+                  <div className="w-[100%] h-[543px] absolute bg-[#0000004D] left-0 top-0"></div>
                   <TextFade
                     direction="down"
                     //kiri
