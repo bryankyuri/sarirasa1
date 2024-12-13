@@ -19,7 +19,7 @@ import { WaBlackIcon } from "./component/icon/waBlack";
 import { AppContext } from "./context/appContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { BackIcon, CloseIcon } from "./component/icon/back";
-import { HiMagnifyingGlassPlus } from "react-icons/hi2";
+import { sendGTMEvent } from "@next/third-parties/google";
 import HTMLFlipBook from "react-pageflip";
 import { Tooltip } from "react-tooltip";
 import {
@@ -356,7 +356,13 @@ export default function Home() {
                       <FoodIcon />
                       <button
                         className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
-                        onClick={() => setShowModal("food")}
+                        onClick={() => {
+                          setShowModal("food"),
+                            sendGTMEvent({
+                              event: "buttonClicked",
+                              value: "Food Menu",
+                            });
+                        }}
                       >
                         Food
                         <br />
@@ -367,7 +373,13 @@ export default function Home() {
                       <DrinkIcon />
                       <button
                         className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
-                        onClick={() => setShowModal("drink")}
+                        onClick={() => {
+                          setShowModal("drink"),
+                            sendGTMEvent({
+                              event: "buttonClicked",
+                              value: "Drink Menu",
+                            });
+                        }}
                       >
                         Drink
                         <br />
@@ -427,7 +439,7 @@ export default function Home() {
                     <Link
                       href="https://go.momos.com/SHS-DI"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
-                      target="_blank"                    
+                      target="_blank"
                     >
                       <FeedbackIcon />
                       <div className="ml-2">Feedback</div>
@@ -567,7 +579,13 @@ export default function Home() {
                         </div>
                         <button
                           className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
-                          onClick={() => setShowModal("food")}
+                          onClick={() => {
+                            setShowModal("food"),
+                              sendGTMEvent({
+                                event: "buttonClicked",
+                                value: "Food Menu",
+                              });
+                          }}
                         >
                           Food
                           <br />
@@ -581,7 +599,13 @@ export default function Home() {
 
                         <button
                           className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
-                          onClick={() => setShowModal("drink")}
+                          onClick={() => {
+                            setShowModal("drink"),
+                              sendGTMEvent({
+                                event: "buttonClicked",
+                                value: "Drink Menu",
+                              });
+                          }}
                         >
                           Drink
                           <br />
