@@ -440,6 +440,12 @@ export default function Home() {
                       href="https://go.momos.com/SHS-DI"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
                       target="_blank"
+                      onClick={() =>
+                        sendGTMEvent({
+                          event: "Redirect Link",
+                          value: "Feedback",
+                        })
+                      }
                     >
                       <FeedbackIcon />
                       <div className="ml-2">Feedback</div>
@@ -448,6 +454,12 @@ export default function Home() {
                       href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
                       target="_blank"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
+                      onClick={() =>
+                        sendGTMEvent({
+                          event: "Redirect Link",
+                          value: "WA Get In Touch",
+                        })
+                      }
                     >
                       <WaIcon />
                       <div className="ml-2">0815-1416-3510</div>
@@ -457,6 +469,12 @@ export default function Home() {
                     href="https://connect.sarirasa.co.id/login"
                     target="_blank"
                     className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px] button-primary-glow"
+                    onClick={() =>
+                      sendGTMEvent({
+                        event: "Redirect Link",
+                        value: "Sign Up for Rewards",
+                      })
+                    }
                   >
                     <GiftIcon />
                     <div className="ml-2">Sign Up for Rewards</div>
@@ -678,6 +696,12 @@ export default function Home() {
                         href="https://go.momos.com/SHS-DI"
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
                         target="_blank"
+                        onClick={() =>
+                          sendGTMEvent({
+                            event: "Redirect Link",
+                            value: "Feedback",
+                          })
+                        }
                       >
                         <FeedbackIcon />
                         <div className="ml-2">Feedback</div>
@@ -686,6 +710,12 @@ export default function Home() {
                         href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
                         target="_blank"
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
+                        onClick={() =>
+                          sendGTMEvent({
+                            event: "Redirect Link",
+                            value: "WA Get In Touch",
+                          })
+                        }
                       >
                         <WaIcon />
                         <div className="ml-2">0815-1416-3510</div>
@@ -695,6 +725,12 @@ export default function Home() {
                       href="https://connect.sarirasa.co.id/login"
                       target="_blank"
                       className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px]"
+                      onClick={() =>
+                        sendGTMEvent({
+                          event: "Redirect Link",
+                          value: "Sign Up for Rewards",
+                        })
+                      }
                     >
                       <GiftIcon />
                       <div className="ml-2">Sign Up for Rewards</div>
@@ -740,6 +776,12 @@ export default function Home() {
             target="_blank"
             className={`${isDesktop ? "svg-fill-primary" : ""}`}
             id="gmaps"
+            onClick={() =>
+              sendGTMEvent({
+                event: "Redirect Link",
+                value: "Google Maps",
+              })
+            }
           >
             <GmapsIcon />
           </Link>
@@ -756,6 +798,12 @@ export default function Home() {
             href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
             className={`${isDesktop ? "svg-fill-primary" : ""}`}
             id="whatsapp"
+            onClick={() =>
+              sendGTMEvent({
+                event: "Redirect Link",
+                value: "WA FloatingButton",
+              })
+            }
           >
             <WaBlackIcon />
           </Link>
@@ -770,14 +818,14 @@ export default function Home() {
         </div>
       </div> */}
 
-        {/* {isDesktop && (
-        <>
-          <Tooltip anchorSelect="#instagram" content="Instagram" />
-          <Tooltip anchorSelect="#gmaps" content="Google Maps" />
-          <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
-          <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
-        </>
-      )} */}
+        {isDesktop && (
+          <>
+            <Tooltip anchorSelect="#instagram" content="Instagram" />
+            <Tooltip anchorSelect="#gmaps" content="Google Maps" />
+            <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
+            <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
+          </>
+        )}
       </main>
       <AnimatePresence>
         {showModal === "food" && (

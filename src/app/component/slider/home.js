@@ -16,6 +16,7 @@ import { DiamondIcon } from "../icon/diamond";
 import { AppContext } from "@/app/context/appContext";
 import { WineIcon } from "../icon/wineGlass";
 import Link from "next/link";
+import { sendGTMEvent } from "@next/third-parties/google";
 const FADE_DOWN0 = {
   show: {
     opacity: 1,
@@ -173,6 +174,12 @@ export const HomeSlider = () => {
                       <Link
                         href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
                         target="_blank"
+                        onClick={() =>
+                          sendGTMEvent({
+                            event: "Redirect Link",
+                            value: "Reservation on Slider",
+                          })
+                        }
                       >
                         <span className="">BOOK A TABLE</span>
                       </Link>

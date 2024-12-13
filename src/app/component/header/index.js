@@ -5,6 +5,7 @@ import { AppContext } from "@/app/context/appContext";
 import Image from "next/image";
 import { MenuIcon } from "../icon/menu";
 import { WineIcon } from "../icon/wineGlass";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export const Header = ({ isTransformHeader }) => {
   const { screenWidth } = useContext(AppContext);
@@ -42,6 +43,12 @@ export const Header = ({ isTransformHeader }) => {
               href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
               target="_blank"
               className="bg-[#F15922] rounded-[50px] py-2 px-4 text-white button-primary-glow"
+              onClick={() =>
+                sendGTMEvent({
+                  event: "Redirect Link",
+                  value: "Reservation on Menu Header",
+                })
+              }
             >
               BOOK A TABLE
             </Link>
@@ -92,6 +99,12 @@ export const Header = ({ isTransformHeader }) => {
                 href="https://connect.sarirasa.co.id/reservation-store/satehouse-canggu"
                 target="_blank"
                 className="bg-[#F15922] rounded-[30px] py-2 px-4 text-white flex items-center justify-center button-primary-glow"
+                onClick={() =>
+                  sendGTMEvent({
+                    event: "Redirect Link",
+                    value: "Reservation on Menu Header",
+                  })
+                }
               >
                 <span className="">BOOK A TABLE</span>
               </Link>
