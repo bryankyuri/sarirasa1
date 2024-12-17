@@ -104,15 +104,16 @@ export default function Home() {
           background2.style.top = "0";
         }
       }
-      if (background3 && positionBg3) {
-        if (positionBg3.top < 0) {
-          background3.style.position = "fixed";
-          background3.style.top = positionBg3 + "px";
-        } else {
-          background3.style.position = "absolute";
-          background3.style.top = "0px";
-        }
-      }
+      // if (background3 && positionBg3) {
+      //   if (positionBg3.top < 0) {
+      //     background3.style.position = "fixed";
+      //     background3.style.top = positionBg3 + "px";
+      //   } 
+      //   else {
+      //     background3.style.position = "absolute";
+      //     background3.style.top = "0px";
+      //   }
+      // }
     } else {
       const backgroundFood = document.querySelector(
         ".backgroundDesktopParalax"
@@ -120,13 +121,13 @@ export default function Home() {
       const positionBgFood = document
         .querySelector("#menu")
         .getBoundingClientRect();
-      if (positionBgFood.top < 0) {
-        backgroundFood.style.backgroundSize = "50% auto";
-        backgroundFood.style.backgroundAttachment = "fixed";
-      } else {
+      // if (positionBgFood.top < 0) {
+      //   backgroundFood.style.backgroundSize = "50% auto";
+      //   backgroundFood.style.backgroundAttachment = "fixed";
+      // } else {
         backgroundFood.style.backgroundSize = "100% auto";
         backgroundFood.style.backgroundAttachment = "";
-      }
+      // }
     }
     setIsTransformHeader(tempIsTransformHeader);
   };
@@ -447,7 +448,7 @@ export default function Home() {
                   <div className="text-[32px] mb-[20px]">Get in Touch</div>
                   <div className="flex items-center gap-[12px]">
                     <Link
-                      href="https://go.momos.com/SHS-DI"
+                      href="https://connect.sarirasa.co.id/feedback"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
                       target="_blank"
                       onClick={() =>
@@ -703,7 +704,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-[12px]">
                       <Link
-                        href="https://go.momos.com/SHS-DI"
+                        href="https://connect.sarirasa.co.id/feedback"
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
                         target="_blank"
                         onClick={() =>
