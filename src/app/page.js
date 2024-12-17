@@ -132,6 +132,16 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     document.addEventListener("scroll", listenToScroll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -442,7 +452,7 @@ export default function Home() {
                       target="_blank"
                       onClick={() =>
                         sendGTMEvent({
-                          event: "Redirect Link",
+                          event: "redirect_link",
                           value: "Feedback",
                         })
                       }
@@ -456,7 +466,7 @@ export default function Home() {
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
                       onClick={() =>
                         sendGTMEvent({
-                          event: "Redirect Link",
+                          event: "redirect_link",
                           value: "WA Get In Touch",
                         })
                       }
@@ -471,7 +481,7 @@ export default function Home() {
                     className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px] button-primary-glow"
                     onClick={() =>
                       sendGTMEvent({
-                        event: "Redirect Link",
+                        event: "redirect_link",
                         value: "Sign Up for Rewards",
                       })
                     }
@@ -698,7 +708,7 @@ export default function Home() {
                         target="_blank"
                         onClick={() =>
                           sendGTMEvent({
-                            event: "Redirect Link",
+                            event: "redirect_link",
                             value: "Feedback",
                           })
                         }
@@ -712,7 +722,7 @@ export default function Home() {
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
                         onClick={() =>
                           sendGTMEvent({
-                            event: "Redirect Link",
+                            event: "redirect_link",
                             value: "WA Get In Touch",
                           })
                         }
@@ -727,7 +737,7 @@ export default function Home() {
                       className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px]"
                       onClick={() =>
                         sendGTMEvent({
-                          event: "Redirect Link",
+                          event: "redirect_link",
                           value: "Sign Up for Rewards",
                         })
                       }
@@ -778,7 +788,7 @@ export default function Home() {
             id="gmaps"
             onClick={() =>
               sendGTMEvent({
-                event: "Redirect Link",
+                event: "redirect_link",
                 value: "Google Maps",
               })
             }
@@ -800,7 +810,7 @@ export default function Home() {
             id="whatsapp"
             onClick={() =>
               sendGTMEvent({
-                event: "Redirect Link",
+                event: "redirect_link",
                 value: "WA FloatingButton",
               })
             }
