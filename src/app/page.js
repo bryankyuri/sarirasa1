@@ -190,6 +190,16 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowWidth]);
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  }, []);
+
   const nextPage = (book) => {
     if (book === "food") {
       menuFoodBook.current.pageFlip().flipNext();
