@@ -19,7 +19,7 @@ import { WaBlackIcon } from "./component/icon/waBlack";
 import { AppContext } from "./context/appContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { BackIcon, CloseIcon } from "./component/icon/back";
-import { sendGTMEvent } from "@next/third-parties/google";
+// import { sendGTMEvent } from "@next/third-parties/google";
 import HTMLFlipBook from "react-pageflip";
 import { Tooltip } from "react-tooltip";
 import {
@@ -109,7 +109,7 @@ export default function Home() {
       //   if (positionBg3.top < 0) {
       //     background3.style.position = "fixed";
       //     background3.style.top = positionBg3 + "px";
-      //   } 
+      //   }
       //   else {
       //     background3.style.position = "absolute";
       //     background3.style.top = "0px";
@@ -126,8 +126,8 @@ export default function Home() {
       //   backgroundFood.style.backgroundSize = "50% auto";
       //   backgroundFood.style.backgroundAttachment = "fixed";
       // } else {
-        backgroundFood.style.backgroundSize = "100% auto";
-        backgroundFood.style.backgroundAttachment = "";
+      backgroundFood.style.backgroundSize = "100% auto";
+      backgroundFood.style.backgroundAttachment = "";
       // }
     }
     setIsTransformHeader(tempIsTransformHeader);
@@ -248,7 +248,7 @@ export default function Home() {
       srcImageZoom = foodMenuSource()[pageIndex + 1];
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = drinkMenuSource()[pageIndex + 1];;
+      srcImageZoom = drinkMenuSource()[pageIndex + 1];
     }
     setZoomMenu({ img: srcImageZoom, type: book });
   };
@@ -379,11 +379,11 @@ export default function Home() {
                       <button
                         className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
                         onClick={() => {
-                          setShowModal("food"),
-                            sendGTMEvent({
-                              event: "buttonClicked",
-                              value: "Food Menu",
-                            });
+                          setShowModal("food");
+                          // sendGTMEvent({
+                          //   event: "buttonClicked",
+                          //   value: "Food Menu",
+                          // });
                         }}
                       >
                         Food
@@ -396,11 +396,11 @@ export default function Home() {
                       <button
                         className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
                         onClick={() => {
-                          setShowModal("drink"),
-                            sendGTMEvent({
-                              event: "buttonClicked",
-                              value: "Drink Menu",
-                            });
+                          setShowModal("drink");
+                          // sendGTMEvent({
+                          //   event: "buttonClicked",
+                          //   value: "Drink Menu",
+                          // });
                         }}
                       >
                         Drink
@@ -463,10 +463,11 @@ export default function Home() {
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
                       target="_blank"
                       onClick={() =>
-                        sendGTMEvent({
-                          event: "redirect_link",
-                          value: "Feedback",
-                        })
+                        // sendGTMEvent({
+                        //   event: "redirect_link",
+                        //   value: "Feedback",
+                        // })
+                        {}
                       }
                     >
                       <FeedbackIcon />
@@ -477,10 +478,11 @@ export default function Home() {
                       target="_blank"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
                       onClick={() =>
-                        sendGTMEvent({
-                          event: "redirect_link",
-                          value: "WA Get In Touch",
-                        })
+                        // sendGTMEvent({
+                        //   event: "redirect_link",
+                        //   value: "WA Get In Touch",
+                        // })
+                        {}
                       }
                     >
                       <WaIcon />
@@ -492,10 +494,11 @@ export default function Home() {
                     target="_blank"
                     className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px] button-primary-glow"
                     onClick={() =>
-                      sendGTMEvent({
-                        event: "redirect_link",
-                        value: "Sign Up for Rewards",
-                      })
+                      // sendGTMEvent({
+                      //   event: "redirect_link",
+                      //   value: "Sign Up for Rewards",
+                      // })
+                      {}
                     }
                   >
                     <GiftIcon />
@@ -620,11 +623,11 @@ export default function Home() {
                         <button
                           className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
                           onClick={() => {
-                            setShowModal("food"),
-                              sendGTMEvent({
-                                event: "buttonClicked",
-                                value: "Food Menu",
-                              });
+                            setShowModal("food");
+                            // sendGTMEvent({
+                            //   event: "buttonClicked",
+                            //   value: "Food Menu",
+                            // });
                           }}
                         >
                           Food
@@ -640,11 +643,11 @@ export default function Home() {
                         <button
                           className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
                           onClick={() => {
-                            setShowModal("drink"),
-                              sendGTMEvent({
-                                event: "buttonClicked",
-                                value: "Drink Menu",
-                              });
+                            setShowModal("drink");
+                            // sendGTMEvent({
+                            //   event: "buttonClicked",
+                            //   value: "Drink Menu",
+                            // });
                           }}
                         >
                           Drink
@@ -719,10 +722,11 @@ export default function Home() {
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
                         target="_blank"
                         onClick={() =>
-                          sendGTMEvent({
-                            event: "redirect_link",
-                            value: "Feedback",
-                          })
+                          // sendGTMEvent({
+                          //   event: "redirect_link",
+                          //   value: "Feedback",
+                          // })
+                          {}
                         }
                       >
                         <FeedbackIcon />
@@ -733,10 +737,11 @@ export default function Home() {
                         target="_blank"
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
                         onClick={() =>
-                          sendGTMEvent({
-                            event: "redirect_link",
-                            value: "WA Get In Touch",
-                          })
+                          // sendGTMEvent({
+                          //   event: "redirect_link",
+                          //   value: "WA Get In Touch",
+                          // })
+                          {}
                         }
                       >
                         <WaIcon />
@@ -748,10 +753,11 @@ export default function Home() {
                       target="_blank"
                       className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px]"
                       onClick={() =>
-                        sendGTMEvent({
-                          event: "redirect_link",
-                          value: "Sign Up for Rewards",
-                        })
+                        // sendGTMEvent({
+                        //   event: "redirect_link",
+                        //   value: "Sign Up for Rewards",
+                        // })
+                        {}
                       }
                     >
                       <GiftIcon />
@@ -799,10 +805,11 @@ export default function Home() {
             className={`${isDesktop ? "svg-fill-primary" : ""}`}
             id="gmaps"
             onClick={() =>
-              sendGTMEvent({
-                event: "redirect_link",
-                value: "Google Maps",
-              })
+              // sendGTMEvent({
+              //   event: "redirect_link",
+              //   value: "Google Maps",
+              // })
+              {}
             }
           >
             <GmapsIcon />
@@ -821,10 +828,11 @@ export default function Home() {
             className={`${isDesktop ? "svg-fill-primary" : ""}`}
             id="whatsapp"
             onClick={() =>
-              sendGTMEvent({
-                event: "redirect_link",
-                value: "WA FloatingButton",
-              })
+              // sendGTMEvent({
+              //   event: "redirect_link",
+              //   value: "WA FloatingButton",
+              // })
+              {}
             }
           >
             <WaBlackIcon />
