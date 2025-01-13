@@ -1,0 +1,31 @@
+export const foodMenuSource = () => [
+  "/foodmenu/Page2.jpg",
+  "/foodmenu/Page3.jpg",
+  "/foodmenu/Page4.jpg",
+  "/foodmenu/Page5.jpg",
+  "/foodmenu/Page6.jpg",
+  "/foodmenu/Page7.jpg",
+  "/foodmenu/Page8.jpg",
+  "/foodmenu/Page9.jpg",
+  "/foodmenu/Page10.jpg",
+  "/foodmenu/Page11.jpg",
+  "/foodmenu/Page12.jpg",
+  "/foodmenu/Page13.jpg",
+  "/foodmenu/Page14.jpg",
+  "/foodmenu/Page15.jpg",
+  "/foodmenu/Page16.jpg",
+  "/foodmenu/Page17.jpg",
+  "/foodmenu/Page18.jpg",
+  "/foodmenu/Page19.jpg",
+];
+
+export const drinkMenuSource = () => [
+  "/drinkmenu/Page1.jpg",
+  "/drinkmenu/Page2.jpg",
+  "/drinkmenu/Page3.jpg",
+  "/drinkmenu/Page4.jpg",
+  "/drinkmenu/Page5.jpg",
+  "/drinkmenu/Page6.jpg",
+  "/drinkmenu/Page7.jpg",
+  "/drinkmenu/Page8.jpg",
+];
