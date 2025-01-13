@@ -19,7 +19,7 @@ import { WaBlackIcon } from "./component/icon/waBlack";
 import { AppContext } from "./context/appContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { BackIcon, CloseIcon } from "./component/icon/back";
-import { HiMagnifyingGlassPlus } from "react-icons/hi2";
+import { sendGTMEvent } from "@next/third-parties/google";
 import HTMLFlipBook from "react-pageflip";
 import { Tooltip } from "react-tooltip";
 import {
@@ -34,6 +34,7 @@ import {
   TransformComponent,
   useControls,
 } from "react-zoom-pan-pinch";
+import { drinkMenuSource, foodMenuSource } from "./config/menu";
 
 const varFadeInOutFullMobile = {
   hidden: { opacity: 0, transition: { duration: 0.2 } },
@@ -104,15 +105,16 @@ export default function Home() {
           background2.style.top = "0";
         }
       }
-      if (background3 && positionBg3) {
-        if (positionBg3.top < 0) {
-          background3.style.position = "fixed";
-          background3.style.top = positionBg3 + "px";
-        } else {
-          background3.style.position = "absolute";
-          background3.style.top = "0px";
-        }
-      }
+      // if (background3 && positionBg3) {
+      //   if (positionBg3.top < 0) {
+      //     background3.style.position = "fixed";
+      //     background3.style.top = positionBg3 + "px";
+      //   } 
+      //   else {
+      //     background3.style.position = "absolute";
+      //     background3.style.top = "0px";
+      //   }
+      // }
     } else {
       const backgroundFood = document.querySelector(
         ".backgroundDesktopParalax"
@@ -120,16 +122,26 @@ export default function Home() {
       const positionBgFood = document
         .querySelector("#menu")
         .getBoundingClientRect();
-      if (positionBgFood.top < 0) {
-        backgroundFood.style.backgroundSize = "50% auto";
-        backgroundFood.style.backgroundAttachment = "fixed";
-      } else {
+      // if (positionBgFood.top < 0) {
+      //   backgroundFood.style.backgroundSize = "50% auto";
+      //   backgroundFood.style.backgroundAttachment = "fixed";
+      // } else {
         backgroundFood.style.backgroundSize = "100% auto";
         backgroundFood.style.backgroundAttachment = "";
-      }
+      // }
     }
     setIsTransformHeader(tempIsTransformHeader);
   };
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  }, []);
 
   useEffect(() => {
     document.addEventListener("scroll", listenToScroll);
@@ -145,11 +157,11 @@ export default function Home() {
   useEffect(() => {
     const renderMenuFood = [];
     const renderMenuDrink = [];
-    for (let index = 1; index < 19; index++) {
-      renderMenuFood.push(
+    foodMenuSource().map((item, index) => {
+      return renderMenuFood.push(
         <div
           className="demoPage shadow-xl"
-          key={`foodmenu/Page${index + 1}`}
+          key={`foodmenuPage${index + 1}`}
           id={`foodMenuPage${index + 1}`}
         >
           <div
@@ -157,19 +169,19 @@ export default function Home() {
             style={{
               width: MenuPageFoodWidth + "px",
               height: MenuPageFoodHeight + "px",
-              backgroundImage: `url(/foodmenu/Page${index + 1}.jpg)`,
+              backgroundImage: `url(${item})`,
               backgroundSize: "cover",
             }}
             id={`FoodMenuPage${index + 1}`}
           />
         </div>
       );
-    }
-    for (let index = 0; index < 8; index++) {
-      renderMenuDrink.push(
+    });
+    drinkMenuSource().map((item, index) => {
+      return renderMenuDrink.push(
         <div
           className="demoPage shadow-xl"
-          key={`drinkmenuzoom/Page${index + 1}`}
+          key={`drinkmenu/Page${index + 1}`}
           id={`drinkMenuPage${index + 1}`}
         >
           <div
@@ -177,14 +189,14 @@ export default function Home() {
             style={{
               width: MenuPageDrinkWidth + "px",
               height: MenuPageDrinkHeight + "px",
-              backgroundImage: `url(/drinkmenuzoom/Page${index + 1}.jpg)`,
+              backgroundImage: `url(${item}`,
               backgroundSize: "cover",
             }}
             id={`DrinkMenuPage${index + 1}`}
           />
         </div>
       );
-    }
+    });
     setMenuFood([...renderMenuFood]);
     setMenuDrink([...renderMenuDrink]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -220,10 +232,10 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenu/Page${pageIndex + 2}.jpg`;
+      srcImageZoom = foodMenuSource()[pageIndex];
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `drinkmenuzoom/Page${pageIndex + 1}.jpg`;
+      srcImageZoom = drinkMenuSource()[pageIndex];
     }
     setZoomMenu({ img: srcImageZoom, type: book });
   };
@@ -233,10 +245,10 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenu/Page${pageIndex + 3}.jpg`;
+      srcImageZoom = foodMenuSource()[pageIndex + 1];
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `drinkmenuzoom/Page${pageIndex + 2}.jpg`;
+      srcImageZoom = drinkMenuSource()[pageIndex + 1];;
     }
     setZoomMenu({ img: srcImageZoom, type: book });
   };
@@ -246,10 +258,10 @@ export default function Home() {
     let srcImageZoom;
     if (book === "food") {
       pageIndex = menuFoodBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `foodmenu/Page${pageIndex + 2}.jpg`;
+      srcImageZoom = foodMenuSource()[pageIndex];
     } else {
       pageIndex = menuDrinkBook.current.pageFlip().getCurrentPageIndex();
-      srcImageZoom = `drinkmenuzoom/Page${pageIndex + 1}.jpg`;
+      srcImageZoom = drinkMenuSource()[pageIndex];
     }
     setZoomMenu({ img: srcImageZoom, type: book });
   };
@@ -366,7 +378,13 @@ export default function Home() {
                       <FoodIcon />
                       <button
                         className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
-                        onClick={() => setShowModal("food")}
+                        onClick={() => {
+                          setShowModal("food"),
+                            sendGTMEvent({
+                              event: "buttonClicked",
+                              value: "Food Menu",
+                            });
+                        }}
                       >
                         Food
                         <br />
@@ -377,7 +395,13 @@ export default function Home() {
                       <DrinkIcon />
                       <button
                         className="py-2 px-6 bg-[#F15922] text-[24px] rounded-[8px] leading-[30px] ml-6 mt-[50px] button-primary-glow"
-                        onClick={() => setShowModal("drink")}
+                        onClick={() => {
+                          setShowModal("drink"),
+                            sendGTMEvent({
+                              event: "buttonClicked",
+                              value: "Drink Menu",
+                            });
+                        }}
                       >
                         Drink
                         <br />
@@ -435,9 +459,15 @@ export default function Home() {
                   <div className="text-[32px] mb-[20px]">Get in Touch</div>
                   <div className="flex items-center gap-[12px]">
                     <Link
-                      href="https://go.momos.com/SHS-DI"
+                      href="https://connect.sarirasa.co.id/feedback"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
-                      target="_blank"                    
+                      target="_blank"
+                      onClick={() =>
+                        sendGTMEvent({
+                          event: "redirect_link",
+                          value: "Feedback",
+                        })
+                      }
                     >
                       <FeedbackIcon />
                       <div className="ml-2">Feedback</div>
@@ -446,6 +476,12 @@ export default function Home() {
                       href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
                       target="_blank"
                       className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3 button-primary-glow"
+                      onClick={() =>
+                        sendGTMEvent({
+                          event: "redirect_link",
+                          value: "WA Get In Touch",
+                        })
+                      }
                     >
                       <WaIcon />
                       <div className="ml-2">0815-1416-3510</div>
@@ -455,6 +491,12 @@ export default function Home() {
                     href="https://connect.sarirasa.co.id/login"
                     target="_blank"
                     className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px] button-primary-glow"
+                    onClick={() =>
+                      sendGTMEvent({
+                        event: "redirect_link",
+                        value: "Sign Up for Rewards",
+                      })
+                    }
                   >
                     <GiftIcon />
                     <div className="ml-2">Sign Up for Rewards</div>
@@ -577,7 +619,13 @@ export default function Home() {
                         </div>
                         <button
                           className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
-                          onClick={() => setShowModal("food")}
+                          onClick={() => {
+                            setShowModal("food"),
+                              sendGTMEvent({
+                                event: "buttonClicked",
+                                value: "Food Menu",
+                              });
+                          }}
                         >
                           Food
                           <br />
@@ -591,7 +639,13 @@ export default function Home() {
 
                         <button
                           className="py-2 px-6 bg-[#F15922] text-[18px] rounded-[8px] leading-[22px] ml-3 mt-[12px] button-primary-glow"
-                          onClick={() => setShowModal("drink")}
+                          onClick={() => {
+                            setShowModal("drink"),
+                              sendGTMEvent({
+                                event: "buttonClicked",
+                                value: "Drink Menu",
+                              });
+                          }}
                         >
                           Drink
                           <br />
@@ -661,9 +715,15 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-[12px]">
                       <Link
-                        href="https://go.momos.com/SHS-DI"
+                        href="https://connect.sarirasa.co.id/feedback"
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
                         target="_blank"
+                        onClick={() =>
+                          sendGTMEvent({
+                            event: "redirect_link",
+                            value: "Feedback",
+                          })
+                        }
                       >
                         <FeedbackIcon />
                         <div className="ml-2">Feedback</div>
@@ -672,6 +732,12 @@ export default function Home() {
                         href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
                         target="_blank"
                         className="flex bg-[#F15A22] font-bulldog text-white items-center justify-center py-2 rounded-[8px] pl-2 pr-3"
+                        onClick={() =>
+                          sendGTMEvent({
+                            event: "redirect_link",
+                            value: "WA Get In Touch",
+                          })
+                        }
                       >
                         <WaIcon />
                         <div className="ml-2">0815-1416-3510</div>
@@ -681,6 +747,12 @@ export default function Home() {
                       href="https://connect.sarirasa.co.id/login"
                       target="_blank"
                       className="flex bg-black font-bulldog text-white items-center justify-start py-2 rounded-[8px] pl-2 pr-3 mt-[12px]"
+                      onClick={() =>
+                        sendGTMEvent({
+                          event: "redirect_link",
+                          value: "Sign Up for Rewards",
+                        })
+                      }
                     >
                       <GiftIcon />
                       <div className="ml-2">Sign Up for Rewards</div>
@@ -726,6 +798,12 @@ export default function Home() {
             target="_blank"
             className={`${isDesktop ? "svg-fill-primary" : ""}`}
             id="gmaps"
+            onClick={() =>
+              sendGTMEvent({
+                event: "redirect_link",
+                value: "Google Maps",
+              })
+            }
           >
             <GmapsIcon />
           </Link>
@@ -742,6 +820,12 @@ export default function Home() {
             href="https://api.whatsapp.com/send/?phone=6281514163510 &text=Hi%2C%20I%27m%20%5Bname%5D.%20I%27d%20like%20to%20book%20a%20table%20for%20%5Bnumber%5D%20people%20at%20%5Btime%5D.%20Do%20you%20have%20any%C2%A0availability%3F&type=phone_number&app_absent=0"
             className={`${isDesktop ? "svg-fill-primary" : ""}`}
             id="whatsapp"
+            onClick={() =>
+              sendGTMEvent({
+                event: "redirect_link",
+                value: "WA FloatingButton",
+              })
+            }
           >
             <WaBlackIcon />
           </Link>
@@ -756,14 +840,14 @@ export default function Home() {
         </div>
       </div> */}
 
-        {/* {isDesktop && (
-        <>
-          <Tooltip anchorSelect="#instagram" content="Instagram" />
-          <Tooltip anchorSelect="#gmaps" content="Google Maps" />
-          <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
-          <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
-        </>
-      )} */}
+        {isDesktop && (
+          <>
+            <Tooltip anchorSelect="#instagram" content="Instagram" />
+            <Tooltip anchorSelect="#gmaps" content="Google Maps" />
+            <Tooltip anchorSelect="#tripadvisor" content="Trip Advisor" />
+            <Tooltip anchorSelect="#whatsapp" content="Whatsapp" />
+          </>
+        )}
       </main>
       <AnimatePresence>
         {showModal === "food" && (
@@ -1102,7 +1186,7 @@ export default function Home() {
                             >
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img
-                                src={"/" + showZoomMenu.img}
+                                src={showZoomMenu.img}
                                 alt="image menu"
                                 height={
                                   showZoomMenu.type === "food"

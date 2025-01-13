@@ -154,7 +154,7 @@ export default function RootLayout({ children }) {
         </AppProvider>
       </body>
       <GoogleAnalytics gaId="G-S4T24HRCFS" />
-      <GoogleTagManager gtmId="GTM-T3SPMMWQ" />
+      <GoogleTagManager gtmId="GTM-NH738N7X" />
     </html>
   );
 }
